@@ -1,0 +1,13 @@
+////
+/// @group o-drawer
+/// @link http://registry.origami.ft.com/components/o-drawer
+////
+
+/// Hello world
+///
+/// @param {String} $who [world]
+@mixin oDrawerHello($who: world) {
+	.foo {
+		content: 'Hello, #{$who}!';
+	}
+}
