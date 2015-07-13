@@ -2,3 +2,7 @@ $o-assets-global-path: '/bower_components/';
 $o-drawer-is-silent: false;
 
 @import '../../main';
+
+#left-drawer-demo, #right-drawer-demo{
+  background: #fff;
+}

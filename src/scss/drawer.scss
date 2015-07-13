@@ -1,0 +1,32 @@
+.o-drawer{
+  position: fixed;
+  box-shadow: 0px 0px 5px #999;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.23);
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: $o-drawer-width;
+  z-index: $o-drawer-z-index;
+  &.o-drawer-animated{
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  &.o-drawer-left,
+  &.o-drawer-right{
+    top: 0px;
+  }
+  &.o-drawer-right{
+    right: $o-drawer-width * -1;
+    &.o-drawer-open{
+      right: 0px;
+    }
+  }
+  &.o-drawer-left{
+    left: $o-drawer-width * -1;
+    &.o-drawer-open{
+      left: 0px;
+    }
+  }
+}

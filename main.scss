@@ -5,7 +5,4 @@
 // Internal imports
 @import 'src/scss/variables';
 @import 'src/scss/mixins';
-
-@if not $o-drawer-is-silent {
-	@include oDrawerHello(world of Origami);
-}
+@import 'src/scss/drawer';
