@@ -19,7 +19,7 @@ describe('Drawer', function() {
 	it('should throw when called without \'new\'', function () {
 		expect(function () { Drawer(); }).to.throwException(function (e) { // jshint ignore:line
 			expect(e).to.be.a(TypeError);
-			expect(e.message).to.match(/constructor requires \'new\'/);
+			expect(e.message).to.match(/Constructor Drawer requires \'new\'/);
 		});
 	});
 
@@ -45,14 +45,14 @@ describe('Drawer', function() {
 			document.body.appendChild(element2);
 		});
 
-		it('should init all collapsible elements', function () {
-			var collapsibles = Drawer.init();
-			expect(collapsibles.length).to.be(2);
+		it('should init all drawer elements', function () {
+			var drawers = Drawer.init();
+			expect(drawers.length).to.be(2);
 		});
 
 		it('should work when element is a selector', function () {
-			var collapsibles = Drawer.init('body');
-			expect(collapsibles.length).to.be(2);
+			var drawers = Drawer.init('body');
+			expect(drawers.length).to.be(2);
 		});
 	});
 

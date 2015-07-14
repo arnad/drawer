@@ -1,6 +1,7 @@
 'use strict';
 
 var DomDelegate = require('dom-delegate');
+var WeakMap = require('weakmap');
 
 var dispatchEvent = function(element, name, data) {
   if (document.createEvent && element.dispatchEvent) {
@@ -21,6 +22,9 @@ function Drawer(el){
   }
   if (!el){
     throw new TypeError('missing required argument: element');
+  }
+  if(typeof el == 'string'){
+    el = document.querySelector(el);
   }
 
   var triggerSelector =
@@ -143,7 +147,7 @@ function selectAll(element){
 		element = document.body;
 	}
   else if(!(element instanceof HTMLElement)){
-		element = document.querySelectorAll(element);
+		element = document.querySelectorAll(element)[0];
 	}
 
 	return element.querySelectorAll('[data-o-component="o-drawer"]');
