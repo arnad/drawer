@@ -5,6 +5,11 @@ var expect = require('expect.js');
 
 var Drawer = require('./../src/js/Drawer');
 
+function isExpanded(element) {
+	return element.classList.contains('o-drawer-open') &&
+		element.getAttribute('aria-expanded') === 'true';
+}
+
 describe('Drawer', function() {
 
 	it('should initialise', function() {
@@ -48,6 +53,101 @@ describe('Drawer', function() {
 		it('should work when element is a selector', function () {
 			var collapsibles = Drawer.init('body');
 			expect(collapsibles.length).to.be(2);
+		});
+	});
+
+	describe('Drawer.destroy()', function () {
+
+		var bodyDelegate;
+
+		before(function () {
+			bodyDelegate = Drawer.bodyDelegate;
+		});
+
+		after(function () {
+			Drawer.bodyDelegate = bodyDelegate;
+		});
+
+		it('should destroy', function () {
+			var destroyed = false;
+			Drawer.bodyDelegate = {
+				destroy: function () { destroyed = true; }
+			};
+
+			Drawer.destroy();
+
+			expect(destroyed).to.be(true);
+		});
+
+	});
+
+
+	describe('open()', function() {
+		it('should show the element', function () {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+
+			expect(isExpanded(element)).to.be(false);
+
+			drawer.open();
+
+			expect(isExpanded(element)).to.be(true);
+		});
+
+		it('should emit oDrawer.open', function (done) {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+
+			element.addEventListener('oDrawer.open', function (e) {
+				expect(e.target).to.be(element);
+				done();
+			});
+
+			drawer.open();
+		});
+	});
+
+	describe('close()', function() {
+		it('should hide the element', function () {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+			drawer.open();
+			drawer.close();
+
+			expect(isExpanded(element)).to.be(false);
+		});
+
+		it('should emit oDrawer.close', function (done) {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+
+			element.addEventListener('oDrawer.close', function (e) {
+				expect(e.target).to.be(element);
+				done();
+			});
+
+			drawer.close();
+		});
+	});
+
+	describe('toggle()', function() {
+		it('should toggle the element open and close', function () {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+			drawer.toggle();
+			expect(isExpanded(element)).to.be(true);
+			drawer.toggle();
+			expect(isExpanded(element)).to.be(false);
 		});
 	});
 });

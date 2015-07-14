@@ -2,6 +2,19 @@
 
 var DomDelegate = require('dom-delegate');
 
+var dispatchEvent = function(element, name, data) {
+  if (document.createEvent && element.dispatchEvent) {
+    var event = document.createEvent('Event');
+    event.initEvent(name, true, true);
+
+    if (data) {
+      event.detail = data;
+    }
+
+    element.dispatchEvent(event);
+  }
+};
+
 function Drawer(el){
   if (!(this instanceof Drawer)){
     throw new TypeError('Constructor Drawer requires \'new\'');
@@ -26,6 +39,7 @@ function Drawer(el){
   if(!hasAlignmentClass){
     this.target.classList.add('o-drawer-left');
   }
+  this.target.setAttribute('aria-expanded', false);
 
   if(!Drawer.delegate){
     var delegate = new DomDelegate(document.body);
@@ -92,6 +106,8 @@ Drawer.destroy = function () {
 
 Drawer.prototype.open = function(){
   this.target.classList.add('o-drawer-open');
+  this.target.setAttribute('aria-expanded', true);
+  dispatchEvent(this.target, 'oDrawer.open');
   return this;
 }
 
@@ -102,6 +118,8 @@ Drawer.prototype.open = function(){
 
 Drawer.prototype.close = function(){
   this.target.classList.remove('o-drawer-open');
+  this.target.setAttribute('aria-expanded', true);
+  dispatchEvent(this.target, 'oDrawer.close');
   return this;
 }
 
@@ -112,6 +130,10 @@ Drawer.prototype.close = function(){
 
 Drawer.prototype.toggle = function(){
   this.target.classList.toggle('o-drawer-open');
+  var visible = this.target.classList.contains('o-drawer-open');
+  this.target.setAttribute('aria-expanded', visible);
+  var evt = visible? 'oDrawer.open' : 'oDrawer.close';
+  dispatchEvent(this.target, 'oDrawer.close');
   return this;
 }
 
