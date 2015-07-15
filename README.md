@@ -36,8 +36,7 @@ Project structure for new Origami components.
 5. Test and verify: `obt test && obt verify` (and fix the code raising errors)
 6. Commit and push: `git add . && git commit -m "Initial commit" && git push origin master`
 
-----
+## License
 
-## Licence
+This software is published by Pearson Education under the [MIT license](LICENSE).
 
-This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).
