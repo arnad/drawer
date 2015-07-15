@@ -1,10 +1,16 @@
 language: node_js
 sudo: false
 node_js:
-  - "0.12.2"
+- 0.12.2
 before_install:
-  - npm install -g Financial-Times/origami-build-tools#node12
-  - obt install
+- npm install -g Financial-Times/origami-build-tools#node12
+- obt install
 script:
-  - obt test
-  - obt verify
+- obt test
+- obt verify
+notifications:
+  hipchat:
+    rooms:
+      secure: M4Q3Obfr0/GqWL11Vi7WcNC+2nXxO7oeE+P9XTM6w6wDTnOhga5/nOkQiZj9eAZ+MSn1hIu/pEYIxlHeLSFlguaU8wmLRwYF6Syq1l4iAMrhBUP6ckEUtPGZY9UcQykzSQPFTIcXnVAtzlSeK0ZRMrQFYsvAR2QyJaNt1STNRtU9hoOeMi8KT7ZXgIs7rdXpDbv4tNcSzehTvZnJw/Q93nmeJm2M2n0uML0Oyn3wxIiT+W89nyqq0itPtS20xiHYs4Sg3zev3KbOmMi91tedGq9MdUNYcOXvtCsx5i1dFIOF9oqLV2BjG6n4xlcyYpgzOhisJhbBabv+luCxjeP5FqKubix9ZCSzQAZ2UM7K/Qdz5Vb2Clhmx03cCpaQ5+oDwJvAXZRR1IZ5EKsgGj8mKbfrOoSLxEVaUgWdvpK5BQwuAArI9lgLgnYp46gkkkPgflUKe/dZ1mbL1MtVYPGBfYsfb/dg4jInytQGTPgDDbYyyiPMjPnqB0qr7w4HQzhEifDI6PQ53JQfxDxYE/LEoePWcuZ5WRLcPhczGUg3vJG71/KKjrcHK4BVH98o1/X/aBuj53PMLF/qi7Aoc/pfot+5ZY36+g1BZDHBXj/ca1L+mP5m0XbEh66IceUJ+wxfoxjU+iyNqhQil019TTRLEKYyC87KZ7baB6MDn7h9h6g=
+    template:
+    - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
