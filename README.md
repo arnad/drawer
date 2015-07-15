@@ -48,14 +48,14 @@ Toggles the target element, depending on its current state.
 
 ### Events
 
-| Event Name               | Description                                         |
+| Event Name							 | Description																				 |
 |--------------------------|-----------------------------------------------------|
-| oDrawer.open             | Fires immediately when the `open` method is called. |
-| oDrawer.close            | Fires immediately when the `close` method is called. |
+| oDrawer.open						 | Fires immediately when the `open` method is called. |
+| oDrawer.close						| Fires immediately when the `close` method is called. |
 
 ```js
 document.querySelector('#myDrawer').addEventListener('oDrawer.open', function (e) {
-  // Do something
+	// Do something
 });
 ```
 
@@ -67,11 +67,11 @@ The module will automatically update `aria-expanded` depending on the state of t
 
 Tested and working on:
 
-|  Browser   | Versions                  |
-|:----------:|:-------------------------:|
-|   Chrome   |   36+                     |
-|   Firefox  |   30+                     |
-|   IE       |   11+, 10                 |
+|	Browser	 | Versions									|
+|:----------:|:----------------------:|
+|	 Chrome	 |	 36+								  	 |
+|	 Firefox	|	 30+										 |
+|	 IE			 |	 11+, 10								 |
 
 ## License
 
