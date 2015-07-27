@@ -2,7 +2,7 @@
   "name": "o-drawer",
   "dependencies": {
     "dom-delegate": "^2.0.3",
-    "weakmap": "0.0.6"
+    "weakmap": "Benvie/WeakMap"
   },
   "main": [
     "main.scss",
