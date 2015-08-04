@@ -1,5 +1,5 @@
 {
-  "description": "This Component provides an off-canvas navigation \"drawer\".",
+  "description": "Off-canvas navigation and content container",
   "origamiType": "module",
   "origamiVersion": 1,
   "support": "https://github.com/Pearson-Higher-Ed/o-drawer/issues",
