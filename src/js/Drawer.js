@@ -3,7 +3,7 @@
 'use strict';
 
 var DomDelegate = require('dom-delegate');
-var WeakMap = require('o-weakmap');
+//var WeakMap = require('o-weakmap');
 
 var dispatchEvent = function(element, name, data) {
 	if (document.createEvent && element.dispatchEvent) {
@@ -111,38 +111,52 @@ Drawer.destroy = function () {
  */
 
 Drawer.prototype.open = function(){
-	this.target.classList.add('o-drawer-open');
-	this.target.setAttribute('aria-expanded', true);
+	this.target.style.display = 'block';
+	var t= this.target;
+	setTimeout(function(){
+		t.classList.add('o-drawer-open');
+		t.setAttribute('aria-expanded', true);
+	}, 50);
+
 	dispatchEvent(this.target, 'oDrawer.open');
 	return this;
 };
 
 /**
- * Closes the Drawer
- * @return {Drawer} self, for chainability
- */
+* Closes the Drawer
+* @return {Drawer} self, for chainability
+*/
 
 Drawer.prototype.close = function(){
 	this.target.classList.remove('o-drawer-open');
 	this.target.setAttribute('aria-expanded', true);
 	dispatchEvent(this.target, 'oDrawer.close');
+	if(this.target.classList.contains('o-drawer-animated')){
+		var t = this.target;
+		setTimeout(function(){
+			t.style.display = 'none';
+		}, 400);
+	}else{
+		this.target.style.display = 'none';
+	}
 	return this;
 };
 
 /**
- * Toggles the Drawer
- * @return {Drawer} self, for chainability
- */
+* Toggles the Drawer
+* @return {Drawer} self, for chainability
+*/
 
 Drawer.prototype.toggle = function(){
-	this.target.classList.toggle('o-drawer-open');
 	var visible = this.target.classList.contains('o-drawer-open');
-	this.target.setAttribute('aria-expanded', visible);
-	var evt = visible? 'oDrawer.open' : 'oDrawer.close';
-	dispatchEvent(this.target, evt);
+	if(visible){
+		this.close();
+	}
+	else{
+		this.open();
+	}
 	return this;
 };
-
 
 function selectAll(element){
 	if(!element){
