@@ -3,7 +3,7 @@
 'use strict';
 
 var DomDelegate = require('dom-delegate');
-//var WeakMap = require('o-weakmap');
+var WeakMap = require('o-weakmap');
 
 var dispatchEvent = function(element, name, data) {
 	if (document.createEvent && element.dispatchEvent) {

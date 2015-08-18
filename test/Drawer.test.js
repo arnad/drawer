@@ -82,7 +82,7 @@ describe('Drawer', function() {
 	});
 
 
-	describe('open()', function() {
+	describe('open()', function(done) {
 		it('should show the element', function () {
 			var element = document.createElement('div');
 			document.body.appendChild(element);
@@ -92,8 +92,11 @@ describe('Drawer', function() {
 			expect(isExpanded(element)).to.be(false);
 
 			drawer.open();
+			setTimeout(function(){
+				expect(isExpanded(element)).to.be(true);
+				done();
+			}, 100);
 
-			expect(isExpanded(element)).to.be(true);
 		});
 
 		it('should emit oDrawer.open', function (done) {
@@ -138,16 +141,20 @@ describe('Drawer', function() {
 		});
 	});
 
-	describe('toggle()', function() {
+	describe('toggle()', function(done) {
 		it('should toggle the element open and close', function () {
 			var element = document.createElement('div');
 			document.body.appendChild(element);
 
 			var drawer = new Drawer(element);
 			drawer.toggle();
-			expect(isExpanded(element)).to.be(true);
-			drawer.toggle();
-			expect(isExpanded(element)).to.be(false);
+			setTimeout(function(){
+				expect(isExpanded(element)).to.be(true);
+				drawer.toggle();
+				expect(isExpanded(element)).to.be(false);
+				done();
+			}, 100);
+
 		});
 	});
 });
