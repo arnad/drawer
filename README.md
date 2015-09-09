@@ -1,4 +1,4 @@
-# o-drawer [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/o-drawer.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/o-drawer)
+# o-drawer [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/o-drawer.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/o-drawer) [![Coverage Status](https://coveralls.io/repos/Pearson-Higher-Ed/o-drawer/badge.svg?branch=master&service=github)](https://coveralls.io/github/Pearson-Higher-Ed/o-drawer?branch=master)
 
 ## Quick start
 
