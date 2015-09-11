@@ -27,3 +27,15 @@
 		}
 	}
 }
+@media only screen and (max-width: 415px) {
+	.o-drawer {
+		width: 100%;
+		z-index: 1;
+		&.o-drawer-right {
+			right: -100%;
+		}
+		&.o-drawer-left {
+			left: -100%;
+		}
+	}
+}
