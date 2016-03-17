@@ -36,7 +36,7 @@ module.exports = function(config) {
 		// browserify preprocessor options
 		browserify: {
 			debug: true,
-			transform: [ 'debowerify', require('browserify-istanbul')({
+			transform: [ require('browserify-istanbul')({
 				ignore: ['node_modules/**', 'test/**']
 			})]
 		},
