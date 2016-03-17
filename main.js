@@ -8,9 +8,9 @@ var Drawer = require('./src/js/Drawer');
 
 var constructAll = function () {
 	Drawer.init();
-	document.removeEventListener('o.DOMContentLoaded', constructAll);
+	document.removeEventListener('o.InitAllDrawerElements', constructAll);
 };
 
-document.addEventListener('o.DOMContentLoaded', constructAll);
+document.addEventListener('o.InitAllDrawerElements', constructAll);
 
 module.exports = Drawer;

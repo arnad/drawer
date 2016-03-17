@@ -8,7 +8,6 @@
 	<script src="//polyfill.webservices.ft.com/v1/polyfill.min.js?features=WeakMap,createevent,default"></script>
 	<style>body { margin: 0; } .demo-js .o--if-nojs { display: none; }</style>
 	<script>(function(d) { d.className = d.className + ' demo-js'; })(document.documentElement);</script>
-	<link rel="stylesheet" href="/bundles/css?modules=o-drawer:/demos/src/demo.scss" />
 </head>
 <body>
 <div data-o-component="o-drawer" id="left-drawer-demo" class="o-drawer-animated">
@@ -31,7 +30,8 @@
   <a href="#right-drawer-demo" data-close="o-drawer">Close Right Drawer</a>
 </div>
 
-<script src="/bundles/js?modules=o-drawer:/demos/src/demo.js"></script>
-<script src="//registry.origami.ft.com/embedapi?autoload=resize"></script>
+<script src="http://localhost:8080/webpack-dev-server.js"></script>
+<script src="../build/dev_bundle.drawer.js"></script>
+<script src="./src/demo.js"></script>
 </body>
 </html>

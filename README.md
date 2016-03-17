@@ -22,7 +22,7 @@ You can use the static `init` method to initialize all drawer elements within a 
 Drawer.init(document.body);
 ```
 
-This module will also listen for the `o.DOMContentLoaded` event; when fired, it will initialize all drawer elements on the page.
+This module will also listen for the `o.InitAllDrawerElements` event; when fired, it will initialize all drawer elements on the page.
 
 ## API
 
