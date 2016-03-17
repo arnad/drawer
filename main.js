@@ -1,6 +1,9 @@
 /*global require, module*/
 'use strict';
 
+// bundled styling
+require('./main.scss');
+
 var Drawer = require('./src/js/Drawer');
 
 var constructAll = function () {
