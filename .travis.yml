@@ -3,6 +3,9 @@ sudo: false
 node_js:
 - stable
 - 4.4
+before_install:
+- if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+- npm --version
 script:
 - npm run ci
 after_success:
