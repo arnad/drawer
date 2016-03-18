@@ -1,4 +1,7 @@
 demo
 test
+npm_scripts
 .travis.yml
 karma.conf.js
+build/dev_bundle.drawer.js
+webpack.config.js

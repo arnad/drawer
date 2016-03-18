@@ -4,7 +4,12 @@
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
     "dev": "webpack-dev-server --devtool eval --hot --progress --colors",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "version": "npm run gen-changelog && git add CHANGELOG.md",
+    "ci": "npm test && npm run build",
+    "gen-changelog": "node ./npm_scripts/gen-changelog.js",
+    "release": "node ./npm_scripts/release.js",
+    "postpublish": "npm access public && echo 'Package scope set to public!'"
   },
   "repository": {
     "type": "git",
