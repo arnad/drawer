@@ -16,6 +16,10 @@
     "type": "git",
     "url": "https://github.com/Pearson-Higher-Ed/drawer.git"
   },
+  "keywords": [
+    "pearson-components",
+    "drawer"
+  ],
   "license": "MIT",
   "devDependencies": {
     "browserify-istanbul": "^0.2.1",
