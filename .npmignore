@@ -5,3 +5,4 @@ npm_scripts
 karma.conf.js
 build/dev_bundle.drawer.js
 webpack.config.js
+node_modules
