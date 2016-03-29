@@ -1,3 +1,13 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v0.1.2...v0.1.3) (2016-03-29)
+
+
+### Bug Fixes
+
+* Make z-index match the 995 of contextual-help, to prevent appearing above the ap ([c9fd7aa](https://github.com/Pearson-Higher-Ed/drawer/commit/c9fd7aa))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v0.1.1...v0.1.2) (2016-03-22)
 
