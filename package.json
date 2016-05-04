@@ -4,7 +4,7 @@
   "description": "Off-canvas navigation and content container.",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
-    "dev": "webpack-dev-server --devtool eval --hot --progress --colors",
+    "dev": "webpack-dev-server --port 8081 --devtool eval --hot --progress --colors",
     "build": "webpack -p",
     "version": "npm run gen-changelog && git add CHANGELOG.md",
     "ci": "npm test && npm run build",
@@ -33,6 +33,7 @@
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.1.0",
+    "phantomjs-polyfill": "0.0.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",

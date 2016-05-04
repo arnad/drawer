@@ -1,6 +1,13 @@
 # drawer [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/drawer.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/drawer) [![Coverage Status](https://coveralls.io/repos/Pearson-Higher-Ed/drawer/badge.svg?branch=master&service=github)](https://coveralls.io/github/Pearson-Higher-Ed/drawer?branch=master)
 
-## Quick start
+## Demo
+
+	npm install
+	npm run dev
+	
+Navigate to **localhost:8081/demo** in your favorite browser.
+
+## Usage
 
 Add `data-o-component="o-drawer"` to the target element to enable drawer. You can use a link with `href` or a button with `data-target` as the trigger:
 
