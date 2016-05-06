@@ -34,6 +34,7 @@ function Drawer(el){
 		'[data-toggle="o-drawer"][data-target="#' + el.id + '"]';
 
 	this.target = el;
+	this.currentTarget = false;
 	this.trigger = document.querySelectorAll(triggerSelector);
 	Drawer.cache.set(el, this);
 
@@ -73,6 +74,20 @@ function Drawer(el){
 		Drawer.delegate = delegate;
 	}
 
+	document.addEventListener('o.Drawer.RightDrawer', () => {
+		if(this.target.classList.contains('o-drawer-right') && !this.currentTarget) {
+			this.close();
+		}
+		this.currentTarget = false;
+	});
+
+	document.addEventListener('o.Drawer.LeftDrawer', () => {
+		if(this.target.classList.contains('o-drawer-left') && !this.currentTarget) {
+			this.close();
+		}
+		this.currentTarget = false;
+	});
+
 	return this;
 }
 
@@ -111,6 +126,13 @@ Drawer.destroy = function () {
  */
 
 Drawer.prototype.open = function(){
+	this.currentTarget = true;
+	if(this.target.classList.contains('o-drawer-right')) {
+		document.dispatchEvent(new CustomEvent('o.Drawer.RightDrawer'));
+	}
+	if(this.target.classList.contains('o-drawer-left')) {
+		document.dispatchEvent(new CustomEvent('o.Drawer.LeftDrawer'));
+	}
 	this.target.style.display = 'block';
 	var t= this.target;
 	setTimeout(function(){

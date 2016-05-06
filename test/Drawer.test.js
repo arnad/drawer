@@ -139,6 +139,36 @@ describe('Drawer', function() {
 
 			drawer.close();
 		});
+
+		it('should emit o.Drawer.RightDrawer', function(done) {
+			var element = document.createElement('div');
+			element.classList.add('o-drawer-right');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+
+			element.addEventListener('o.Drawer.RightDrawer', function(e) {
+				epect(true).to.be(true);
+				done();
+			});
+
+			drawer.open();
+		});
+
+		it('should emit o.Drawer.LeftDrawer', function(done) {
+			var element = document.createElement('div')
+			element.classList.add('o-drawer-left');
+			document.body.appendChild(element);
+
+			var drawer = new Drawer(element);
+
+			element.addEventListener('o.Drawer.LeftDrawer', function(e) {
+				epect(true).to.be(true);
+				done();
+			});
+
+			drawer.open();
+		});
 	});
 
 	describe('toggle()', function(done) {
