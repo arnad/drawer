@@ -148,11 +148,12 @@ describe('Drawer', function() {
 			var drawer = new Drawer(element);
 
 			element.addEventListener('o.Drawer.RightDrawer', function(e) {
-				epect(true).to.be(true);
+				expect(drawer.currentTarget).to.be(true);
 				done();
 			});
 
 			drawer.open();
+			expect(drawer.currentTarget).to.be(false);
 		});
 
 		it('should emit o.Drawer.LeftDrawer', function(done) {
@@ -163,11 +164,13 @@ describe('Drawer', function() {
 			var drawer = new Drawer(element);
 
 			element.addEventListener('o.Drawer.LeftDrawer', function(e) {
-				epect(true).to.be(true);
+				expect(drawer.currentTarget).to.be(true);
 				done();
 			});
 
 			drawer.open();
+			expect(drawer.currentTarget).to.be(false);
+
 		});
 	});
 

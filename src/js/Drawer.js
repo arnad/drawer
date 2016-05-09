@@ -73,19 +73,19 @@ function Drawer(el){
 		});
 		Drawer.delegate = delegate;
 	}
-
-	document.addEventListener('o.Drawer.RightDrawer', () => {
-		if(this.target.classList.contains('o-drawer-right') && !this.currentTarget) {
-			this.close();
+	var _this = this;
+	document.addEventListener('o.Drawer.RightDrawer', function() {
+		if(_this.target.classList.contains('o-drawer-right') && !_this.currentTarget) {
+			_this.close();
 		}
-		this.currentTarget = false;
+		_this.currentTarget = false;
 	});
 
-	document.addEventListener('o.Drawer.LeftDrawer', () => {
-		if(this.target.classList.contains('o-drawer-left') && !this.currentTarget) {
-			this.close();
+	document.addEventListener('o.Drawer.LeftDrawer', function() {
+		if(_this.target.classList.contains('o-drawer-left') && !_this.currentTarget) {
+			_this.close();
 		}
-		this.currentTarget = false;
+		_this.currentTarget = false;
 	});
 
 	return this;
@@ -128,10 +128,10 @@ Drawer.destroy = function () {
 Drawer.prototype.open = function(){
 	this.currentTarget = true;
 	if(this.target.classList.contains('o-drawer-right')) {
-		document.dispatchEvent(new CustomEvent('o.Drawer.RightDrawer'));
+		dispatchEvent(this.target, 'o.Drawer.RightDrawer');
 	}
 	if(this.target.classList.contains('o-drawer-left')) {
-		document.dispatchEvent(new CustomEvent('o.Drawer.LeftDrawer'));
+		dispatchEvent(this.target, 'o.Drawer.LeftDrawer');
 	}
 	this.target.style.display = 'block';
 	var t= this.target;
