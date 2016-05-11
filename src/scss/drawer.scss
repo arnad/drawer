@@ -30,7 +30,7 @@
 @media only screen and (max-width: 415px) {
 	.o-drawer {
 		width: 100%;
-		z-index: 1;
+		z-index: $o-drawer-z-index;
 		&.o-drawer-right {
 			right: -100%;
 		}
