@@ -34,6 +34,7 @@ function Drawer(el){
 		'[data-toggle="o-drawer"][data-target="#' + el.id + '"]';
 
 	this.target = el;
+	this.currentTarget = false;
 	this.trigger = document.querySelectorAll(triggerSelector);
 	Drawer.cache.set(el, this);
 
@@ -72,6 +73,20 @@ function Drawer(el){
 		});
 		Drawer.delegate = delegate;
 	}
+	var _this = this;
+	document.addEventListener('o.Drawer.RightDrawer', function() {
+		if(_this.target.classList.contains('o-drawer-right') && !_this.currentTarget) {
+			_this.close();
+		}
+		_this.currentTarget = false;
+	});
+
+	document.addEventListener('o.Drawer.LeftDrawer', function() {
+		if(_this.target.classList.contains('o-drawer-left') && !_this.currentTarget) {
+			_this.close();
+		}
+		_this.currentTarget = false;
+	});
 
 	return this;
 }
@@ -111,6 +126,13 @@ Drawer.destroy = function () {
  */
 
 Drawer.prototype.open = function(){
+	this.currentTarget = true;
+	if(this.target.classList.contains('o-drawer-right')) {
+		dispatchEvent(this.target, 'o.Drawer.RightDrawer');
+	}
+	if(this.target.classList.contains('o-drawer-left')) {
+		dispatchEvent(this.target, 'o.Drawer.LeftDrawer');
+	}
 	this.target.style.display = 'block';
 	var t= this.target;
 	setTimeout(function(){
