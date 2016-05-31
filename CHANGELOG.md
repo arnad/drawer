@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/Pearson-Higher-Ed/drawer/compare/v0.1.4...v0.2.0) (2016-05-31)
+
+
+### Bug Fixes
+
+* Make unit testing work again by updating the polyfill for PhantomJS. Update the  ([f59cabd](https://github.com/Pearson-Higher-Ed/drawer/commit/f59cabd))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/Pearson-Higher-Ed/drawer/compare/v0.1.3...v0.1.4) (2016-04-27)
 
