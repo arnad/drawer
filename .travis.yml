@@ -5,6 +5,8 @@ node_js:
 - 4.2
 script:
 - npm run ci
+- chmod 777 ./test/shell_scripts/run_tests.sh
+- ./test/shell_scripts/run_tests.sh
 after_success:
 - cat ./build/reports/coverage/coverage.lcov | node_modules/coveralls/bin/coveralls.js
 after_failure:
@@ -19,3 +21,6 @@ deploy:
   on:
     branch: master
     tags: true
+env:
+  global:
+    secure: ZSuh/+b0r75XvGRfl89QfI33u/u0Mg6b3hDGmqjWAuq2Zrs/JgTO26sH7EqedAYV4OGp3VLN+pkRoOvzXgyyz1Zf6O03rgBfjbcBxONBWmQKRjRiNEe2nbBvw97xgVw1VOqvbi19DoJJHwfjZS8fwv7gZh/2iRipQSsdgKv2Dj4wzvJwGKlVyUH2puKVz2gwTxv9eTk2c5QiI1Jex8kZl7acQVtOR50nud5g10s+QuILViAcqnd9bY0dn7bM9OKQ7deViAngD2a0Vgrhtx15vqeCpujLf+F2DM9gPpBR9mcPtU2UAUV9QZtfS8zhn4va8ZIYiDck4EnFC7bHbj4QtoOxt2At+XwcGgEQaLjAeTFsYSXgbOrJkKXF0yGhkcTvsQCg/D09i/LO/1OUNvq0wH4p+uMxIfD2fSUJrqdKewnDBlm4Oc5LxWyN95qT2CCNtLRPRBRM7nTnbSKcEG0gKHpN26zHwLU+dfmhAxqu2I9Nlsi3J84smOpA3gwQsF7BH18jPXJ9pA47gEmdl4Zp6oibga4whkDa9JH+SuzajbzBn5iJWQjiaJm4nTBwiXbjzAg6wYZaHQq7rPJeuLShmVL4cI1D4Iq/XHhVYm/IsXEH9xMDl0/awUq4wtFphRZaMjO0XGzXtSIKIjm5+jY/icgN2GTDo4w7ZeFj4ww6pks=
