@@ -80,6 +80,10 @@ Tested and working on:
 |	 Firefox	|	 30+										 |
 |	 IE			 |	 11+, 10								 |
 
+## Contributions
+
+Please review the [guidelines](https://github.com/Pearson-Higher-Ed/docs/blob/master/origami-contributions.md) for contributing before getting started.
+
 ## License
 
 This software is published by Pearson Education under the [MIT license](LICENSE).
