@@ -7,8 +7,8 @@ require('./main.scss');
 var Drawer = require('./src/js/Drawer');
 
 var constructAll = function () {
-	Drawer.init();
-	document.removeEventListener('o.InitAllDrawerElements', constructAll);
+  Drawer.init();
+  document.removeEventListener('o.InitAllDrawerElements', constructAll);
 };
 
 document.addEventListener('o.InitAllDrawerElements', constructAll);

@@ -14,7 +14,14 @@ Add `data-o-component="o-drawer"` to the target element to enable drawer. You ca
 ```html
 <a href="#drawer-example" data-toggle="o-drawer">Link trigger</a>
 <button data-toggle="o-drawer" data-target="#drawer-example">Button trigger</button>
-<div id="drawer-example" class="o-drawer-right o-drawer-animated" data-o-component="o-drawer">Quisque in tortor finibus, dictum sem vel, convallis felis. Nunc ac mi in urna euismod eleifend in vitae augue. Suspendisse blandit feugiat vulputate. Praesent sit amet fringilla eros. Mauris nunc nisl, laoreet sit amet molestie vitae, sodales et diam.</div>
+
+<div id="drawer-example" class="o-drawer-right o-drawer-animated" data-o-component="o-drawer">
+  <button type="button" data-target="#drawer-example" data-close="o-drawer">
+    <span class="pe-icon--times" aria-hidden="true"></span>
+    <span class="pe-sr-only">close</span>
+  </button>
+  <p>Quisque in tortor finibus, dictum sem vel, convallis felis. Nunc ac mi in urna euismod eleifend in vitae augue. Suspendisse blandit feugiat vulputate. Praesent sit amet fringilla eros. Mauris nunc nisl, laoreet sit amet molestie vitae, sodales et diam.</p>
+</div>
 ```
 
 ## Enabling using JavaScript
@@ -68,7 +75,11 @@ document.querySelector('#myDrawer').addEventListener('oDrawer.open', function (e
 
 ## Accessibility
 
-The module will automatically update `aria-expanded` depending on the state of the target element.
+The Drawer treats keyboard focus similar to a modal dialog; when the Drawer is opened, focus is moved to the first focusable inside the Drawer (there should always be a closing button inside, ideally as the first element) and `aria-expanded` is set to true on the element which triggered the Drawer to open.
+
+So long as the Drawer is open, focus is trapped inside and cycles until either the Drawer is closed by clicking an element with the matching  `data-close` attribute, or the ESC key is hit.
+
+When the Drawer closes, if closed from within focus is brought back to the triggering element. Otherwise, focus is left on whichever other element was clicked. In both cases, `aria-expanded` is set back to false on the triggering element.
 
 ## Browser support
 
@@ -77,8 +88,11 @@ Tested and working on:
 |	Browser	 | Versions									|
 |:----------:|:----------------------:|
 |	 Chrome	 |	 36+								  	 |
-|	 Firefox	|	 30+										 |
-|	 IE			 |	 11+, 10								 |
+|	 Firefox	|	 30+									 |
+|	 IE			 |	 11+								 |
+|	 Edge			 |	 13.10586 							 |
+|	 Safari			 |	 9 								 |
+
 
 ## Contributions
 
