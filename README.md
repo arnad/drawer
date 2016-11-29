@@ -3,7 +3,7 @@
 ## Demo
 
 	npm install
-	npm run dev
+	npm start 
 	
 Navigate to **localhost:8081/demo** in your favorite browser.
 
