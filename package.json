@@ -4,7 +4,8 @@
   "description": "Off-canvas navigation and content container.",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
-    "dev": "webpack-dev-server --port 8081 --devtool eval --hot --progress --colors",
+    "dev": "webpack-dev-server --port 8081 --devtool eval --hot --host 0.0.0.0 --progress --colors",
+    "start": "npm run dev",
     "build": "webpack -p",
     "version": "npm run gen-changelog && git add CHANGELOG.md",
     "ci": "npm test && npm run build",
