@@ -94,6 +94,14 @@ Tested and working on:
 |	 Safari			 |	 9 								 |
 
 
+### Polyfills
+
+Be aware that IE 11 does not support `CustomEvent`. If you want to use `CustomEvent` (as seen in `demo.js`), you will need to add the CustomEvent polyfill script to your HTML page:
+
+```
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent"></script>
+```
+
 ## Contributions
 
 Please review the [guidelines](https://github.com/Pearson-Higher-Ed/docs/blob/master/origami-contributions.md) for contributing before getting started.

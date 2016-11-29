@@ -264,6 +264,7 @@ function handleClick(e, target, Drawer) {
 
   // Is it actually possible to have multiple drawers per trigger??
   // Certainly can't be with anchor triggers. 
+  // also this is why we haven't set aria-controls attributes
   for (var i=0, l=drawerElements.length; i<l; i++) {
     var t = drawerElements[i],
         drawer = Drawer.cache.get(t);
