@@ -2,6 +2,8 @@
   "name": "@pearson-components/drawer",
   "version": "0.3.3",
   "description": "Off-canvas navigation and content container.",
+  "author": "Pearson Design Accelerator pearson-design-accelerator@pearson.com",
+  "main": "main.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
     "dev": "webpack-dev-server --port 8081 --devtool eval --hot --host 0.0.0.0 --progress --colors",
