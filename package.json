@@ -1,6 +1,6 @@
 {
   "name": "@pearson-components/drawer",
-  "version": "0.3.3",
+  "version": "1.0.0",
   "description": "Off-canvas navigation and content container.",
   "author": "Pearson Design Accelerator pearson-design-accelerator@pearson.com",
   "main": "main.js",

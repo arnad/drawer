@@ -1,3 +1,20 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/Pearson-Higher-Ed/drawer/compare/v0.3.3...v1.0.0) (2017-05-19)
+
+
+### Bug Fixes
+
+* DES-487 made trap a visible-oin-focus closing button; add main.js to package.json; remove empty mixins.scss ([59f261b](https://github.com/Pearson-Higher-Ed/drawer/commit/59f261b))
+* ensure if trap is focussed, it is also readable ([609d9da](https://github.com/Pearson-Higher-Ed/drawer/commit/609d9da))
+* need to pull in PhantomJS 2.x because of Mac Sierra segfaults ([5e5d27d](https://github.com/Pearson-Higher-Ed/drawer/commit/5e5d27d))
+
+
+### Features
+
+* DES-632 adjust styles to fit current Drawer/con-help designs ([831f5bc](https://github.com/Pearson-Higher-Ed/drawer/commit/831f5bc))
+
+
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v0.3.0...v0.3.3) (2016-11-18)
 
