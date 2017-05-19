@@ -38,7 +38,9 @@ function Drawer(el) {
 
   this.trap = document.createElement('button');
   this.trap.className = 'pe-trap';
-  this.trap.onclick = function(e) { e.preventDefault() };
+  this.trap.textContent = 'close'; // internationalise this!
+  this.trap.setAttribute('data-close', 'o-drawer');
+  this.trap.setAttribute('data-target', this.target.id);
 
   Drawer.cache.set(el, this);
 
@@ -240,6 +242,14 @@ Drawer.prototype.trapFocus = function(e) {
     case 27:
       this.close();
       break;
+
+    case 13:
+    case 32:
+      if (active === trap) {
+        ev.preventDefault();
+        this.close();
+        break;
+      };
 
     case 9:
       if (this.focusables.length === 1) {
