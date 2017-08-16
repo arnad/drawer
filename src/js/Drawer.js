@@ -59,7 +59,6 @@ function Drawer(el) {
   }
 
   var _drawer = this;
-  getFocusables(_drawer); // for managing keyboard trap
   closeOtherDrawers(_drawer);// two drawers never open on the same side
 
   return this;
@@ -120,6 +119,8 @@ Drawer.prototype.open = function() {
   }
 
   this.trigger = document.activeElement;
+  var _drawer = this;
+  getFocusables(_drawer); // for managing keyboard trap
   var control = this.trigger,
       t = this.target,
       firstFocusable = this.firstFocusable;
@@ -215,7 +216,7 @@ Drawer.prototype.toggle = function() {
  * Esc closes drawer
  * Traps tab-focus in the Drawer
  * this fails if spatial focus is used
- * waiting... https://github.com/whatwg/html/pull/1474 
+ * waiting... https://github.com/whatwg/html/pull/1474
  */
 Drawer.prototype.trapFocus = function(e) {
   var ev = e || event,
@@ -259,7 +260,7 @@ Drawer.prototype.trapFocus = function(e) {
 
       return (ev.shiftKey) ? backwards() : forwards();
       break;
-  
+
     default:
       break;
   }
@@ -273,7 +274,7 @@ function handleClick(e, target, Drawer) {
       drawerElements = document.querySelectorAll(drawerName);
 
   // Is it actually possible to have multiple drawers per trigger??
-  // Certainly can't be with anchor triggers. 
+  // Certainly can't be with anchor triggers.
   // also this is why we haven't set aria-controls attributes
   for (var i=0, l=drawerElements.length; i<l; i++) {
     var t = drawerElements[i],
