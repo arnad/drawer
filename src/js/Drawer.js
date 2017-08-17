@@ -40,7 +40,7 @@ function Drawer(el) {
   this.trap.className = 'pe-trap';
   this.trap.textContent = 'close'; // internationalise this!
   this.trap.setAttribute('data-close', 'o-drawer');
-  this.trap.setAttribute('data-target', this.target.id);
+  this.trap.setAttribute('data-target', '#' + this.target.id);
 
   Drawer.cache.set(el, this);
 
@@ -273,9 +273,6 @@ function handleClick(e, target, Drawer) {
                    target.getAttribute('href'),
       drawerElements = document.querySelectorAll(drawerName);
 
-  // Is it actually possible to have multiple drawers per trigger??
-  // Certainly can't be with anchor triggers.
-  // also this is why we haven't set aria-controls attributes
   for (var i=0, l=drawerElements.length; i<l; i++) {
     var t = drawerElements[i],
         drawer = Drawer.cache.get(t);
@@ -302,7 +299,7 @@ function getFocusables(_drawer) {
       break;
     }
   }
-  // could a drawer have zero focusables?
+
   if (_drawer.focusables.length) {
     _drawer.firstFocusable = _drawer.closeButton || _drawer.focusables[0];
     _drawer.target.appendChild(_drawer.trap);
