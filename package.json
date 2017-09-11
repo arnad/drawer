@@ -23,7 +23,7 @@
     "pearson-components",
     "drawer"
   ],
-  "license": "MIT",
+  "license": "PEARSON PROPRIETARY AND CONFIDENTIAL INFORMATION SUBJECT TO NDA",
   "devDependencies": {
     "browserify-istanbul": "^0.2.1",
     "conventional-changelog": "^1.1.0",
