@@ -18,7 +18,7 @@ var dispatchEvent = function(element, name, data) {
   }
 };
 
-function Drawer(el) {
+function Drawer(el, cb) {
   if (!(this instanceof Drawer)) {
     throw new TypeError('Constructor Drawer requires \'new\'');
   }
@@ -41,6 +41,7 @@ function Drawer(el) {
   this.trap.textContent = 'close'; // internationalise this!
   this.trap.setAttribute('data-close', 'o-drawer');
   this.trap.setAttribute('data-target', '#' + this.target.id);
+  this.cb = cb;
 
   Drawer.cache.set(el, this);
 
@@ -190,6 +191,7 @@ Drawer.prototype.close = function() {
   t.removeEventListener('keydown', this.bound);
 
   if (closedFromWithin && this.trigger) {
+    this.cb();
     this.trigger.focus();
   }
 
@@ -289,6 +291,12 @@ function handleClick(e, target, Drawer) {
 }
 
 function getFocusables(_drawer) {
+  for (var i=0, l=_drawer.target.children.length; i<l; i++) {
+    if (_drawer.target.children[i].className === _drawer.trap.className) {
+      _drawer.target.removeChild(_drawer.target.children[i]);
+    }
+  }
+
   _drawer.focusables = Array.prototype.slice.call(_drawer.target.querySelectorAll(
       '[tabindex="0"], a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'));
 
