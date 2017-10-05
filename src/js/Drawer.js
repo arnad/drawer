@@ -191,8 +191,8 @@ Drawer.prototype.close = function() {
   t.removeEventListener('keydown', this.bound);
 
   if (closedFromWithin && this.trigger) {
-    this.cb();
     this.trigger.focus();
+    if (this.cb) {this.cb()};
   }
 
   return this;
