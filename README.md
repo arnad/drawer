@@ -3,11 +3,21 @@
 ## Demo
 
 	npm install
-	npm start 
-	
+	npm start
+
 Navigate to **localhost:8081/demo** in your favorite browser.
 
 ## Usage
+
+The drawer component can be added to any project via NPM install:
+
+  npm install --save @pearson-components/Drawer
+
+or can be added via script tag include (via unpkg.com):
+
+```HTML
+<script type="text/javascript" src="https://unpkg.com/@pearson-components/drawer@1.0.3/build/dist.drawer.js"></script>
+```
 
 Add `data-o-component="o-drawer"` to the target element to enable drawer. You can use a link with `href` or a button with `data-target` as the trigger:
 
