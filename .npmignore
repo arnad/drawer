@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 test
 npm_scripts
 .travis.yml
@@ -5,3 +6,18 @@ karma.conf.js
 build/dev_bundle.drawer.js
 webpack.config.js
 node_modules
+=======
+.babelrc
+.eslintrc
+.idea
+.travis.yml
+solano.yml
+webpack.config.js
+main.js
+
+
+/coverage
+/src
+/test
+/demo
+>>>>>>> chore: inital refactor

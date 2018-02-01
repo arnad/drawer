@@ -1,8 +1,14 @@
-.sass-cache/
-node_modules/
-build/*.js
-build/reports
+.DS_Store
 .idea
-.scannerwork/
-.log
-.iml
+*.iml
+*.swo
+*.swp
+npm-debug.log
+/node_modules
+/coverage
+
+#====-Build Section-=========
+# comment out for gh_pages...
+# or run: npm run gh-pages
+/build
+#============================
