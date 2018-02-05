@@ -12,7 +12,8 @@ class Drawer extends Component {
 
     this.state = {
       back          : false,
-      currentStyles : 'drawerMain inital'
+      currentStyles : 'drawerMain inital',
+      display       : "BasicView"
     };
 
     this.handleKeys            = _handleKeys.bind(this);
@@ -36,12 +37,12 @@ class Drawer extends Component {
   render() {
 
     const { position, children, drawerOpen, drawerHandler } = this.props;
-    const { back, currentStyles } = this.state;
+    const { back, currentStyles, display } = this.state;
 
     return (
       <div tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
         <TitleSection sectionTitle="Drawer Title" iconClose={drawerHandler} back={back} titleSectionHandler={this.titleSectionHandler}/>
-        <ContentSection back={back} contentSectionHandler={this.contentSectionHandler}>
+        <ContentSection back={back} display={display} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
       </div>
@@ -74,10 +75,11 @@ function _drawerStyles(position, drawerOpen) {
 
 }
 
-function _contentSectionHandler() {
-  this.setState({back:true});
+function _contentSectionHandler(display) {
+  console.log('===================='+ display)
+  this.setState({back:true, display});
 }
 
-function _titleSectionHandler(interiorAnimation) {
+function _titleSectionHandler() {
   this.setState({back:false})
 }

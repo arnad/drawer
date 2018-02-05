@@ -1,5 +1,5 @@
-export const DetailView = (props) => (
+export const DetailView = ({children}) => (
       <div className={'detailView'}>
-        {props.children}
+        {children}
       </div>
     )
