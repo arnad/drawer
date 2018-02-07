@@ -11,7 +11,7 @@ export const TitleSection = ({ back, sectionTitle, iconClose, titleSectionHandle
           <span className={titleSpanStyles} onClick={titleSectionHandler}>
             <h1 className="titleSectionHeaderTitle">{sectionTitle}</h1>
           </span>
-          <span className={backSpanStyles} onClick={titleSectionHandler}>
+          <span tabIndex="0" className={backSpanStyles} onClick={titleSectionHandler}>
             <Button btnIcon><Icon name="chevron-back-18">Back</Icon>Back</Button>
           </span>
           <span className="iconWrapper" onClick={iconClose}>

@@ -13,7 +13,7 @@ class Drawer extends Component {
     this.state = {
       back          : false,
       currentStyles : 'drawerMain inital',
-      display       : "BasicView"
+      display       : 'BasicView'
     };
 
     this.handleKeys            = _handleKeys.bind(this);
@@ -36,12 +36,12 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler } = this.props;
+    const { position, children, drawerOpen, drawerHandler, headerTitle } = this.props;
     const { back, currentStyles, display } = this.state;
 
     return (
       <div tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
-        <TitleSection sectionTitle="Drawer Title" iconClose={drawerHandler} back={back} titleSectionHandler={this.titleSectionHandler}/>
+        <TitleSection sectionTitle={headerTitle} iconClose={drawerHandler} back={back} titleSectionHandler={this.titleSectionHandler}/>
         <ContentSection back={back} display={display} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
@@ -57,10 +57,10 @@ export default Drawer;
 
 function _handleKeys(e) {
   console.log("hit esc")
-    switch(e.which) {
-      case 27: this.drawerHandler(); break;   // ---> ESC KEY
-      default: console.log("events default");
-    }
+  switch(e.which) {
+    case 27: this.drawerHandler(); break;   // ---> ESC KEY
+    default: console.log("events default");
+  }
 }
 
 function _drawerStyles(position, drawerOpen) {

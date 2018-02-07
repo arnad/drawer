@@ -53,10 +53,14 @@ class DrawerDemoPage extends Component {
 
 
 
-        <Drawer drawerOpen={drawerIsOpen} position={position} drawerHandler={this.drawerHandler}>
-          <div className='viewWrapper'>
+        <Drawer drawerOpen={drawerIsOpen} position={position} headerTitle="Basic Title" drawerHandler={this.drawerHandler}>
+          <div>
             <BasicView mapToDetail='detailView1'>
               <h2>BasicView1</h2>
+              <ul>
+                <li>hi</li>
+                <li>there</li>
+              </ul>
             </BasicView>
             <BasicView mapToDetail='detailView2'>
               <h2>BasicView2</h2>

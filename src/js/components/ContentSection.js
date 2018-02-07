@@ -9,7 +9,7 @@ export const ContentSection = ({ contentSectionHandler, children, back, display 
   const clickHandler           = (e) => {!back && contentSectionHandler(e.target.parentNode.attributes['maptodetail'].value)};
 
   return (
-        <div className="contentSectionRoot" onClick={clickHandler}>
+        <div tabIndex="0" onClick={clickHandler}>
           <div className={sectionAnimationBasic}>
             {!back && findBasicViews}
             {back  && findDetailView}

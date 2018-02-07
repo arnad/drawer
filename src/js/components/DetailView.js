@@ -1,5 +1,5 @@
 export const DetailView = ({children}) => (
-      <div className={'detailView'}>
+      <div>
         {children}
       </div>
     )
