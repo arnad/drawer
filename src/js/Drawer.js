@@ -65,10 +65,12 @@ function _handleKeys(e) {
 
 function _drawerStyles(position, drawerOpen) {
 
-  let currentStyles = drawerOpen ? "drawerMain left slideOutLeft" : "drawerMain left slideInLeft";
+  let currentStyles;
 
-  if(position === 'right') {
-    currentStyles = drawerOpen ? "drawerMain right slideOutRight" : "drawerMain right slideInRight";
+  switch(position) {
+    case "left" : currentStyles = drawerOpen ? "drawerMain left slideOutLeft" : "drawerMain left slideInLeft"; break;
+    case "right": currentStyles = drawerOpen ? "drawerMain right slideOutRight" : "drawerMain right slideInRight"; break;
+    default: console.log("drawerStyles default case check position on Drawer");
   }
 
   this.setState({currentStyles});
@@ -76,7 +78,6 @@ function _drawerStyles(position, drawerOpen) {
 }
 
 function _contentSectionHandler(display) {
-  console.log('===================='+ display)
   this.setState({back:true, display});
 }
 

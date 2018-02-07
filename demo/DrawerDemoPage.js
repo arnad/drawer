@@ -55,16 +55,16 @@ class DrawerDemoPage extends Component {
 
         <Drawer drawerOpen={drawerIsOpen} position={position} drawerHandler={this.drawerHandler}>
           <div className='viewWrapper'>
-            <BasicView id='basicView1' mapToDetail='detailView1'>
+            <BasicView mapToDetail='detailView1'>
               <h2>BasicView1</h2>
             </BasicView>
-            <BasicView id='basicView2'>
+            <BasicView mapToDetail='detailView2'>
               <h2>BasicView2</h2>
             </BasicView>
             <DetailView id='detailView1'>
               <h3>DetailView1</h3>
             </DetailView>
-            <DetailView id='detailView2' detailViewFor='basicView2'>
+            <DetailView id='detailView2'>
               <h3>DetailView2</h3>
             </DetailView>
           </div>

@@ -1,19 +1,18 @@
-export const ContentSection = ({ contentSectionHandler, animate, children, back, display }) => {
+export const ContentSection = ({ contentSectionHandler, children, back, display }) => {
 
   const sectionAnimationDetail = back ? "contentSection slideInLeftContent" : "contentSection slideOutLeftContent";
   const sectionAnimationBasic  = back ? "contentSection slideOutRightContent" : "contentSection slideInRightContent";
-  const stepKids = children.props.children;
-  const clickTo  = stepKids.filter(c => c.props.detailViewFor === display);
-
-  console.log(display)
-  console.log(clickTo)
-  console.log(stepKids)
+  const stepKids               = children.props.children;
+  const findBasicViews         = stepKids.filter(c => c.type.name === "BasicView");
+  const findDetailViews        = stepKids.filter(c => c.type.name === "DetailView");
+  const findDetailView         = findDetailViews.filter(c => c.props.id === display);
+  const clickHandler           = (e) => {!back && contentSectionHandler(e.target.parentNode.attributes['maptodetail'].value)};
 
   return (
-        <div className="contentSectionRoot" onClick={(e) => {contentSectionHandler(e.target.parentNode.attributes.value);console.log(e.target.parentNode.attributes)}}>
+        <div className="contentSectionRoot" onClick={clickHandler}>
           <div className={sectionAnimationBasic}>
-            {!back && stepKids.filter(c => c.type.name === "BasicView")}
-            {back  && stepKids.filter(c => {(c.type.name === "DetailView") && (c.props.id === display)})}
+            {!back && findBasicViews}
+            {back  && findDetailView}
           </div>
         </div>
       )
