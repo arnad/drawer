@@ -8,12 +8,12 @@ export const TitleSection = ({ back, sectionTitle, iconClose, titleSectionHandle
 
   return (
         <div className="titleSectionHeader">
-          <span className={titleSpanStyles} onClick={titleSectionHandler}>
+          {!back && <span className={titleSpanStyles} onClick={titleSectionHandler}>
             <h1 className="titleSectionHeaderTitle">{sectionTitle}</h1>
-          </span>
-          <span className={backSpanStyles} onClick={titleSectionHandler}>
+          </span>}
+          {back && <span className={backSpanStyles} onClick={titleSectionHandler}>
             <Button btnIcon><Icon name="chevron-back-18">Back</Icon>Back</Button>
-          </span>
+          </span>}
           <span className="iconWrapper" onClick={iconClose}>
             <Button btnIcon>
               <Icon name="remove-sm-24">close drawer</Icon>

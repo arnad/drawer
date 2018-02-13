@@ -37,9 +37,22 @@ class DrawerDemoPage extends Component {
 
         <div className="propsBlock">
           <h2>Props:</h2>
+          <h3>Drawer:</h3>
           <ul>
-            <li>drawerOpen : Boolean default false</li>
-            <li>position   : String one of:"left","right" default "left"</li>
+            <li>drawerOpen    : Boolean default false</li>
+            <li>headerTitle   : String Title Section</li>
+            <li>position      : String one of:"left","right" default "left"</li>
+            <li>drawerHandler : Function sets state of drawerOpen to true or false</li>
+          </ul>
+          <h3>BasicView:</h3>
+          <ul>
+            <li>mapToDetail : String DetailView to be shown, maps to DetailView id.</li>
+            <li>myKind      : String one of:"BasicView","DetailView"</li>
+          </ul>
+          <h3>DetailView:</h3>
+          <ul>
+            <li>id     : String BasicView that produces DetailView on click id maps to mapToDetail.</li>
+            <li>myKind : String one of:"BasicView","DetailView"</li>
           </ul>
         </div>
 
