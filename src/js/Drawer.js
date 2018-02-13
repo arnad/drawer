@@ -66,7 +66,6 @@ Drawer.childContextTypes = {
 
 
 function _handleKeys(e) {
-  console.log("hit esc")
   switch(e.which) {
     case 27: this.drawerHandler(); break;   // ---> ESC KEY
     default: console.log("events default");

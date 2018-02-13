@@ -1,5 +1,5 @@
-export const DetailView = ({children}) => (
-      <div tabIndex="0">
+export const DetailView = ({children, myKind}) => (
+      <div tabIndex="0" mykind={myKind}>
         {children}
       </div>
     )

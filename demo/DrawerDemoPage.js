@@ -59,20 +59,20 @@ class DrawerDemoPage extends Component {
           headerTitle   = "Basic Title"
           drawerHandler = {this.drawerHandler}>
           <div>
-            <BasicView mapToDetail='detailView1'>
+            <BasicView mapToDetail='detailView1' myKind="BasicView">
               <h2>BasicView1</h2>
               <ul>
                 <li>hi</li>
                 <li>there</li>
               </ul>
             </BasicView>
-            <BasicView mapToDetail='detailView2'>
+            <BasicView mapToDetail='detailView2' myKind="BasicView">
               <h2>BasicView2</h2>
             </BasicView>
-            <DetailView id='detailView1'>
+            <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
             </DetailView>
-            <DetailView id='detailView2'>
+            <DetailView id='detailView2' myKind="DetailView">
               <h3>DetailView2</h3>
             </DetailView>
           </div>
