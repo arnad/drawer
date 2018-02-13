@@ -10,8 +10,8 @@ class DrawerDemoPage extends Component {
   constructor(props){
     super(props);
     this.state = {
-      drawerIsOpen:false,
-      position:"left"
+      drawerIsOpen : false,
+      position     : "left"
     };
 
     this.drawerHandler = _drawerHandler.bind(this);
@@ -38,8 +38,8 @@ class DrawerDemoPage extends Component {
         <div className="propsBlock">
           <h2>Props:</h2>
           <ul>
-            <li>drawerOpen: Boolean default false</li>
-            <li>position: String one of:"left","right" default "left"</li>
+            <li>drawerOpen : Boolean default false</li>
+            <li>position   : String one of:"left","right" default "left"</li>
           </ul>
         </div>
 
@@ -53,7 +53,11 @@ class DrawerDemoPage extends Component {
 
 
 
-        <Drawer drawerOpen={drawerIsOpen} position={position} headerTitle="Basic Title" drawerHandler={this.drawerHandler}>
+        <Drawer
+          drawerOpen    = {drawerIsOpen}
+          position      = {position}
+          headerTitle   = "Basic Title"
+          drawerHandler = {this.drawerHandler}>
           <div>
             <BasicView mapToDetail='detailView1'>
               <h2>BasicView1</h2>

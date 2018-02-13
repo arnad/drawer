@@ -250,18 +250,20 @@
 }
 @-webkit-keyframes slideOutLeftContent {
   0% {
+    opacity           : 0;
+    visibility        : hidden;
     -webkit-transform : translateX(-110px);
     transform         : translateX(-110px);
   }
   100% {
-    opacity           : 0;
-    visibility        : hidden;
     -webkit-transform : translateX(-100%);
     transform         : translateX(-100%);
   }
 }
 @keyframes slideOutLeftContent {
   0% {
+    opacity           : 0;
+    visibility        : hidden;
     -webkit-transform : translateX(-110px);
     transform         : translateX(-110px);
   }
@@ -310,8 +312,8 @@
 .slideInRightContent {
   -webkit-animation-name      : slideInRightContent;
   animation-name              : slideInRightContent;
-  -webkit-animation-duration  : 0.5s;
-  animation-duration          : 0.5s;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
   animation-timing-function   : ease-in-out;
@@ -344,8 +346,8 @@
 .slideOutRightContent {
   -webkit-animation-name      : slideOutRightContent;
   animation-name              : slideOutRightContent;
-  -webkit-animation-duration  : 0.5s;
-  animation-duration          : 0.5s;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
   animation-timing-function   : ease-in-out;

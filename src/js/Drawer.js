@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes            from 'prop-types';
 import { TitleSection }     from './components/TitleSection';
 import { ContentSection }   from './components/ContentSection';
 
@@ -22,6 +23,10 @@ class Drawer extends Component {
     this.titleSectionHandler   = _titleSectionHandler.bind(this);
     this.drawerHandler         = props.drawerHandler.bind(this);
 
+  }
+
+  getChildContext() {
+    return { basicViewClickHandler: e => this.contentSectionHandler(e) };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,6 +60,11 @@ class Drawer extends Component {
 export default Drawer;
 
 
+Drawer.childContextTypes = {
+  basicViewClickHandler : PropTypes.func
+};
+
+
 function _handleKeys(e) {
   console.log("hit esc")
   switch(e.which) {
@@ -77,10 +87,11 @@ function _drawerStyles(position, drawerOpen) {
 
 }
 
-function _contentSectionHandler(display) {
+function _contentSectionHandler(e) {
+  const display = e.currentTarget.attributes['maptodetail'].value;
   this.setState({back:true, display});
 }
 
 function _titleSectionHandler() {
-  this.setState({back:false})
+  this.setState({back:false});
 }
