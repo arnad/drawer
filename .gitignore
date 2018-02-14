@@ -3,3 +3,6 @@ node_modules/
 build/*.js
 build/reports
 .idea
+.scannerwork/
+.log
+.iml

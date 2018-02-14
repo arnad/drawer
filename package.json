@@ -1,6 +1,6 @@
 {
   "name": "@pearson-components/drawer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Off-canvas navigation and content container.",
   "author": "Pearson Design Accelerator pearson-design-accelerator@pearson.com",
   "main": "main.js",
@@ -8,11 +8,11 @@
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
     "dev": "webpack-dev-server --port 8081 --devtool eval --hot --host 0.0.0.0 --progress --colors",
     "start": "npm run dev",
-    "build": "webpack -p",
-    "version": "npm run gen-changelog && git add CHANGELOG.md",
-    "ci": "npm test && npm run build",
-    "gen-changelog": "node ./npm_scripts/gen-changelog.js",
-    "release": "node ./npm_scripts/release.js",
+    "build": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/build.js",
+    "version": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/version.js",
+    "ci": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/ci.js",
+    "gen-changelog": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/gen-changelog.js",
+    "release": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/release.js",
     "postpublish": "npm access public && echo 'Package scope set to public!'"
   },
   "repository": {
@@ -25,6 +25,7 @@
   ],
   "license": "PEARSON PROPRIETARY AND CONFIDENTIAL INFORMATION SUBJECT TO NDA",
   "devDependencies": {
+    "@pearson-components/npm-scripts": "^0.5.6",
     "browserify-istanbul": "^0.2.1",
     "conventional-changelog": "^1.1.0",
     "coveralls": "^2.11.4",
