@@ -7,9 +7,9 @@ export const ContentSection = ({ contentSectionHandler, children, back, display 
   const findDetailView   = findDetailViews.filter(c => c.props.id === display);
 
   return (
-        <div className={sectionAnimation}>
+        <ul className={sectionAnimation}>
           {!back && findBasicViews}
           {back  && findDetailView}
-        </div>
+        </ul>
       )
 }
