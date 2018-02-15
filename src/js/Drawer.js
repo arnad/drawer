@@ -35,6 +35,23 @@ class Drawer extends Component {
 
     if(nextProps.drawerOpen !== drawerOpen) {
       this.drawerStyles(position, drawerOpen);
+
+      if(nextProps.drawerOpen) {
+        // cache triggering element...
+        this.setState({initiatingElement:document.activeElement});
+
+        // set focus to close button in drawer...
+        if(this.titleSection) {
+          console.log(this.titleSection)
+          this.titleSection.focus();
+        }
+
+      }
+
+
+
+
+
     }
 
   }
@@ -45,8 +62,13 @@ class Drawer extends Component {
     const { back, currentStyles, display } = this.state;
 
     return (
-      <div tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
-        <TitleSection sectionTitle={headerTitle} iconClose={drawerHandler} back={back} titleSectionHandler={this.titleSectionHandler}/>
+      <div role="dialog" tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
+        <TitleSection
+          sectionTitle        = {headerTitle}
+          iconClose           = {drawerHandler}
+          back                = {back}
+          titleSectionHandler = {this.titleSectionHandler}
+          closeButtonRef      = {el => this.titleSection = el}/>
         <ContentSection back={back} display={display} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
@@ -87,8 +109,11 @@ function _drawerStyles(position, drawerOpen) {
 }
 
 function _contentSectionHandler(e) {
-  const display = e.currentTarget.attributes['maptodetail'].value;
-  this.setState({back:true, display});
+
+  if(e.currentTarget.attributes['maptodetail']) {
+    this.setState({back:true, display:e.currentTarget.attributes['maptodetail'].value});
+  }
+
 }
 
 function _titleSectionHandler() {

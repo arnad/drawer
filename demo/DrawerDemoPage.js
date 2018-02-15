@@ -24,7 +24,7 @@ class DrawerDemoPage extends Component {
     const { drawerIsOpen, position } = this.state;
 
     return(
-      <div>
+      <div role="main">
 
         <div className="demo-container">
           <div className="header">
@@ -65,7 +65,6 @@ class DrawerDemoPage extends Component {
         <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"left"})}}>Drawer Position Left</Button>
 
 
-
         <Drawer
           drawerOpen    = {drawerIsOpen}
           position      = {position}
@@ -79,18 +78,15 @@ class DrawerDemoPage extends Component {
                 <li>there</li>
               </ul>
             </BasicView>
-            <BasicView mapToDetail='detailView2' myKind="BasicView">
+            <BasicView  myKind="BasicView">
               <h2>BasicView2</h2>
             </BasicView>
             <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
             </DetailView>
-            <DetailView id='detailView2' myKind="DetailView">
-              <h3>DetailView2</h3>
-            </DetailView>
+
           </div>
         </Drawer>
-
 
 
       </div>
