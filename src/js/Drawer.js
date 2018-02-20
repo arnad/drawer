@@ -14,15 +14,16 @@ class Drawer extends Component {
     this.state = {
       back          : false,
       currentStyles : 'drawerMain inital',
-      display       : 'BasicView'
+      displayView   : 'BasicView'
     };
 
     this.handleKeys            = _handleKeys.bind(this);
     this.drawerStyles          = _drawerStyles.bind(this);
     this.contentSectionHandler = _contentSectionHandler.bind(this);
     this.titleSectionHandler   = _titleSectionHandler.bind(this);
+    this.tabHandler            = _tabHandler.bind(this);
+    this.findAndFocus          = _findAndFocus.bind(this);
     this.drawerHandler         = props.drawerHandler.bind(this);
-
   }
 
   getChildContext() {
@@ -37,20 +38,13 @@ class Drawer extends Component {
       this.drawerStyles(position, drawerOpen);
 
       if(nextProps.drawerOpen) {
-        // cache triggering element...
         this.setState({initiatingElement:document.activeElement});
-
-        // set focus to close button in drawer...
-        if(this.titleSection) {
-          console.log(this.titleSection)
-          this.titleSection.focus();
-        }
-
+        this.findAndFocus();
       }
 
-
-
-
+      if(!nextProps.drawerOpen) {
+        this.state.initiatingElement.focus();
+      }
 
     }
 
@@ -58,18 +52,20 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, headerTitle } = this.props;
-    const { back, currentStyles, display } = this.state;
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop } = this.props;
+    const { back, currentStyles, displayView } = this.state;
+
+    const hasDrawerTop = drawerTop ? drawerTop : 0;
+
 
     return (
-      <div role="dialog" tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
+      <div role="dialog" style={{top:hasDrawerTop}} aria-hidden={!drawerOpen} tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
         <TitleSection
-          sectionTitle        = {headerTitle}
-          iconClose           = {drawerHandler}
           back                = {back}
-          titleSectionHandler = {this.titleSectionHandler}
-          closeButtonRef      = {el => this.titleSection = el}/>
-        <ContentSection back={back} display={display} contentSectionHandler={this.contentSectionHandler}>
+          text                = {text}
+          iconClose           = {drawerHandler}
+          titleSectionHandler = {this.titleSectionHandler} />
+        <ContentSection back={back} displayView={displayView} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
       </div>
@@ -88,9 +84,12 @@ Drawer.childContextTypes = {
 
 
 function _handleKeys(e) {
-  switch(e.which) {
-    case 27: this.drawerHandler(); break;   // ---> ESC KEY
-    default: console.log("events default");
+  if(e.which === 27) {
+    switch(e.which) {
+      case 27: this.drawerHandler(); break;   // ---> ESC KEY
+      case 9 : this.tabHandler(); break;      // ---> TAB KEY
+      default: console.log("events default");
+    }
   }
 }
 
@@ -111,11 +110,21 @@ function _drawerStyles(position, drawerOpen) {
 function _contentSectionHandler(e) {
 
   if(e.currentTarget.attributes['maptodetail']) {
-    this.setState({back:true, display:e.currentTarget.attributes['maptodetail'].value});
+    this.setState({back:true, displayView:e.currentTarget.attributes['maptodetail'].value});
+    this.findAndFocus();
   }
 
 }
 
+function _findAndFocus() {
+  const focusedElement = this.state.back ? document.querySelector('.titleSectionHeaderTitleSpan') : document.querySelector('.iconWrapper .pe-icon--btn');
+  focusedElement.focus();
+}
+
 function _titleSectionHandler() {
   this.setState({back:false});
+}
+
+function _tabHandler() {
+
 }

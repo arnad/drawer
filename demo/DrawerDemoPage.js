@@ -11,64 +11,52 @@ class DrawerDemoPage extends Component {
     super(props);
     this.state = {
       drawerIsOpen : false,
-      position     : "left"
+      position     : "right",
+      text         : {
+                      headerTitle       : "Basic Title",
+                      closeButtonSRText : "Close",
+                      backButtonText    : "Back",
+                      backButtonSRText  : "Back"
+                     }
     };
 
-    this.drawerHandler = _drawerHandler.bind(this);
+    this.drawerHandler       = _drawerHandler.bind(this);
+    this.documentationMarkup = _documentationMarkup.bind(this);
 
   }
 
 
   render(){
 
-    const { drawerIsOpen, position } = this.state;
+    const { drawerIsOpen, position, text } = this.state;
 
     return(
       <div role="main">
 
         <div className="demo-container">
           <div className="header">
-            <h1>Drawer Demo:</h1>
-            <div className="multi-dd-wrapper">
-            </div>
+            <h1><a className="demoLink" href="http://uxframework.pearson.com/c/drawer/v2.0.3/">Drawer:</a></h1>
           </div>
         </div>
 
 
-        <div className="propsBlock">
-          <h2>Props:</h2>
-          <h3>Drawer:</h3>
-          <ul>
-            <li>drawerOpen    : Boolean default false</li>
-            <li>headerTitle   : String Title Section</li>
-            <li>position      : String one of:"left","right" default "left"</li>
-            <li>drawerHandler : Function sets state of drawerOpen to true or false</li>
-          </ul>
-          <h3>BasicView:</h3>
-          <ul>
-            <li>mapToDetail : String DetailView to be shown, maps to DetailView id.</li>
-            <li>myKind      : String one of:"BasicView","DetailView"</li>
-          </ul>
-          <h3>DetailView:</h3>
-          <ul>
-            <li>id     : String BasicView that produces DetailView on click id maps to mapToDetail.</li>
-            <li>myKind : String one of:"BasicView","DetailView"</li>
-          </ul>
+        <div className="buttonBlock">
+          <Button btnType="cta" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true})}}>Open Drawer</Button>
+          <br />
+          <br />
+          <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"right"})}}>Drawer Position Right</Button>
+          <br />
+          <br />
+          <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"left"})}}>Drawer Position Left</Button>
         </div>
 
-        <Button btnType="cta" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:!drawerIsOpen})}}>Toggle Drawer</Button>
-        <br />
-        <br />
-        <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"right"})}}>Drawer Position Right</Button>
-        <br />
-        <br />
-        <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"left"})}}>Drawer Position Left</Button>
-
+        {this.documentationMarkup()}
 
         <Drawer
+          drawerTop     = "61px"
           drawerOpen    = {drawerIsOpen}
           position      = {position}
-          headerTitle   = "Basic Title"
+          text          = {text}
           drawerHandler = {this.drawerHandler}>
           <div>
             <BasicView mapToDetail='detailView1' myKind="BasicView">
@@ -90,10 +78,8 @@ class DrawerDemoPage extends Component {
             <DetailView id='detailView3' myKind="DetailView">
               <h3>DetailView3</h3>
             </DetailView>
-
           </div>
         </Drawer>
-
 
       </div>
     )
@@ -107,4 +93,91 @@ export default DrawerDemoPage;
 
 function _drawerHandler() {
   this.setState({drawerIsOpen:!this.state.drawerIsOpen});
+}
+
+function _documentationMarkup() {
+
+  const drawerPropsInfo = `
+  position      : String   - one of:"left","right" default "left"
+  drawerTop     : String   - adjust drawer vertical position
+  drawerOpen    : Boolean  - (required) default false
+  Text          : Object   - (required) text to be passed in.
+  drawerHandler : Function - (required) sets state of drawerOpen to true or false`;
+
+  const basicViewPropsInfo = `
+  mapToDetail : String - DetailView to be shown, maps to DetailView id.
+  myKind      : String - (required) one of:"BasicView","DetailView"`;
+
+  const detailViewPropsInfo = `
+  id     : String - (required) BasicView that produces DetailView on click id maps to mapToDetail.
+  myKind : String - (required) one of:"BasicView","DetailView"`;
+
+  return (
+          <div>
+            <div className="propsBlock code">
+              <h1>Props:</h1>
+              <h3>Drawer:</h3>
+              <div>
+                <pre>{drawerPropsInfo}</pre>
+              </div>
+              <h3>BasicView:</h3>
+              <pre>{basicViewPropsInfo}</pre>
+              <h3>DetailView:</h3>
+              <pre>{detailViewPropsInfo}</pre>
+            </div>
+
+
+            <h2>{"Initial State:"}</h2>
+            <pre className="code">
+              {`this.state = {
+                  drawerIsOpen : false,
+                  text         : {
+                                  backButtonText    : "Back",
+                                  backButtonSRText  : "Back",
+                                  closeButtonSRText : "Close"
+                                }
+                  };`}
+            </pre>
+
+
+            <h2>{"Drawer Code:"}</h2>
+            <pre className="code">
+              {`             <Drawer
+                drawerTop     = "60px"
+                drawerOpen    = {drawerIsOpen}
+                position      = "right"
+                text          = {text}
+                drawerHandler = {this.drawerHandler}>
+                <div>
+                  <BasicView mapToDetail='detailView1' myKind="BasicView">
+                    <h2>BasicView1</h2>
+                    <ul>
+                      <li>hi</li>
+                      <li>there</li>
+                    </ul>
+                  </BasicView>
+                  <BasicView myKind="BasicView">
+                    <h2>BasicView2</h2>
+                  </BasicView>
+                  <BasicView mapToDetail='detailView3' myKind="BasicView">
+                    <h2>BasicView3</h2>
+                  </BasicView>
+                  <DetailView id='detailView1' myKind="DetailView">
+                    <h3>DetailView1</h3>
+                  </DetailView>
+                  <DetailView id='detailView3' myKind="DetailView">
+                    <h3>DetailView3</h3>
+                  </DetailView>
+                </div>
+              </Drawer>`}
+            </pre>
+
+            <h2>{"Function to open/close the Drawer:"}</h2>
+            <pre className="code">
+              {`function _drawerHandler() {
+                this.setState({drawerIsOpen:!this.state.drawerIsOpen});
+              }`}
+            </pre>
+          </div>
+  )
 }

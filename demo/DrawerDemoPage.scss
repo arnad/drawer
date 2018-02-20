@@ -14,6 +14,33 @@ body {
   background-color: whitesmoke;
 }
 
+pre {
+  margin:0px;
+  padding-left:20px;
+}
+
+.demoLink {
+  color: Black;
+  text-decoration: none;
+}
+
+.buttonBlock {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.code {
+  background-color: lightgray;
+  margin: 20px;
+  border: 1px solid gray;
+  padding:10px;
+  overflow: scroll;
+}
+
+.propsBlock {
+  padding-left: 20px;
+}
+
 .viewWrapper {
   display: flex;
   flex-direction: row;

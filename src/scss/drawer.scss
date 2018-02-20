@@ -6,12 +6,11 @@
   background-color : white;
   position         : absolute;
   height           : 100%;
-  top              : 61px;
   width            : 260px;
   padding          : 25px 30px 30px 30px;
   box-shadow       : 5px 5px 5px 5px rgba(199,199,199,0.70);
   outline          : none;
-  overflow         : scroll;
+  overflow         : hidden;
 }
 
 .inital {
@@ -31,14 +30,6 @@
   width        : 100%;
   list-style   : none;
   padding-left : 0px;
-}
-
-.hideBasicView {
-  opactiy : 0;
-}
-
-.hideDetailVeiw{
-  opacity : 0;
 }
 
 .iconWrapper {
@@ -85,6 +76,7 @@
   display        : flex;
   align-items    : center;
   flex-direction : row;
+  height         : 26px;
 }
 
 .titleSectionHeaderTitleSpan {
@@ -107,7 +99,6 @@
 
 
 // Drawer Animations ===========================================================
-
 .slideInLeft {
   -webkit-animation-name      : slideInLeft;
   animation-name              : slideInLeft;
@@ -239,77 +230,6 @@
 
 
 // Content Animations ===========================================================
-
-.slideOutLeftContent {
-  -webkit-animation-name      : slideOutLeftContent;
-  animation-name              : slideOutLeftContent;
-  -webkit-animation-duration  : 0.4s;
-  animation-duration          : 0.4s;
-  -webkit-animation-fill-mode : both;
-  animation-fill-mode         : both;
-  animation-timing-function   : ease-in-out;
-}
-@-webkit-keyframes slideOutLeftContent {
-  0% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-  100% {
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-}
-@keyframes slideOutLeftContent {
-  0% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-  100% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-}
-
-.slideInLeftContent {
-  -webkit-animation-name      : slideInLeftContent;
-  animation-name              : slideInLeftContent;
-  -webkit-animation-duration  : 0.4s;
-  animation-duration          : 0.4s;
-  -webkit-animation-fill-mode : both;
-  animation-fill-mode         : both;
-  animation-timing-function   : ease-in-out;
-}
-@-webkit-keyframes slideInLeftContent {
-  0% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
-  }
-  100% {
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-}
-@keyframes slideInLeftContent {
-  0% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
-  }
-  100% {
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-}
-
 .slideInRightContent {
   -webkit-animation-name      : slideInRightContent;
   animation-name              : slideInRightContent;
