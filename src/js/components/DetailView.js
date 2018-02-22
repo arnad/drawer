@@ -1,5 +1,5 @@
 export const DetailView = ({children, myKind}) => (
-      <li tabIndex="0" mykind={myKind} role="menuitem">
+      <li mykind={myKind} role="presentation">
         {children}
       </li>
     )

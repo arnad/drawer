@@ -44,7 +44,7 @@ class DrawerDemoPage extends Component {
           <Button btnType="cta" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true})}}>Open Drawer</Button>
           <br />
           <br />
-          <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"right"})}}>Drawer Position Right</Button>
+          <Button  id="insideButton" btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"right"})}}>Drawer Position Right</Button>
           <br />
           <br />
           <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"left"})}}>Drawer Position Left</Button>
@@ -68,6 +68,7 @@ class DrawerDemoPage extends Component {
             </BasicView>
             <BasicView myKind="BasicView">
               <h2>BasicView2</h2>
+              <button>hithere</button>
             </BasicView>
             <BasicView mapToDetail='detailView3' myKind="BasicView">
               <h2>BasicView3</h2>
@@ -76,7 +77,11 @@ class DrawerDemoPage extends Component {
               <h3>DetailView1</h3>
             </DetailView>
             <DetailView id='detailView3' myKind="DetailView">
-              <h3>DetailView3</h3>
+              <details>
+                <summary>Copyright 1999-2014.</summary>
+                <p> - by Refsnes Data. All Rights Reserved.</p>
+                <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+              </details>
             </DetailView>
           </div>
         </Drawer>

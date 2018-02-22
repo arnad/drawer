@@ -23,6 +23,7 @@ class Drawer extends Component {
     this.titleSectionHandler   = _titleSectionHandler.bind(this);
     this.tabHandler            = _tabHandler.bind(this);
     this.findAndFocus          = _findAndFocus.bind(this);
+    this.findFocusables        = _findFocusables.bind(this);
     this.drawerHandler         = props.drawerHandler.bind(this);
   }
 
@@ -34,18 +35,17 @@ class Drawer extends Component {
 
     const { position, drawerOpen } = this.props;
 
-    if(nextProps.drawerOpen !== drawerOpen) {
-      this.drawerStyles(position, drawerOpen);
+    // this.findFocusables();
 
-      if(nextProps.drawerOpen) {
-        this.setState({initiatingElement:document.activeElement});
-        this.findAndFocus();
-      }
+    this.drawerStyles(position, drawerOpen);
 
-      if(!nextProps.drawerOpen) {
-        this.state.initiatingElement.focus();
-      }
+    if(nextProps.drawerOpen) {
+      this.setState({initiatingElement:document.activeElement});
+      this.findAndFocus(nextProps.drawerOpen, this.state.initiatingElement, this.state.back);
+    }
 
+    if(!nextProps.drawerOpen) {
+      this.findAndFocus(nextProps.drawerOpen, this.state.initiatingElement, this.state.back);
     }
 
   }
@@ -56,7 +56,6 @@ class Drawer extends Component {
     const { back, currentStyles, displayView } = this.state;
 
     const hasDrawerTop = drawerTop ? drawerTop : 0;
-
 
     return (
       <div role="dialog" style={{top:hasDrawerTop}} aria-hidden={!drawerOpen} tabIndex="0" className={currentStyles} onKeyDown={this.handleKeys}>
@@ -84,10 +83,10 @@ Drawer.childContextTypes = {
 
 
 function _handleKeys(e) {
-  if(e.which === 27) {
+  if(e.which === 27 || e.which === 9) {
     switch(e.which) {
       case 27: this.drawerHandler(); break;   // ---> ESC KEY
-      case 9 : this.tabHandler(); break;      // ---> TAB KEY
+      case 9 : this.tabHandler();    break;   // ---> TAB KEY
       default: console.log("events default");
     }
   }
@@ -111,18 +110,22 @@ function _contentSectionHandler(e) {
 
   if(e.currentTarget.attributes['maptodetail']) {
     this.setState({back:true, displayView:e.currentTarget.attributes['maptodetail'].value});
-    this.findAndFocus();
   }
 
 }
 
-function _findAndFocus() {
-  const focusedElement = this.state.back ? document.querySelector('.titleSectionHeaderTitleSpan') : document.querySelector('.iconWrapper .pe-icon--btn');
+function _findAndFocus(drawerOpen, initiatingElement) {
+  const focusedElement = drawerOpen ? document.querySelector('.iconWrapper .pe-icon--btn') : initiatingElement;
   focusedElement.focus();
 }
 
 function _titleSectionHandler() {
   this.setState({back:false});
+}
+
+function _findFocusables() {
+  const drawerElement    = document.getElementsByClassName('drawerMain')[0];
+  const tabsInsideDrawer = drawerElement.querySelectorAll('button, [tabindex="0"]');
 }
 
 function _tabHandler() {

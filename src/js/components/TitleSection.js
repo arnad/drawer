@@ -11,7 +11,7 @@ export const TitleSection = ({ back, iconClose, titleSectionHandler, text }) => 
           {!back && <span className={titleSpanStyles} onClick={titleSectionHandler}>
                       <h1 className="titleSectionHeaderTitle">{text.headerTitle}</h1>
                     </span>}
-          { back && <span tabIndex='0' className={backSpanStyles} onClick={titleSectionHandler}>
+          { back && <span className={backSpanStyles} onClick={titleSectionHandler}>
                       <Button btnIcon>
                         <Icon name="chevron-back-18">{text.backButtonSRText}</Icon>
                         {text.backButtonText}
