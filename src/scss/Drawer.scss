@@ -273,82 +273,18 @@
   }
 }
 
-.slideInLeftContent {
-  -webkit-animation-name      : slideInLeftContent;
-  animation-name              : slideInLeftContent;
-  -webkit-animation-duration  : 0.3s;
-  animation-duration          : 0.3s;
-  -webkit-animation-fill-mode : both;
-  animation-fill-mode         : both;
-  animation-timing-function   : ease-in-out;
-}
-@-webkit-keyframes slideInLeftContent {
-  0% {
-    opacity           : 0;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-  100% {
-    -webkit-transform : translateX(0px);
-    transform         : translateX(0px);
-  }
-}
-@keyframes slideInLeftContent {
-  0% {
-    opacity           : 0;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-  100% {
-    -webkit-transform : translateX(0px);
-    transform         : translateX(0px);
-  }
-}
-
-.slideOutLeftContent {
-  -webkit-animation-name      : slideOutRightContent;
-  animation-name              : slideOutRightContent;
-  -webkit-animation-duration  : 0.3s;
-  animation-duration          : 0.3s;
-  -webkit-animation-fill-mode : both;
-  animation-fill-mode         : both;
-  animation-timing-function   : ease-in-out;
-}
-@-webkit-keyframes slideOutRightContent {
-  0% {
-    opacity           : 0;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-  100% {
-    -webkit-transform : translateX(0);
-    transform         : translateX(0);
-  }
-}
-@keyframes slideOutRightContent {
-  0% {
-    opacity           : 0;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-  100% {
-    -webkit-transform : translateX(0);
-    transform         : translateX(0);
-  }
-}
-
 // XSmall Screen========xs__320px-480px=========================================================
-// @each $breakpoint in map-keys($pe-responsive-breakpoints) {
-//   @if $breakpoint == 'xs' {
-//     @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
-//       .drawerMain {
-//         position         : fixed;
-//         height           : 100%;
-//         width            : 100%;
-//         outline          : none;
-//         overflow         : hidden;
-//         padding          : 25px 30px 30px 30px;
-//       }
-//     }
-//   }
-// }
+@each $breakpoint in map-keys($pe-responsive-breakpoints) {
+  @if $breakpoint == 'xs' {
+    @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
+      .drawerMain {
+        position : absolute;
+        height   : 100%;
+        width    : 100%;
+        outline  : none;
+        overflow : hidden;
+        padding  : 25px 30px 30px 30px;
+      }
+    }
+  }
+}

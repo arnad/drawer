@@ -128,8 +128,10 @@ function _findAndFocus(drawerOpen, initiatingElement, back) {
   const focusBack      = back ? backButton : initiatingElement;
   const focusedElement = back ? focusBack : focusClose;
 
-  focusedElement.focus();
-
+  if(focusedElement) {
+    focusedElement.focus();
+  }
+  
 }
 
 function _titleSectionHandler() {
@@ -146,10 +148,6 @@ function _tabHandler(e) {
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
   let updatedTab;
-
-  if(currentTab < numOfTabs){
-    updatedTab = 0;
-  }
 
   if(currentTab <= numOfTabs){
     updatedTab = e.shiftKey ? --currentTab : ++currentTab;
@@ -168,8 +166,7 @@ function _tabHandler(e) {
 }
 
 function _basicViewKeyHandler(e) {
-  const allow = [32];
-  if(allow.some(a => a === e.which)) {
+  if(e.which === 32) {
     switch(e.which) {
       case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY                              // ---> SPACE BAR
       default: console.log("_basicViewKeyHandler default");

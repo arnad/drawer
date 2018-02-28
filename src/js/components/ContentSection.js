@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ContentSection = ({ contentSectionHandler, children, back, displayView }) => {
 
-  const sectionAnimation = back ? "contentSection slideOutRightContent" : "contentSection slideInRightContent";
+  const sectionAnimation = back ? "contentSection slideInRightContent" : "contentSection slideOutRightContent";
   const stepKids         = React.Children.map(children.props.children, child => child);
   const findBasicViews   = stepKids.filter(c => c.props.myKind === "BasicView");
   const findDetailViews  = stepKids.filter(c => c.props.myKind === "DetailView");
