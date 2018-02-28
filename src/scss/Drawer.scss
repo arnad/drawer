@@ -2,45 +2,38 @@
 /// Custom SCSS for component-specific styling goes here
 ////
 
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/color/_variables';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_variables';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_functions';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/responsive-utilities';
+
+
 .drawerMain {
-  background-color : white;
-  position         : absolute;
+  background-color : $pe-color-white;
+  position         : fixed;
   height           : 100%;
-  top              : 61px;
-  width            : 320px;
+  width            : 260px;
   padding          : 25px 30px 30px 30px;
   box-shadow       : 5px 5px 5px 5px rgba(199,199,199,0.70);
   outline          : none;
-  overflow         : scroll;
-}
-
-.inital {
-  left : -390px;
+  overflow         : hidden;
 }
 
 .left {
-  left : 0px;
+  left : 0;
+}
+
+.initial {
+  display : none;
 }
 
 .right {
-  right : 0px;
+  right : 0;
 }
 
 .contentSection {
-  position : relative;
-  width    : 100%;
-}
-
-.contentSectionRoot {
-  
-}
-
-.hideBasicView {
-  opactiy : 0;
-}
-
-.hideDetailVeiw{
-  opacity : 0;
+  list-style   : none;
+  padding-left : 0px;
 }
 
 .iconWrapper {
@@ -55,10 +48,6 @@
   width           : 44px;
 }
 
-.titleSection {
-
-}
-
 .titleSectionHeader {
   display        : flex;
   align-items    : center;
@@ -67,13 +56,6 @@
   margin-bottom  : 25px;
   align-items    : center;
   padding-bottom : 20px;
-}
-
-.titleSectionHeader svg {
-}
-
-.titleSectionHeaderBackIcon {
-
 }
 
 .titleSectionHeaderTitleBack {
@@ -87,14 +69,7 @@
   display        : flex;
   align-items    : center;
   flex-direction : row;
-}
-
-.titleSectionHeaderTitleSpan {
-
-}
-
-.titleSectionHeaderBackspan svg {
-
+  height         : 26px;
 }
 
 .titleSectionHeaderTitle {
@@ -104,18 +79,6 @@
   margin-bottom : 0px;
 }
 
-.titleSectionHeaderCloseIcon {
-}
-
-
-.detailView {
-
-}
-
-
-.basicView {
-
-}
 
 // Drawer Animations ===========================================================
 
@@ -132,7 +95,6 @@
   0% {
     -webkit-transform : translateX(-100%);
     transform         : translateX(-100%);
-    visibility        : visible;
   }
   100% {
     -webkit-transform : translateX(0);
@@ -143,7 +105,6 @@
   0% {
     -webkit-transform : translateX(-100%);
     transform         : translateX(-100%);
-    visibility        : visible;
   }
   100% {
     -webkit-transform : translateX(0);
@@ -166,9 +127,8 @@
     transform         : translateX(0);
   }
   100% {
-    visibility        : hidden;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
   }
   }
 @keyframes slideOutLeft {
@@ -177,9 +137,8 @@
     transform         : translateX(0);
   }
   100% {
-    visibility        : hidden;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
   }
 }
 
@@ -190,6 +149,7 @@
   animation-duration          : 0.5s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
 }
 
 @-webkit-keyframes slideOutRight {
@@ -198,7 +158,6 @@
       transform         : translateX(0);
     }
     100% {
-      visibility        : hidden;
       -webkit-transform : translateX(100%);
       transform         : translateX(100%);
     }
@@ -209,7 +168,6 @@
     transform         : translateX(0);
   }
   100% {
-    visibility        : hidden;
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
   }
@@ -229,7 +187,6 @@
   0% {
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
-    visibility        : visible;
   }
   100% {
     -webkit-transform : translateX(0);
@@ -240,7 +197,6 @@
   0% {
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
-    visibility        : visible;
   }
   100% {
     -webkit-transform : translateX(0);
@@ -248,183 +204,48 @@
   }
 }
 
-// Content Animations===========================================================
 
-// .slideOutRightContent {
-//   -webkit-animation-name      : slideOutRightContent;
-//   animation-name              : slideOutRightContent;
-//   -webkit-animation-duration  : 0.5s;
-//   animation-duration          : 0.5s;
-//   -webkit-animation-fill-mode : both;
-//   animation-fill-mode         : both;
-//   animation-timing-function   : ease-in-out;
-// }
-//
-// @-webkit-keyframes slideOutRightContent {
-//     0% {
-//       -webkit-transform : translateX(0);
-//       transform         : translateX(0);
-//     }
-//     100% {
-//       visibility        : hidden;
-//       -webkit-transform : translateX(-40px);
-//       transform         : translateX(-40px);
-//     }
-//   }
-// @keyframes slideOutRightContent {
-//   0% {
-//     -webkit-transform : translateX(0);
-//     transform         : translateX(0);
-//   }
-//   100% {
-//     visibility        : hidden;
-//     -webkit-transform : translateX(-40px);
-//     transform         : translateX(-40px);
-//   }
-// }
-//
-// .slideInRightContent {
-//   -webkit-animation-name      : slideInRightContent;
-//   animation-name              : slideInRightContent;
-//   -webkit-animation-duration  : 0.5s;
-//   animation-duration          : 0.5s;
-//   -webkit-animation-fill-mode : both;
-//   animation-fill-mode         : both;
-//   animation-timing-function   : ease-in-out;
-// }
-//
-// @-webkit-keyframes slideInRightContent {
-//   0% {
-//     opacity           : 0;
-//     visibility        : hidden;
-//     -webkit-transform : translateX(100%);
-//     transform         : translateX(100%);
-//   }
-//   100% {
-//     -webkit-transform : translateX(0);
-//     transform         : translateX(0);
-//   }
-// }
-// @keyframes slideInRightContent {
-//   0% {
-//     opacity           : 0;
-//     visibility        : hidden;
-//     -webkit-transform : translateX(100%);
-//     transform         : translateX(100%);
-//   }
-//   100% {
-//     -webkit-transform : translateX(0);
-//     transform         : translateX(0);
-//   }
-// }
 
-.slideOutLeftContent {
-  -webkit-animation-name      : slideOutLeftContent;
-  animation-name              : slideOutLeftContent;
-  -webkit-animation-duration  : 0.5s;
-  animation-duration          : 0.5s;
-  -webkit-animation-fill-mode : both;
-  animation-fill-mode         : both;
-  animation-timing-function   : ease-in-out;
-}
-@-webkit-keyframes slideOutLeftContent {
-  0% {
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-  100% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-}
-@keyframes slideOutLeftContent {
-  0% {
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-  100% {
-    opacity           : 0;
-    visibility        : hidden;
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
-  }
-}
 
-.slideInLeftContent {
-  -webkit-animation-name      : slideInLeftContent;
-  animation-name              : slideInLeftContent;
-  -webkit-animation-duration  : 0.5s;
-  animation-duration          : 0.5s;
-  -webkit-animation-fill-mode : both;
-  animation-fill-mode         : both;
-  animation-timing-function   : ease-in-out;
-}
-@-webkit-keyframes slideInLeftContent {
-  0% {
-    opacity           : 0;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
-    visibility        : hidden;
-  }
-  100% {
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-}
-@keyframes slideInLeftContent {
-  0% {
-    opacity           : 0;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
-    visibility        : hidden;
-  }
-  100% {
-    -webkit-transform : translateX(-110px);
-    transform         : translateX(-110px);
-  }
-}
+// Content Animations ===========================================================
 
 .slideInRightContent {
   -webkit-animation-name      : slideInRightContent;
   animation-name              : slideInRightContent;
-  -webkit-animation-duration  : 0.5s;
-  animation-duration          : 0.5s;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
   animation-timing-function   : ease-in-out;
 }
 @-webkit-keyframes slideInRightContent {
   0% {
-    -webkit-transform : translateX(0);
-    transform         : translateX(0);
-  }
-  100% {
     opacity           : 0;
-    visibility        : hidden;
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
   }
 }
 @keyframes slideInRightContent {
   0% {
-    -webkit-transform : translateX(0);
-    transform         : translateX(0);
-  }
-  100% {
     opacity           : 0;
-    visibility        : hidden;
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
   }
 }
 
 .slideOutRightContent {
   -webkit-animation-name      : slideOutRightContent;
   animation-name              : slideOutRightContent;
-  -webkit-animation-duration  : 0.5s;
-  animation-duration          : 0.5s;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
   animation-timing-function   : ease-in-out;
@@ -434,7 +255,6 @@
     opacity           : 0;
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
-    visibility        : hidden;
   }
   100% {
     -webkit-transform : translateX(0);
@@ -446,10 +266,89 @@
     opacity           : 0;
     -webkit-transform : translateX(100%);
     transform         : translateX(100%);
-    visibility        : hidden;
   }
   100% {
     -webkit-transform : translateX(0);
     transform         : translateX(0);
   }
 }
+
+.slideInLeftContent {
+  -webkit-animation-name      : slideInLeftContent;
+  animation-name              : slideInLeftContent;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+@-webkit-keyframes slideInLeftContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
+  }
+}
+@keyframes slideInLeftContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
+  }
+}
+
+.slideOutLeftContent {
+  -webkit-animation-name      : slideOutRightContent;
+  animation-name              : slideOutRightContent;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+@-webkit-keyframes slideOutRightContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@keyframes slideOutRightContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+
+// XSmall Screen========xs__320px-480px=========================================================
+// @each $breakpoint in map-keys($pe-responsive-breakpoints) {
+//   @if $breakpoint == 'xs' {
+//     @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
+//       .drawerMain {
+//         position         : fixed;
+//         height           : 100%;
+//         width            : 100%;
+//         outline          : none;
+//         overflow         : hidden;
+//         padding          : 25px 30px 30px 30px;
+//       }
+//     }
+//   }
+// }

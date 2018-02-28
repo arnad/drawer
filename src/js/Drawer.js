@@ -24,11 +24,14 @@ class Drawer extends Component {
     this.titleSectionHandler   = _titleSectionHandler.bind(this);
     this.tabHandler            = _tabHandler.bind(this);
     this.findAndFocus          = _findAndFocus.bind(this);
+    this.basicViewKeyHandler   = _basicViewKeyHandler.bind(this);
     this.drawerHandler         = props.drawerHandler.bind(this);
   }
 
   getChildContext() {
-    return { basicViewClickHandler: e => this.contentSectionHandler(e) };
+    return { basicViewClickHandler: e => this.contentSectionHandler(e),
+             basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
+           };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -79,18 +82,17 @@ export default Drawer;
 
 
 Drawer.childContextTypes = {
-  basicViewClickHandler : PropTypes.func
+  basicViewClickHandler : PropTypes.func,
+  basicViewKeyHandler : PropTypes.func
 };
 
 
 function _handleKeys(e) {
-  const allow = [27,9,13,32];
+  const allow = [27,9];
   if(allow.some(a => a === e.which)) {
     switch(e.which) {
       case 27: this.drawerHandler(); break;  // ---> ESC KEY
       case 9 : this.tabHandler(e);   break;  // ---> TAB KEY
-      case 13: console.log("enter"); break;  // ---> ENTER KEY
-      case 32: console.log("SPACE"); break;  // ---> ENTER KEY                              // ---> SPACE BAR
       default: console.log("_handleKeys default");
     }
   }
@@ -111,7 +113,7 @@ function _drawerStyles(position, drawerOpen, currentStyles) {
 function _contentSectionHandler(e) {
 
   if(e.currentTarget.attributes['maptodetail']) {
-    this.setState({back:true, displayView:e.currentTarget.attributes['maptodetail'].value},
+    this.setState({back:true, currentTab:0, displayView:e.currentTarget.attributes['maptodetail'].value},
       () => this.findAndFocus(this.props.drawerOpen, this.state.initiatingElement, this.state.back)
     );
   }
@@ -143,20 +145,34 @@ function _tabHandler(e) {
   const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"]');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
+  let updatedTab;
+
+  if(currentTab < numOfTabs){
+    updatedTab = 0;
+  }
 
   if(currentTab <= numOfTabs){
-    currentTab = e.shiftKey ? --currentTab : ++currentTab;
-    currentTab = (currentTab >= 0) ? currentTab : 0;
+    updatedTab = e.shiftKey ? --currentTab : ++currentTab;
+    updatedTab = (updatedTab >= 0) ? updatedTab : 0;
   }
 
   if(currentTab > numOfTabs){
-    currentTab = 0;
+    updatedTab = 0;
   }
 
-  tabsInsideDrawer[currentTab].tabIndex = 0;
-  tabsInsideDrawer[currentTab].focus();
+  tabsInsideDrawer[updatedTab].tabIndex = 0;
+  tabsInsideDrawer[updatedTab].focus();
 
-  this.setState({currentTab});
+  this.setState({currentTab:updatedTab});
 
+}
 
+function _basicViewKeyHandler(e) {
+  const allow = [32];
+  if(allow.some(a => a === e.which)) {
+    switch(e.which) {
+      case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY                              // ---> SPACE BAR
+      default: console.log("_basicViewKeyHandler default");
+    }
+  }
 }

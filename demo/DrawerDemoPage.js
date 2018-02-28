@@ -138,6 +138,7 @@ function _documentationMarkup() {
             <pre className="code">
               {`this.state = {
                   drawerIsOpen : false,
+                  position     : "right",
                   text         : {
                                   backButtonText    : "Back",
                                   backButtonSRText  : "Back",
