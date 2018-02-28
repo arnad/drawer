@@ -54,7 +54,6 @@ class DrawerDemoPage extends Component {
 
         <Drawer
           drawerTop     = "61px"
-          drawerZ       = "999"
           drawerOpen    = {drawerIsOpen}
           position      = {position}
           text          = {text}
@@ -104,12 +103,16 @@ function _drawerHandler() {
 function _documentationMarkup() {
 
   const drawerPropsInfo = `
-  position      : String   - one of:"left","right" default "left"
-  drawerTop     : String   - adjust drawer top property
-  drawerZ       : String   - adjust drawer z-index
-  drawerOpen    : Boolean  - (required) default false
-  Text          : Object   - (required) text to be passed in.
-  drawerHandler : Function - (required) sets state of drawerOpen to true or false`;
+  position      : String   - one of:"left","right" default "right"
+  drawerTop     : String   - adjust drawer top property default "61px"
+  drawerOpen    : Boolean  - (required) default false default false
+  drawerHandler : Function - (required) sets state of drawerOpen to true or false
+  text          : Object   - (required) text to be passed in. default {
+                                                                        backButtonText    : "Back",
+                                                                        backButtonSRText  : "Back",
+                                                                        closeButtonSRText : "Close"
+                                                                      }
+  `;
 
   const basicViewPropsInfo = `
   mapToDetail : String - DetailView to be shown, maps to DetailView id.
@@ -152,7 +155,6 @@ function _documentationMarkup() {
             <pre className="code">
               {`             <Drawer
                 drawerTop     = "60px"
-                drawerZ       = "999"
                 drawerOpen    = {drawerIsOpen}
                 position      = "right"
                 text          = {text}

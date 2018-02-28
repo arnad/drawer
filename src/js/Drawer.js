@@ -18,14 +18,14 @@ class Drawer extends Component {
       displayView   : 'BasicView'
     };
 
-    this.handleKeys            = _handleKeys.bind(this);
-    this.drawerStyles          = _drawerStyles.bind(this);
-    this.contentSectionHandler = _contentSectionHandler.bind(this);
-    this.titleSectionHandler   = _titleSectionHandler.bind(this);
-    this.tabHandler            = _tabHandler.bind(this);
-    this.findAndFocus          = _findAndFocus.bind(this);
-    this.basicViewKeyHandler   = _basicViewKeyHandler.bind(this);
-    this.drawerHandler         = props.drawerHandler.bind(this);
+    this.drawerHandleKeys        = _drawerHandleKeys.bind(this);
+    this.drawerStyles            = _drawerStyles.bind(this);
+    this.contentSectionHandler   = _contentSectionHandler.bind(this);
+    this.titleSectionBackHandler = _titleSectionBackHandler.bind(this);
+    this.tabHandler              = _tabHandler.bind(this);
+    this.findAndFocus            = _findAndFocus.bind(this);
+    this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
+    this.drawerHandler           = props.drawerHandler.bind(this);
   }
 
   getChildContext() {
@@ -39,7 +39,7 @@ class Drawer extends Component {
     const { position, drawerOpen }    = nextProps;
     const { initiatingElement, back } = this.state;
 
-    this.drawerStyles(position, drawerOpen);
+    this.drawerStyles(this.props.position, drawerOpen);
 
     if(drawerOpen) {
       this.setState({initiatingElement:document.activeElement},
@@ -56,18 +56,18 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop, drawerZ } = this.props;
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     const hasDrawerTop = drawerTop ? drawerTop : 0;
 
     return (
-      <div role="dialog" className={currentStyles} style={{top:hasDrawerTop,zIndex:drawerZ}} aria-hidden={!drawerOpen} aria-live="polite" tabIndex="0" onKeyDown={this.handleKeys}>
+      <div role="dialog" className={currentStyles} style={{top:hasDrawerTop}} aria-hidden={!drawerOpen} aria-live="polite" tabIndex="0" onKeyDown={this.drawerHandleKeys}>
         <TitleSection
-          back                = {back}
-          text                = {text}
-          iconClose           = {drawerHandler}
-          titleSectionHandler = {this.titleSectionHandler} />
+          back        = {back}
+          text        = {text}
+          iconClose   = {drawerHandler}
+          backHandler = {this.titleSectionBackHandler} />
         <ContentSection back={back} displayView={displayView} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
@@ -81,13 +81,33 @@ class Drawer extends Component {
 export default Drawer;
 
 
+Drawer.defaultProps = {
+  position   : "right",
+  drawerOpen : false,
+  drawerTop  : "61px",
+  text       : {
+                 headerTitle       : "Basic Title",
+                 closeButtonSRText : "Close",
+                 backButtonText    : "Back",
+                 backButtonSRText  : "Back"
+               }
+};
+
 Drawer.childContextTypes = {
   basicViewClickHandler : PropTypes.func,
-  basicViewKeyHandler : PropTypes.func
+  basicViewKeyHandler   : PropTypes.func
+};
+
+Drawer.propTypes = {
+  text          : PropTypes.object.isRequired,
+  position      : PropTypes.string.isRequired,
+  drawerOpen    : PropTypes.bool.isRequired,
+  drawerHandler : PropTypes.func.isRequired,
+  drawerTop     : PropTypes.string
 };
 
 
-function _handleKeys(e) {
+function _drawerHandleKeys(e) {
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
     switch(e.which) {
@@ -125,16 +145,16 @@ function _findAndFocus(drawerOpen, initiatingElement, back) {
   const closeButton    = document.querySelector('.iconWrapper .pe-icon--btn');
   const backButton     = document.querySelector('.titleSectionHeaderBackspan button');
   const focusClose     = drawerOpen ? closeButton : initiatingElement;
-  const focusBack      = back ? backButton : initiatingElement;
+  const focusBack      = drawerOpen ? backButton  : initiatingElement;
   const focusedElement = back ? focusBack : focusClose;
 
   if(focusedElement) {
     focusedElement.focus();
   }
-  
+
 }
 
-function _titleSectionHandler() {
+function _titleSectionBackHandler() {
   this.setState({back:false});
   document.querySelector('.iconWrapper .pe-icon--btn').focus();
 }
@@ -144,7 +164,7 @@ function _tabHandler(e) {
   e.preventDefault();
 
   const drawerElement    = document.getElementsByClassName('drawerMain')[0];
-  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"]');
+  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
   let updatedTab;
