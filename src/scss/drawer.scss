@@ -2,9 +2,15 @@
 /// Custom SCSS for component-specific styling goes here
 ////
 
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/color/_variables';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_variables';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_functions';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/responsive-utilities';
+
+
 .drawerMain {
-  background-color : white;
-  position         : absolute;
+  background-color : $pe-color-white;
+  position         : fixed;
   height           : 100%;
   width            : 260px;
   padding          : 25px 30px 30px 30px;
@@ -13,21 +19,19 @@
   overflow         : hidden;
 }
 
-.inital {
-  left : -390px;
+.left {
+  left : 0;
 }
 
-.left {
-  left : 0px;
+.initial {
+  display : none;
 }
 
 .right {
-  right : 0px;
+  right : 0;
 }
 
 .contentSection {
-  position     : relative;
-  width        : 100%;
   list-style   : none;
   padding-left : 0px;
 }
@@ -77,6 +81,7 @@
 
 
 // Drawer Animations ===========================================================
+
 .slideInLeft {
   -webkit-animation-name      : slideInLeft;
   animation-name              : slideInLeft;
@@ -122,8 +127,8 @@
     transform         : translateX(0);
   }
   100% {
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
   }
   }
 @keyframes slideOutLeft {
@@ -132,8 +137,8 @@
     transform         : translateX(0);
   }
   100% {
-    -webkit-transform : translateX(-100%);
-    transform         : translateX(-100%);
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
   }
 }
 
@@ -144,6 +149,7 @@
   animation-duration          : 0.5s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
 }
 
 @-webkit-keyframes slideOutRight {
@@ -152,7 +158,6 @@
       transform         : translateX(0);
     }
     100% {
-
       -webkit-transform : translateX(100%);
       transform         : translateX(100%);
     }
@@ -200,7 +205,10 @@
 }
 
 
+
+
 // Content Animations ===========================================================
+
 .slideInRightContent {
   -webkit-animation-name      : slideInRightContent;
   animation-name              : slideInRightContent;
@@ -213,8 +221,8 @@
 @-webkit-keyframes slideInRightContent {
   0% {
     opacity           : 0;
-    -webkit-transform : translateX(-190px);
-    transform         : translateX(-190px);
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
   }
   100% {
     -webkit-transform : translateX(0px);
@@ -224,8 +232,8 @@
 @keyframes slideInRightContent {
   0% {
     opacity           : 0;
-    -webkit-transform : translateX(-190px);
-    transform         : translateX(-190px);
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
   }
   100% {
     -webkit-transform : translateX(0px);
@@ -264,3 +272,20 @@
     transform         : translateX(0);
   }
 }
+
+
+// XSmall Screen========xs__320px-480px=========================================================
+// @each $breakpoint in map-keys($pe-responsive-breakpoints) {
+//   @if $breakpoint == 'xs' {
+//     @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
+//       .drawerMain {
+//         position         : fixed;
+//         height           : 100%;
+//         width            : 100%;
+//         outline          : none;
+//         overflow         : hidden;
+//         padding          : 25px 30px 30px 30px;
+//       }
+//     }
+//   }
+// }

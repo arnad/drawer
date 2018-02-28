@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const ContentSection = ({ contentSectionHandler, children, back, displayView }) => {
 
   const sectionAnimation = back ? "contentSection slideOutRightContent" : "contentSection slideInRightContent";

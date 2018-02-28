@@ -23,6 +23,9 @@
     "verify": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/verify.js",
     "postpublish": "npm access public && echo 'Package scope set to public!'"
   },
+  "dependencies": {
+    "@pearson-components/elements-sdk": "^1.8.0"
+  },
   "devDependencies": {
     "@pearson-components/npm-scripts": "^0.5.8",
     "autoprefixer": "^7.2.4",
@@ -58,8 +61,5 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.0"
   },
-  "keywords": [],
-  "dependencies": {
-    "@pearson-components/elements-sdk": "^1.8.0"
-  }
+  "keywords": []
 }

@@ -54,6 +54,7 @@ class DrawerDemoPage extends Component {
 
         <Drawer
           drawerTop     = "61px"
+          drawerZ       = "999"
           drawerOpen    = {drawerIsOpen}
           position      = {position}
           text          = {text}
@@ -104,7 +105,8 @@ function _documentationMarkup() {
 
   const drawerPropsInfo = `
   position      : String   - one of:"left","right" default "left"
-  drawerTop     : String   - adjust drawer vertical position
+  drawerTop     : String   - adjust drawer top property
+  drawerZ       : String   - adjust drawer z-index
   drawerOpen    : Boolean  - (required) default false
   Text          : Object   - (required) text to be passed in.
   drawerHandler : Function - (required) sets state of drawerOpen to true or false`;
@@ -149,6 +151,7 @@ function _documentationMarkup() {
             <pre className="code">
               {`             <Drawer
                 drawerTop     = "60px"
+                drawerZ       = "999"
                 drawerOpen    = {drawerIsOpen}
                 position      = "right"
                 text          = {text}

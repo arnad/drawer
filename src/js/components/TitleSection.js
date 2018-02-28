@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, Button } from '@pearson-components/elements-sdk/build/dist.elements-sdk';
 
 
