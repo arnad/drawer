@@ -1,10 +1,25 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.3...v1.0.4) (2018-02-14)
+
+
+### Features
+
+* Update LICENSE and replace npm-scripts ([a5b1b41](https://github.com/Pearson-Higher-Ed/drawer/commit/a5b1b41))
+
+
+
 <a name="1.0.3"></a>
-## [1.0.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.1...v1.0.3) (2017-11-13)
+## [1.0.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.2...v1.0.3) (2017-11-13)
 
 
 ### Features
 
 * Integrate Sonar ([59f60e0](https://github.com/Pearson-Higher-Ed/drawer/commit/59f60e0))
+
+
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.1...v1.0.2) (2017-09-11)
 
 
 
@@ -97,7 +112,7 @@
 ### Bug Fixes
 
 * remove duplicate box-shadow property ([74c3263](https://github.com/Pearson-Higher-Ed/drawer/commit/74c3263))
-* **ci:** Update to npm[@3](https://github.com/3). ([0f88d92](https://github.com/Pearson-Higher-Ed/drawer/commit/0f88d92))
+* **ci:** Update to npm@3. ([0f88d92](https://github.com/Pearson-Higher-Ed/drawer/commit/0f88d92))
 
 
 ### Features
