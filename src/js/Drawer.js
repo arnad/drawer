@@ -26,6 +26,7 @@ class Drawer extends Component {
     this.findAndFocus            = _findAndFocus.bind(this);
     this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
     this.drawerHandler           = props.drawerHandler.bind(this);
+
   }
 
   getChildContext() {
@@ -130,6 +131,7 @@ function _drawerStyles(position, drawerOpen, currentStyles) {
   this.setState({currentStyles});
 
 }
+
 
 function _contentSectionHandler(e) {
 
