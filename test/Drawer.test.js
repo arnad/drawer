@@ -28,7 +28,7 @@ describe('Drawer Suite',() => {
                                 <BasicView mapToDetail='detailView1' myKind="BasicView">
                                   <p>hi</p>
                                 </BasicView>
-                                <DetailView myKind="BasicView">
+                                <DetailView id="detailView1" myKind="BasicView">
                                   <p>there</p>
                                 </DetailView>
                               </div>

@@ -109,7 +109,7 @@ _drawerHandler = () => {
 
 BasicViews and DetailViews must be wrapped in a div.
 
-BasicView and DetailView must both specify the prop myKind. This String is case sensitive.
+BasicView and DetailView must both specify the prop myKind.
 
 BasicView may specify a mapToDetail prop. This prop corresponds to a DetailView with the matching id. Clicking on the BasicView will start an animated transition to the DetailView with the corresponding id.
 
@@ -152,7 +152,7 @@ myKind : String - (required) one of:"BasicView","DetailView";
 ```
 
 ## Test
-The project is wired to unit test with Jest, "expect" assertion library, and expect-jsx to turn React elements into formatted strings.
+The project is wired to unit test with [Jest](https://facebook.github.io/jest/).
 
 ```javascript
 npm test
