@@ -92,8 +92,8 @@ this.state = {
 		<DetailView id='detailView3' myKind="DetailView">
 			<details>
 				<summary>Copyright 1999-2014.</summary>
-				<p> - by Refsnes Data. All Rights Reserved.</p>
-				<p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+				<p> - by Data. All Rights Reserved.</p>
+				<p>All content and graphics on this web site are the property of the company  Data.</p>
 			</details>
 		</DetailView>
 	</div>

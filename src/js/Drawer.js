@@ -166,11 +166,14 @@ function _titleSectionBackHandler() {
 
 function _tabHandler(e) {
 
+  e.preventDefault();
+
   const drawerElement    = document.getElementsByClassName('drawerMain')[0];
   const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
-
+console.log(tabsInsideDrawer)
+console.log(currentTab)
   if(currentTab <= numOfTabs){
     currentTab = e.shiftKey ? --currentTab : ++currentTab;
     currentTab = (currentTab >= 0) ? currentTab : 0;
