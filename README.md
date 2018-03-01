@@ -57,10 +57,10 @@ this.state = {
 	drawerIsOpen : false,
 	position     : "right",
 	text         : {
-					headerTitle       : "Basic Title",
-					closeButtonSRText : "Close",
-					backButtonText    : "Back",
-				 }
+			headerTitle       : "Basic Title",
+			closeButtonSRText : "Close",
+			backButtonText    : "Back"
+		 }
 };
 ```
 
@@ -132,10 +132,12 @@ position      : String   - one of:"left","right" default "right"
 drawerTop     : String   - adjust drawer top property default "61px"
 drawerOpen    : Boolean  - (required) default false default false
 drawerHandler : Function - (required) sets state of drawerOpen to true or false
-text          : Object   - (required) text to be passed in. default {
-																		backButtonText    : "Back",
-																		closeButtonSRText : "Close"
-																	}
+text          : Object   - (required) text to be passed in.
+                            default {
+                                      headerTitle       : "Basic Title",
+                                      closeButtonSRText : "Close",
+                                      backButtonText    : "Back"
+  								  }
 ```
 
 props for BasicView:
@@ -157,9 +159,11 @@ The project is wired to unit test with [Jest](https://facebook.github.io/jest/).
 ```javascript
 npm test
 ```
+After running npm test && npm start, you may view the code coverage site at: http://localhost:8081/coverage/lcov-report
 
 ## Event Instantiation
-QA may use the event harness by pulling in the eventInterface from the build directory. To instantiate a component use this format:
+Non React Apps may use the event harness by pulling in the eventInterface from the build directory. To instantiate a component use this format:
+
 ```javascript
 document.body.dispatchEvent(new CustomEvent('o.InitComponent', {
     detail: {
@@ -168,7 +172,7 @@ document.body.dispatchEvent(new CustomEvent('o.InitComponent', {
         text: {
                 headerTitle       : "Basic Title",
                 closeButtonSRText : "Close",
-                backButtonText    : "Back",
+                backButtonText    : "Back"
               },
         drawerOpen: true,
         position:"right",

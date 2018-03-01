@@ -60,10 +60,8 @@ class Drawer extends Component {
     const { position, children, drawerOpen, drawerHandler, text, drawerTop } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
-    const hasDrawerTop = drawerTop ? drawerTop : 0;
-
     return (
-      <div role="dialog" className={currentStyles} style={{top:hasDrawerTop}} aria-hidden={!drawerOpen} aria-live="polite" tabIndex="0" onKeyDown={this.drawerHandleKeys}>
+      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-hidden={!drawerOpen} aria-live="polite" tabIndex="0" onKeyDown={this.drawerHandleKeys}>
         <TitleSection
           back        = {back}
           text        = {text}
@@ -109,12 +107,17 @@ Drawer.propTypes = {
 
 function _drawerHandleKeys(e) {
 
+  e.preventDefault();
+
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
+    console.log(e.which)
+    console.log(e.keyCode)
     switch(e.which) {
-      case 27: this.drawerHandler(); break;  // ---> ESC KEY
-      case 9 : this.tabHandler(e);   break;  // ---> TAB KEY
-      default: console.log("_handleKeys default");
+      case 32: this.titleSectionBackHandler(e); break;   // ---> SPACE KEY
+      case 27: this.drawerHandler(); break;            // ---> ESC KEY
+      case 9 : this.tabHandler(e);   break;            // ---> TAB KEY
+      default: console.log("_drawerHandleKeys default");
     }
   }
 
@@ -157,7 +160,9 @@ function _findAndFocus(drawerOpen, initiatingElement, back) {
 
 }
 
-function _titleSectionBackHandler() {
+function _titleSectionBackHandler(e) {
+
+  e.preventDefault();
 
   this.setState({back:false});
   document.querySelector('.iconWrapper .pe-icon--btn').focus();
@@ -172,8 +177,7 @@ function _tabHandler(e) {
   const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
-console.log(tabsInsideDrawer)
-console.log(currentTab)
+
   if(currentTab <= numOfTabs){
     currentTab = e.shiftKey ? --currentTab : ++currentTab;
     currentTab = (currentTab >= 0) ? currentTab : 0;
@@ -191,9 +195,13 @@ console.log(currentTab)
 
 function _basicViewKeyHandler(e) {
 
-  if(e.which === 32) {
+  e.preventDefault();
+
+  const allow = [32,13];
+  if(allow.some(a => a === e.which)) {
     switch(e.which) {
       case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY
+      case 13: this.contentSectionHandler(e); break;  // ---> ENTER KEY
       default: console.log("_basicViewKeyHandler default");
     }
   }

@@ -15,7 +15,7 @@ class DrawerDemoPage extends Component {
       text         : {
                       headerTitle       : "Basic Title",
                       closeButtonSRText : "Close",
-                      backButtonText    : "Back",
+                      backButtonText    : "Back"
                      }
     };
 
@@ -102,10 +102,13 @@ function _documentationMarkup() {
   drawerTop     : String   - adjust drawer top property default "61px"
   drawerOpen    : Boolean  - (required) default false default false
   drawerHandler : Function - (required) sets state of drawerOpen to true or false
-  text          : Object   - (required) text to be passed in. default {
-                                                                        backButtonText    : "Back",
-                                                                        closeButtonSRText : "Close"
-                                                                      }
+  text          : Object   - (required) text to be passed in.
+                             default text:
+                             const text =   {
+                                               headerTitle       : "Basic Title",
+                                               closeButtonSRText : "Close",
+                                               backButtonText    : "Back"
+                                             }
   `;
 
   const basicViewPropsInfo = `
@@ -134,11 +137,13 @@ function _documentationMarkup() {
             <h2>{"Initial State:"}</h2>
             <pre className="code">
               {`this.state = {
+                  drawerTop    : "61px",
                   drawerIsOpen : false,
                   position     : "right",
                   text         : {
-                                  backButtonText    : "Back",
-                                  closeButtonSRText : "Close"
+                                    headerTitle       : "Basic Title",
+                                    closeButtonSRText : "Close",
+                                    backButtonText    : "Back"
                                  }
                   };`}
             </pre>
@@ -147,10 +152,10 @@ function _documentationMarkup() {
             <h2>{"Drawer Code:"}</h2>
             <pre className="code">
               {`             <Drawer
-                drawerTop     = "60px"
-                drawerOpen    = {drawerIsOpen}
-                position      = "right"
                 text          = {text}
+                drawerTop     = {this.state.drawerTop}
+                drawerOpen    = {drawerIsOpen}
+                position      = {this.state.position}
                 drawerHandler = {this.drawerHandler}>
                 <div>
                   <BasicView mapToDetail='detailView1' myKind="BasicView">

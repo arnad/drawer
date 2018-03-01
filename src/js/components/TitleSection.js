@@ -12,15 +12,15 @@ export const TitleSection = ({ back, iconClose, backHandler, text }) => {
           {!back && <span className={titleSpanStyles}>
                       <h1 className="titleSectionHeaderTitle">{text.headerTitle}</h1>
                     </span>}
-          { back && <span className={backSpanStyles} onClick={backHandler}>
+          { back && <span className={backSpanStyles} onClick={backHandler} onKeyUp={e => e.preventDefault() }>
                       <Button btnIcon>
                         <Icon name="chevron-back-18"/>
                         {text.backButtonText}
                       </Button>
                     </span>}
           <span className="iconWrapper" onClick={iconClose}>
-            <Button btnIcon>
-              <Icon name="remove-sm-24">{text.closeButtonSRText}</Icon>
+            <Button btnIcon aria-label={text.closeButtonSRText}>
+              <Icon name="remove-sm-24"/>
             </Button>
           </span>
         </div>
