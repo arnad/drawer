@@ -37,4 +37,11 @@ describe('Drawer Suite',() => {
     console.log(wrapper.instance())
   });
 
+  it('should handle the inputKeyEvents esc key', function() {
+      this.wrapper = mount(<Drawer drawerTop = "61px" drawerOpen = {true} position = "right" text = {text} drawerHandler = {() => {}}> <div> <BasicView mapToDetail='detailView1' myKind="BasicView"> <p>hi</p> </BasicView> <DetailView id="detailView1" myKind="BasicView"> <p>there</p> </DetailView> </div> </Drawer>);
+      const e = {"which":27};
+      this.wrapper.instance().drawerHandleKeys(e);
+      // expect(this.wrapper.find('ul').exists()).toEqual(false);
+  });
+
 });
