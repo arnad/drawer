@@ -164,8 +164,6 @@ function _titleSectionBackHandler() {
 
 function _tabHandler(e) {
 
-  e.preventDefault();
-
   const drawerElement    = document.getElementsByClassName('drawerMain')[0];
   const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
   const numOfTabs        = tabsInsideDrawer.length - 1;

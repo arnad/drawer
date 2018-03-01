@@ -57,10 +57,10 @@ this.state = {
 	drawerIsOpen : false,
 	position     : "right",
 	text         : {
-									headerTitle       : "Basic Title",
-									closeButtonSRText : "Close",
-									backButtonText    : "Back",
-								 }
+					headerTitle       : "Basic Title",
+					closeButtonSRText : "Close",
+					backButtonText    : "Back",
+				 }
 };
 ```
 
