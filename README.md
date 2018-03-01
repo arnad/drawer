@@ -1,172 +1,213 @@
-<<<<<<< HEAD
-# drawer [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/drawer.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/drawer) [![Coverage Status](https://coveralls.io/repos/Pearson-Higher-Ed/drawer/badge.svg?branch=master&service=github)](https://coveralls.io/github/Pearson-Higher-Ed/drawer?branch=master)
+[![Build Status](https://travis-ci.org/Pearson-Higher-Ed/drawer.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/drawer)
 
-## Demo
+## Drawer
 
-	npm install
-	npm start
+The drawer component offers a convenient method for presenting secondary information which doesn't need to be immediately visible.
 
-Navigate to **localhost:8081/demo** in your favorite browser.
+UX Framework Design Page:
+[http://uxframework.pearson.com/c/drawer/](http://uxframework.pearson.com/c/drawer/)
 
-## Usage
+Demo Page:
+[http://pearson-higher-ed.github.io/drawer/](http://pearson-higher-ed.github.io/elements-sdk)
 
-The drawer component can be added to any project via NPM install:
+## Getting Started
 
-  npm install --save @pearson-components/Drawer
+Initial Machine Setup
+Install Git.
+Install Node 6.0.0 or greater - Need to run multiple versions of Node? Use nvm.
+On a Mac? You're all set. If you're on Windows, complete the steps for your OS below.
+On Windows:
 
-or can be added via script tag include (via unpkg.com):
+Install Ruby as the runtime engine for SCSS.
+Install Python 2.7. Some node modules may rely on node-gyp, which requires Python on Windows.
+On Chrome browser:
 
-```HTML
-<script type="text/javascript" src="https://unpkg.com/@pearson-components/drawer@1.0.3/build/dist.drawer.js"></script>
+Optionally, install React developer tools.
+
+installing the component:
+```javascript
+npm install @pearson-components/drawer --save
+
+yarn add @pearson-components/drawer
+```
+### Quick Start
+```javascript
+git clone https://github.com/Pearson-Higher-Ed/drawer.git
+cd drawer
+npm install
+npm start
+```
+Navigate to http://localhost:8081/drawer/, where the spawned Node server hosts a webpack-generated SPA using React Router for defining how to render the components.
+
+As you save changes to the source, the changes are automatically reloaded in the browser.
+
+### Usage
+
+To use the Drawer in a React.js page:
+
+import the drawer and it's child views:
+ ```javascript
+	import { Drawer, BasicView, DetailView } from "@pearson-components/drawer";
+ ```
+then configure the drawer and it's views:
+
+```javascript
+this.state = {
+	drawerTop    : "61px",
+	drawerIsOpen : false,
+	position     : "right",
+	text         : {
+									headerTitle       : "Basic Title",
+									closeButtonSRText : "Close",
+									backButtonText    : "Back",
+								 }
+};
 ```
 
-Add `data-o-component="o-drawer"` to the target element to enable drawer. You can use a link with `href` or a button with `data-target` as the trigger:
-
-```html
-<a href="#drawer-example" data-toggle="o-drawer">Link trigger</a>
-<button data-toggle="o-drawer" data-target="#drawer-example">Button trigger</button>
-
-<div id="drawer-example" class="o-drawer-right o-drawer-animated" data-o-component="o-drawer">
-  <button type="button" data-target="#drawer-example" data-close="o-drawer">
-    <span class="pe-icon--times" aria-hidden="true"></span>
-    <span class="pe-sr-only">close</span>
-  </button>
-  <p>Quisque in tortor finibus, dictum sem vel, convallis felis. Nunc ac mi in urna euismod eleifend in vitae augue. Suspendisse blandit feugiat vulputate. Praesent sit amet fringilla eros. Mauris nunc nisl, laoreet sit amet molestie vitae, sodales et diam.</p>
-</div>
+```javascript
+<Drawer
+	drawerTop     = {this.state.drawerTop}
+	drawerOpen    = {this.state.drawerIsOpen}
+	position      = {this.state.position}
+	text          = {this.state.text}
+	drawerHandler = {this.drawerHandler}>
+	<div>
+		<BasicView mapToDetail='detailView1' myKind="BasicView">
+			<h2>BasicView1</h2>
+			<ul>
+				<li>hi</li>
+				<li>there</li>
+			</ul>
+		</BasicView>
+		<BasicView myKind="BasicView">
+			<h2>BasicView2</h2>
+			<button>hithere</button>
+		</BasicView>
+		<BasicView mapToDetail='detailView3' myKind="BasicView">
+			<h2>BasicView3</h2>
+		</BasicView>
+		<DetailView id='detailView1' myKind="DetailView">
+			<h3>DetailView1</h3>
+		</DetailView>
+		<DetailView id='detailView3' myKind="DetailView">
+			<details>
+				<summary>Copyright 1999-2014.</summary>
+				<p> - by Refsnes Data. All Rights Reserved.</p>
+				<p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+			</details>
+		</DetailView>
+	</div>
+</Drawer>
 ```
 
-## Enabling using JavaScript
-
-```js
-new Drawer(document.querySelector('#myDrawer'));
+sample handler:
+```javascript
+_drawerHandler = () => {
+  this.setState({drawerIsOpen:!this.state.drawerIsOpen});
+}
 ```
 
-You can use the static `init` method to initialize all drawer elements within a specified element:
+BasicViews and DetailViews must be wrapped in a div.
 
-```js
-Drawer.init(document.body);
+BasicView and DetailView must both specify the prop myKind. This String is case sensitive.
+
+BasicView may specify a mapToDetail prop. This prop corresponds to a DetailView with the matching id. Clicking on the BasicView will start an animated transition to the DetailView with the corresponding id.
+
+example:
+```javascript
+<BasicView mapToDetail='detailView1' myKind="BasicView">
+	<h2>BasicView1</h2>
+	<ul>
+		<li>hi</li>
+		<li>there</li>
+	</ul>
+</BasicView>
+<DetailView id='detailView1' myKind="DetailView">
+	<h3>DetailView1</h3>
+</DetailView>
+```
+props for Drawer:
+```javascript
+position      : String   - one of:"left","right" default "right"
+drawerTop     : String   - adjust drawer top property default "61px"
+drawerOpen    : Boolean  - (required) default false default false
+drawerHandler : Function - (required) sets state of drawerOpen to true or false
+text          : Object   - (required) text to be passed in. default {
+																		backButtonText    : "Back",
+																		closeButtonSRText : "Close"
+																	}
 ```
 
-This module will also listen for the `o.InitAllDrawerElements` event; when fired, it will initialize all drawer elements on the page.
-
-## API
-
-### Constructor
-
-`Drawer(element)`
-
-Initializes a drawer element, where `element` is the target element and an instance of `HTMLElement`.
-
-### Methods
-
-`open()`
-
-Expands the target element.
-
-`close()`
-
-Collapses the target element.
-
-`toggle()`
-
-Toggles the target element, depending on its current state.
-
-### Events
-
-| Event Name							 | Description																				 |
-|--------------------------|-----------------------------------------------------|
-| oDrawer.open						 | Fires immediately when the `open` method is called. |
-| oDrawer.close						| Fires immediately when the `close` method is called. |
-
-```js
-document.querySelector('#myDrawer').addEventListener('oDrawer.open', function (e) {
-	// Do something
-});
+props for BasicView:
+```javascript
+mapToDetail : String - DetailView to be shown, maps to DetailView id.
+myKind      : String - (required) one of:"BasicView","DetailView";
 ```
 
-## Accessibility
+props for DetailView:
 
-The Drawer treats keyboard focus similar to a modal dialog; when the Drawer is opened, focus is moved to the first focusable inside the Drawer (there should always be a closing button inside, ideally as the first element) and `aria-expanded` is set to true on the element which triggered the Drawer to open.
+```javascript
+id     : String - (required) BasicView that produces DetailView on click id maps to mapToDetail.
+myKind : String - (required) one of:"BasicView","DetailView";
+```
 
-So long as the Drawer is open, focus is trapped inside and cycles until either the Drawer is closed by clicking an element with the matching  `data-close` attribute, or the ESC key is hit.
+## Test
+The project is wired to unit test with Jest, "expect" assertion library, and expect-jsx to turn React elements into formatted strings.
 
-When the Drawer closes, if closed from within focus is brought back to the triggering element. Otherwise, focus is left on whichever other element was clicked. In both cases, `aria-expanded` is set back to false on the triggering element.
+```javascript
+npm test
+```
 
-## Browser support
+## Event Instantiation
+QA may use the event harness by pulling in the eventInterface from the build directory. To instantiate a component use this format:
+```javascript
+document.body.dispatchEvent(new CustomEvent('o.InitComponent', {
+    detail: {
+      elementId: 'drawer',
+      props: {
+        text: {
+                headerTitle       : "Basic Title",
+                closeButtonSRText : "Close",
+                backButtonText    : "Back",
+              },
+        drawerOpen: true,
+        position:"right",
+				drawerTop:"61px",
+				drawerHandler: () => {},
+        children: React.createElement('div', {},
+										React.createElement(BasicView,{mapToDetail:'detailView1',myKind:'BasicView'},
+											React.createElement('p',{},'hi')
+										),
+										React.createElement(DetailView,{id:'detailView1',myKind:'DetailView'},
+											React.createElement('p',{},'there')
+										)
+				  				)
+      }
+    }
+  }
+));
+```
 
-Tested and working on:
 
-|	Browser	 | Versions									|
-|:----------:|:----------------------:|
-|	 Chrome	 |	 36+								  	 |
-|	 Firefox	|	 30+									 |
-|	 IE			 |	 11+								 |
-|	 Edge			 |	 13.10586 							 |
-|	 Safari			 |	 9 								 |
+## External Dependencies
+React and ReactDOM (v0.14 or v15) are external dependencies required to use this component. They are npm-installable or available from a third-party CDN.
 
+This component targets the styling in the Pearson Elements SDK.
 
 ### Polyfills
+React components with internationalisation use React-Intl which relies on the ECMAScript Internationalisation API. This was not supported in Safari until version 10. If you are supporting Safari older than 10, there is a polyfill from Andy Earnshaw (see below).
 
-Be aware that IE 11 does not support `CustomEvent`. If you want to use `CustomEvent` (as seen in `demo.js`), you will need to add the CustomEvent polyfill script to your HTML page:
+CustomEvent support in IE is also polyfilled. Because many teams are supporting both IE 11 and Safari 9, we've combined the polyfills into a single script. The example below polyfills for CustomEvent and localisation for English and French:
 
-```
-<script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent"></script>
-```
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent,Intl.~locale.en,Intl.~locale.fr"></script>
+Be sure to include the above script (a version of it that makes sense for your project and supported browsers) on your HTML page running CompoundsSDK, if you need it.
 
-## Contributions
+## CodeCoverage site
+After running npm test && npm start, you may view the code coverage site at: http://localhost:8081/coverage/lcov-report
 
-Please review the [guidelines](https://github.com/Pearson-Higher-Ed/docs/blob/master/origami-contributions.md) for contributing before getting started.
+## Guidelines
+All submissions must be via pull request and approved before the pearson-design-accelerator@pearson.com team will merge and allow it to enter the release process. All submissions must pass this project's linting, test with 100% code coverage, and be compatible with the version(s) of React approved for the Pearson User Experience Platform.
 
 ## License
 
 This software is published by Pearson Education under the [MIT license](LICENSE).
-=======
-## Origami Starter Kit [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/component-archetype.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/component-archetype)
-
-This is a comprehensive starter kit for creating a standalone Origami component **(not an app starter kit)**. You 
-should integrate your component into a larger application capable of managing data flow to all available components.
-
-In order to utilize this successfully, you must have solid working knowledge of Facebook's React - a library for
-building composable user interfaces. You should understand ES2015 (ES6) syntax and concepts as well.
-
-This starter kit implements best practices like testing, linting, bundling, transpiling ES6 to ES5, etc. It codifies a
-long list of decisions that you no longer have to make to get rolling. It saves you from the long, painful process of
-wiring it all together into an automated development environment and build process.
-
-## Public or Private?
-
-Your first decision: Are you building a public (OSS) or private (internal only) component? By default, Origami
-components are public unless it was decided otherwise in consultation with the Pearson Design Accelerator (PDA) team.
-
-Requests to the PDA team must be sent to pearson-design-accelerator@pearson.com.
-
-If you are building open source, the repo belongs in the **Pearson GitHub** organization. Send a request to be invited 
-with all contributing developer GitHub usernames to the PDA team. You must accept the resulting email invitation to join.
-
-If it is decided the repo belongs in **Pearson Bitbucket**, send a request to the PDA team for all contributing developers
- to be given write access to bitbucket.pearson.com/projects/PDA.
-
-## Getting Started
-
-1. Create your new repository as decided above, using the following naming convention:
-    1. All lowercase characters, and hyphens instead of camel case.
-    2. Do **not** use "component" in the name, as it is redundant.
-
-2. Follow these [directions](https://help.github.com/articles/caching-your-github-password-in-git/#platform-all) to stop
- manually authenticating to GitHub on every network request. This enables the use of automated npm scripts.
-
-3. Perform these steps in your development environment:  
-	1. git clone https://github.com/Pearson-Higher-Ed/component-archetype.git `name-of-your-new-component`
-	2. cd `name-of-your-new-component`
-    3. git remote set-url origin `url-of-new-component-repository`
-    4. git remote -v
-
-4. Once you've verified that the remote origin now looks correct for your repo, do the initial push:
-
-    git push -u origin master
-
-## Ready to Develop
-
-After completing the above steps, delete this README and rename [README.main.md](README.main.md) as "README.md" for
-your project. You are ready to begin developing your component!
->>>>>>> chore: inital refactor

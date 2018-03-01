@@ -41,11 +41,7 @@ class DrawerDemoPage extends Component {
 
         <div className="buttonBlock">
           <Button btnType="cta" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true})}}>Open Drawer</Button>
-          <br />
-          <br />
           <Button  id="insideButton" btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"right"})}}>Drawer Position Right</Button>
-          <br />
-          <br />
           <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"left"})}}>Drawer Position Left</Button>
         </div>
 

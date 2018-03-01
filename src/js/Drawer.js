@@ -39,7 +39,7 @@ class Drawer extends Component {
     const { position, drawerOpen }    = nextProps;
     const { initiatingElement, back } = this.state;
 
-    this.drawerStyles(this.props.position, drawerOpen);
+    this.drawerStyles(this.props.position, drawerOpen)
 
     if(drawerOpen) {
       this.setState({initiatingElement:document.activeElement},
