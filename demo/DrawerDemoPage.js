@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Button }           from '@pearson-components/elements-sdk/build/dist.elements-sdk';
 import { Drawer, BasicView, DetailView } from '../index';
-import { Button } from '@pearson-components/elements-sdk/build/dist.elements-sdk';
 
 import './DrawerDemoPage.scss';
 
@@ -16,7 +16,6 @@ class DrawerDemoPage extends Component {
                       headerTitle       : "Basic Title",
                       closeButtonSRText : "Close",
                       backButtonText    : "Back",
-                      backButtonSRText  : "Back"
                      }
     };
 
@@ -35,7 +34,7 @@ class DrawerDemoPage extends Component {
 
         <div className="demo-container">
           <div className="header">
-            <h1><a className="demoLink" href="http://uxframework.pearson.com/c/drawer/v2.0.3/">Drawer:</a></h1>
+            <h1><a className="demoLink" href="http://uxframework.pearson.com/c/drawer/">Drawer:</a></h1>
           </div>
         </div>
 
@@ -109,7 +108,6 @@ function _documentationMarkup() {
   drawerHandler : Function - (required) sets state of drawerOpen to true or false
   text          : Object   - (required) text to be passed in. default {
                                                                         backButtonText    : "Back",
-                                                                        backButtonSRText  : "Back",
                                                                         closeButtonSRText : "Close"
                                                                       }
   `;
@@ -144,9 +142,8 @@ function _documentationMarkup() {
                   position     : "right",
                   text         : {
                                   backButtonText    : "Back",
-                                  backButtonSRText  : "Back",
                                   closeButtonSRText : "Close"
-                                }
+                                 }
                   };`}
             </pre>
 

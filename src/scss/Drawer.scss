@@ -70,6 +70,8 @@
   align-items    : center;
   flex-direction : row;
   height         : 26px;
+  padding        : 9px 0px 9px;
+  margin         : -9px 0px -9px;
 }
 
 .titleSectionHeaderTitle {
@@ -81,7 +83,6 @@
 
 
 // Drawer Animations ===========================================================
-
 .slideInLeft {
   -webkit-animation-name      : slideInLeft;
   animation-name              : slideInLeft;
@@ -207,8 +208,7 @@
 
 
 
-// Content Animations ===========================================================
-
+// Content Animations ==========================================================
 .slideInRightContent {
   -webkit-animation-name      : slideInRightContent;
   animation-name              : slideInRightContent;
@@ -221,8 +221,8 @@
 @-webkit-keyframes slideInRightContent {
   0% {
     opacity           : 0;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
+    -webkit-transform : translateX(40px);
+    transform         : translateX(40px);
   }
   100% {
     -webkit-transform : translateX(0px);
@@ -232,8 +232,8 @@
 @keyframes slideInRightContent {
   0% {
     opacity           : 0;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
+    -webkit-transform : translateX(40px);
+    transform         : translateX(40px);
   }
   100% {
     -webkit-transform : translateX(0px);
@@ -241,31 +241,31 @@
   }
 }
 
-.slideOutRightContent {
-  -webkit-animation-name      : slideOutRightContent;
-  animation-name              : slideOutRightContent;
+.slideOutLeftContent {
+  -webkit-animation-name      : slideOutLeftContent;
+  animation-name              : slideOutLeftContent;
   -webkit-animation-duration  : 0.3s;
   animation-duration          : 0.3s;
   -webkit-animation-fill-mode : both;
   animation-fill-mode         : both;
   animation-timing-function   : ease-in-out;
 }
-@-webkit-keyframes slideOutRightContent {
+@-webkit-keyframes slideOutLeftContent {
   0% {
     opacity           : 0;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
+    -webkit-transform : translateX(-40px);
+    transform         : translateX(-40px);
   }
   100% {
     -webkit-transform : translateX(0);
     transform         : translateX(0);
   }
 }
-@keyframes slideOutRightContent {
+@keyframes slideOutLeftContent {
   0% {
     opacity           : 0;
-    -webkit-transform : translateX(100%);
-    transform         : translateX(100%);
+    -webkit-transform : translateX(-40px);
+    transform         : translateX(-40px);
   }
   100% {
     -webkit-transform : translateX(0);
@@ -278,9 +278,11 @@
   @if $breakpoint == 'xs' {
     @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
       .drawerMain {
-        position : absolute;
+        position : fixed;
         height   : 100%;
         width    : 100%;
+        top      : 0;
+        left     : 0;
         outline  : none;
         overflow : hidden;
         padding  : 25px 30px 30px 30px;

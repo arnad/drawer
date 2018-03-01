@@ -88,8 +88,7 @@ Drawer.defaultProps = {
   text       : {
                  headerTitle       : "Basic Title",
                  closeButtonSRText : "Close",
-                 backButtonText    : "Back",
-                 backButtonSRText  : "Back"
+                 backButtonText    : "Back"
                }
 };
 
@@ -108,6 +107,7 @@ Drawer.propTypes = {
 
 
 function _drawerHandleKeys(e) {
+
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
     switch(e.which) {
@@ -116,6 +116,7 @@ function _drawerHandleKeys(e) {
       default: console.log("_handleKeys default");
     }
   }
+
 }
 
 function _drawerStyles(position, drawerOpen, currentStyles) {
@@ -155,8 +156,10 @@ function _findAndFocus(drawerOpen, initiatingElement, back) {
 }
 
 function _titleSectionBackHandler() {
+
   this.setState({back:false});
   document.querySelector('.iconWrapper .pe-icon--btn').focus();
+
 }
 
 function _tabHandler(e) {
@@ -167,29 +170,29 @@ function _tabHandler(e) {
   const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
-  let updatedTab;
 
   if(currentTab <= numOfTabs){
-    updatedTab = e.shiftKey ? --currentTab : ++currentTab;
-    updatedTab = (updatedTab >= 0) ? updatedTab : 0;
+    currentTab = e.shiftKey ? --currentTab : ++currentTab;
+    currentTab = (currentTab >= 0) ? currentTab : 0;
   }
 
   if(currentTab > numOfTabs){
-    updatedTab = 0;
+    currentTab = 0;
   }
 
-  tabsInsideDrawer[updatedTab].tabIndex = 0;
-  tabsInsideDrawer[updatedTab].focus();
+  tabsInsideDrawer[currentTab].focus();
 
-  this.setState({currentTab:updatedTab});
+  this.setState({currentTab});
 
 }
 
 function _basicViewKeyHandler(e) {
+
   if(e.which === 32) {
     switch(e.which) {
-      case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY                              // ---> SPACE BAR
+      case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY
       default: console.log("_basicViewKeyHandler default");
     }
   }
+
 }
