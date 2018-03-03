@@ -111,10 +111,7 @@ function _drawerHandleKeys(e) {
 
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
-    console.log(e.which)
-    console.log(e.keyCode)
     switch(e.which) {
-      case 32: this.titleSectionBackHandler(e); break;   // ---> SPACE KEY
       case 27: this.drawerHandler(); break;            // ---> ESC KEY
       case 9 : this.tabHandler(e);   break;            // ---> TAB KEY
       default: console.log("_drawerHandleKeys default");

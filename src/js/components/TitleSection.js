@@ -12,7 +12,7 @@ export const TitleSection = ({ back, iconClose, backHandler, text }) => {
           {!back && <span className={titleSpanStyles}>
                       <h1 className="titleSectionHeaderTitle">{text.headerTitle}</h1>
                     </span>}
-          { back && <span className={backSpanStyles} onClick={backHandler} onKeyUp={e => e.preventDefault() }>
+          { back && <span className={backSpanStyles} onClick={backHandler}>
                       <Button btnIcon>
                         <Icon name="chevron-back-18"/>
                         {text.backButtonText}
