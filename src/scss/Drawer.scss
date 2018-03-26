@@ -1,3 +1,7 @@
+////
+/// Custom SCSS for component-specific styling goes here
+////
+
 @import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/color/_variables';
 @import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_variables';
 @import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_functions';
@@ -20,7 +24,7 @@
 }
 
 .initial {
-  left : -326px;
+  display : none;
 }
 
 .right {
