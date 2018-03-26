@@ -11,7 +11,7 @@ class DrawerDemoPage extends Component {
     super(props);
     this.state = {
       drawerIsOpen : false,
-      position     : "right",
+      position     : "left",
       text         : {
                       headerTitle       : "Basic Title",
                       closeButtonSRText : "Close",
