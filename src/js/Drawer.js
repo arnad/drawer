@@ -112,8 +112,8 @@ function _drawerHandleKeys(e) {
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
     switch(e.which) {
-      case 27: this.drawerHandler(); break;            // ---> ESC KEY
-      case 9 : this.tabHandler(e);   break;            // ---> TAB KEY
+      case 27: this.drawerHandler(); break; // ---> ESC KEY
+      case 9 : this.tabHandler(e);   break; // ---> TAB KEY
       default: console.log("_drawerHandleKeys default");
     }
   }
@@ -131,7 +131,6 @@ function _drawerStyles(position, drawerOpen, currentStyles) {
   this.setState({currentStyles});
 
 }
-
 
 function _contentSectionHandler(e) {
 

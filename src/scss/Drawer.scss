@@ -14,7 +14,7 @@
   height           : 100%;
   width            : 260px;
   padding          : 25px 30px 30px 30px;
-  box-shadow       : 5px 5px 5px 5px rgba(199,199,199,0.70);
+  box-shadow       : 0px 5px 5px 5px rgba(199,199,199,0.70);
   outline          : none;
   overflow         : hidden;
 }
@@ -79,6 +79,17 @@
   font-size     : 20px;
   line-height   : 26px;
   margin-bottom : 0px;
+}
+
+span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn svg {
+  margin-right : 10px;
+  line-height : 18px;
+  font-weight : bold;
+}
+
+span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn {
+  line-height : 18px;
+  font-weight : bold;
 }
 
 
@@ -403,14 +414,15 @@
   @if $breakpoint == 'xs' {
     @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
       .drawerMain {
-        position : fixed;
-        height   : 100%;
-        width    : 100%;
-        top      : 0;
-        left     : 0;
-        outline  : none;
-        overflow : hidden;
-        padding  : 25px 30px 30px 30px;
+        position   : fixed;
+        box-sizing : border-box;
+        height     : 100%;
+        width      : 100%;
+        top        : 0;
+        left       : 0;
+        outline    : none;
+        overflow   : hidden;
+        padding    : 25px 30px 30px 30px;
       }
     }
   }

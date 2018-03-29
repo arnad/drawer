@@ -72,6 +72,7 @@ class DrawerDemoPage extends Component {
               <h3>DetailView1</h3>
             </DetailView>
             <DetailView id='detailView3' myKind="DetailView">
+              <h3>DetailView3</h3>
               <details>
                 <summary>Copyright 1999-2014.</summary>
                 <p> - by Refsnes Data. All Rights Reserved.</p>
