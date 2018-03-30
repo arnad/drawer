@@ -1,18 +1,13 @@
 language: node_js
 sudo: false
 node_js:
-- 5.2
-- 4.2
+- 6
+- 8
 script:
 - npm run ci
-- chmod 777 ./node_modules/@pearson-components/npm-scripts/shell_scripts/run_selenium_ci_tests.sh
-- export TEST_GROUP=desktop-regression
-- ./node_modules/@pearson-components/npm-scripts/shell_scripts/run_selenium_ci_tests.sh
-after_success:
-- cat ./build/reports/coverage/coverage.lcov | node_modules/coveralls/bin/coveralls.js
-after_failure:
-- for file in *.log; do echo $file; echo "======================"; cat $file; done
-  || true
+- chmod 777 ./test/shell_scripts/run_tests.sh
+#- ./test/shell_scripts/run_tests.sh
+
 deploy:
   provider: npm
   email: pearson-design-accelerator@pearson.com
@@ -24,4 +19,4 @@ deploy:
     tags: true
 env:
   global:
-  - secure: HuZwAtEyn/CCqy9NwbdRLcJaqTDGn0nGb1WJTQi3asKwoeg5PZNl8HOQHS6GWylbUj3Dzp2umbo3g5rL/CWZllPBCLeiwGvXc6dDi/3lw5heyjZ/ItAgwhpuUKwj9ViRjzHIAUNa5KDEXrWWyUn/X8mEGK2fcLKSR91iQ2SZx5GL3T5pX+lsBO8lTX3+OCm7i8gJizUQnzN9lWWajMt+2xcgWhj5XqSsjrGel5slLqDSxvtzEgunjm+Yn+LS5j2InUY3BtXEQqpbKxObHn78dat3ywHheu2P5Y2rbTMEWQ1Ff9neC3YTHhleNogY2pSGfewWEz93bNsb13vZ7XaCBTjMkIwCUlrC+QAyFZaW42NoSd/Wvf5asPN+2mJ3FAQWwLEAq7VdvkAWtrO16sZRQFNSZ7ERUZx/+N2CD+eu+OcQPD6RG6Kor2Wxgjia0O5jNhxVkgGwqvXXG40TlhW/0PHvl05qgBlK39JCl/SvrFzJXAEVVDlMmUPzO/i4A+4aWej2CXcJtYzP3QUElmim4Z1zGKhIbppvAuYl8D70q3udHJYJQaziC/oCxqj0tjzdsCYkVu6A40B6m8144HtzDM3sIhJiQgpbgugTGEDYp3sXBkCow1LCz35ErVGEdjH1VJKwwvrwdyqRnpMWfe7/1kIAsiw0JKegqGyCseT3ZxA=
+    secure: HuZwAtEyn/CCqy9NwbdRLcJaqTDGn0nGb1WJTQi3asKwoeg5PZNl8HOQHS6GWylbUj3Dzp2umbo3g5rL/CWZllPBCLeiwGvXc6dDi/3lw5heyjZ/ItAgwhpuUKwj9ViRjzHIAUNa5KDEXrWWyUn/X8mEGK2fcLKSR91iQ2SZx5GL3T5pX+lsBO8lTX3+OCm7i8gJizUQnzN9lWWajMt+2xcgWhj5XqSsjrGel5slLqDSxvtzEgunjm+Yn+LS5j2InUY3BtXEQqpbKxObHn78dat3ywHheu2P5Y2rbTMEWQ1Ff9neC3YTHhleNogY2pSGfewWEz93bNsb13vZ7XaCBTjMkIwCUlrC+QAyFZaW42NoSd/Wvf5asPN+2mJ3FAQWwLEAq7VdvkAWtrO16sZRQFNSZ7ERUZx/+N2CD+eu+OcQPD6RG6Kor2Wxgjia0O5jNhxVkgGwqvXXG40TlhW/0PHvl05qgBlK39JCl/SvrFzJXAEVVDlMmUPzO/i4A+4aWej2CXcJtYzP3QUElmim4Z1zGKhIbppvAuYl8D70q3udHJYJQaziC/oCxqj0tjzdsCYkVu6A40B6m8144HtzDM3sIhJiQgpbgugTGEDYp3sXBkCow1LCz35ErVGEdjH1VJKwwvrwdyqRnpMWfe7/1kIAsiw0JKegqGyCseT3ZxA=

@@ -1,343 +1,205 @@
-/* jshint -W079 */
+import React, { Component } from 'react';
+import PropTypes            from 'prop-types';
+import { TitleSection }     from './components/TitleSection';
+import { ContentSection }   from './components/ContentSection';
 
-'use strict';
+import '../scss/Drawer.scss';
 
-var DomDelegate = require('dom-delegate');
-var WeakMap = require('./weakmap/main');
 
-var dispatchEvent = function(element, name, data) {
-  if (document.createEvent && element.dispatchEvent) {
-    var event = document.createEvent('Event');
-    event.initEvent(name, true, true);
+class Drawer extends Component {
 
-    if (data) {
-      event.detail = data;
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      back          : false,
+      currentTab    : 0,
+      currentStyles : 'drawerMain initial',
+      displayView   : 'BasicView'
+    };
+
+    this.drawerHandleKeys        = _drawerHandleKeys.bind(this);
+    this.drawerStyles            = _drawerStyles.bind(this);
+    this.contentSectionHandler   = _contentSectionHandler.bind(this);
+    this.titleSectionBackHandler = _titleSectionBackHandler.bind(this);
+    this.tabHandler              = _tabHandler.bind(this);
+    this.findAndFocus            = _findAndFocus.bind(this);
+    this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
+    this.drawerHandler           = props.drawerHandler.bind(this);
+
+  }
+
+  getChildContext() {
+    return { basicViewClickHandler: e => this.contentSectionHandler(e),
+             basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
+           };
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    const { position, drawerOpen }    = nextProps;
+    const { initiatingElement, back } = this.state;
+
+    this.drawerStyles(this.props.position, drawerOpen)
+
+    if(drawerOpen) {
+      this.setState({initiatingElement:document.activeElement},
+        () => this.findAndFocus(drawerOpen, initiatingElement, back)
+      );
     }
 
-    element.dispatchEvent(event);
-  }
-};
-
-function Drawer(el, cb) {
-  if (!(this instanceof Drawer)) {
-    throw new TypeError('Constructor Drawer requires \'new\'');
-  }
-  if (!el) {
-    throw new TypeError('missing required argument: element');
-  }
-  if (typeof el === 'string') {
-    el = document.querySelector(el);
-  }
-
-  this.target = el;
-  this.currentTarget = false;
-  this.trigger; // opened drawer
-  this.closeButton;
-  this.target.style.display ='none'; // don't tab through hidden drawers
-  this.target.classList.add('o-drawer');
-
-  this.trap = document.createElement('button');
-  this.trap.className = 'pe-trap';
-  this.trap.textContent = 'close'; // internationalise this!
-  this.trap.setAttribute('data-close', 'o-drawer');
-  this.trap.setAttribute('data-target', '#' + this.target.id);
-  this.cb = cb;
-
-  Drawer.cache.set(el, this);
-
-  var hasAlignmentClass = this.target.classList.contains('o-drawer-left') ||
-                          this.target.classList.contains('o-drawer-right');
-  if (!hasAlignmentClass) {
-    this.target.classList.add('o-drawer-left');
-  }
-
-  if (!Drawer.delegate) {
-    var delegate = new DomDelegate(document.body);
-    delegate.on('click',
-      '[data-toggle="o-drawer"], [data-close="o-drawer"], [data-open="o-drawer"]',
-      function(e, eventTarget) { handleClick(e, eventTarget, Drawer) });
-    Drawer.delegate = delegate;
-  }
-
-  var _drawer = this;
-  closeOtherDrawers(_drawer);// two drawers never open on the same side
-
-  return this;
-}
-
-Drawer.cache = new WeakMap();
-
-
-/**
- * Initializes all drawer elements on the page or within
- * the element passed in.
- * @param  {HTMLElement|string} element DOM element or selector.
- * @return {DropdownMenu[]} List of Drawer instances that
- * have been initialized.
- */
-Drawer.init = function(element) {
-  var drawerEls = selectAll(element),
-      drawers = [];
-
-  for(var i=0, l=drawerEls.length; i<l; i++) {
-    drawers.push(new Drawer(drawerEls[i]));
-  }
-
-  return drawers;
-};
-
-function selectAll(element) {
-  if (!element) {
-    element = document.body;
-  }
-  if (!(element instanceof HTMLElement)) {
-    element = document.querySelectorAll(element)[0];
-  }
-
-  return element.querySelectorAll('[data-o-component="o-drawer"]');
-}
-
-
-/**
- * Destroy all Drawer Components on the page
- */
-Drawer.destroy = function() {
-  if (Drawer.bodyDelegate) {
-    Drawer.bodyDelegate.destroy();
-  }
-};
-
-/**
- * Opens the Drawer
- * Sets aria-expanded on the triggering control and saves trigger
- * Sets focus to first focusable/close button
- * Traps focus within
- * @return {Drawer} self, for chainability
- */
-Drawer.prototype.open = function() {
-  if (this.target.classList.contains('o-drawer-open')) {
-    return this;
-  }
-
-  this.trigger = document.activeElement;
-  var _drawer = this;
-  getFocusables(_drawer); // for managing keyboard trap
-  var control = this.trigger,
-      t = this.target,
-      firstFocusable = this.firstFocusable;
-
-  t.style.display = 'block';
-  if (t.classList.contains('o-drawer-animated')) {
-    setTimeout(function() {
-      setStates(t, control, firstFocusable);
-    }, 50);
-  }
-  else {
-    setStates(t, control, firstFocusable);
-  }
-
-  this.bound = this.trapFocus.bind(this);
-  t.addEventListener('keydown', this.bound);
-
-  this.currentTarget = true;
-  if (t.classList.contains('o-drawer-right')) {
-    dispatchEvent(t, 'o.Drawer.RightDrawer');
-  }
-  if (t.classList.contains('o-drawer-left')) {
-    dispatchEvent(t, 'o.Drawer.LeftDrawer');
-  }
-
-  dispatchEvent(t, 'oDrawer.open');
-
-  return this;
-};
-
-function setStates(t, control, firstFocusable) {
-  t.classList.add('o-drawer-open');
-  control && control.setAttribute('aria-expanded', 'true');
-  firstFocusable && firstFocusable.focus();
-}
-
-
-/**
- * Closes the Drawer
- * Releases keyboard trap
- * Moves focus back to triggering control if applicable
- * Set aria-expanded to false on trigger
- * @return {Drawer} self, for chainability
- */
-Drawer.prototype.close = function() {
-  if (!this.target.classList.contains('o-drawer-open')) {
-    this.trigger = document.activeElement;
-    return this;
-  }
-  this.target.classList.remove('o-drawer-open');
-  dispatchEvent(this.target, 'oDrawer.close');
-
-  this.trigger && this.trigger.setAttribute('aria-expanded', 'false');
-
-  var t = this.target,
-      closedFromWithin = containedIn(document.activeElement, t);
-
-  if (t.classList.contains('o-drawer-animated')) {
-    setTimeout(function() {
-      t.style.display = 'none';
-    }, 400);
-  }
-  else {
-    t.style.display = 'none';
-  }
-
-  t.removeEventListener('keydown', this.bound);
-
-  if (closedFromWithin && this.trigger) {
-    this.trigger.focus();
-    if (this.cb) {this.cb()};
-  }
-
-  return this;
-};
-
-function containedIn(child, t) {
-  while ((child = child.parentNode) && (child !== t));
-  return child;
-}
-
-
-/**
- * Toggles the Drawer
- * @return {Drawer} self, for chainability
- */
-Drawer.prototype.toggle = function() {
-  var visible = this.target.classList.contains('o-drawer-open');
-  (visible && this.close()) || this.open();
-  return this;
-};
-
-/**
- * Esc closes drawer
- * Traps tab-focus in the Drawer
- * this fails if spatial focus is used
- * waiting... https://github.com/whatwg/html/pull/1474
- */
-Drawer.prototype.trapFocus = function(e) {
-  var ev = e || event,
-      active = document.activeElement,
-      trap = this.trap,
-      firstFocusable = this.firstFocusable,
-      code = ev.keyCode;
-
-  function forwards() {
-    if (active === trap) {
-      ev.preventDefault();
-      firstFocusable.focus();
+    if(!drawerOpen) {
+      this.findAndFocus(drawerOpen, initiatingElement, back);
+      this.setState({currentTab:0});
     }
+
   }
 
-  function backwards() {
-    if (active === firstFocusable) {
-      ev.preventDefault();
-      trap.focus();
-    }
+  render() {
+
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop } = this.props;
+    const { back, currentStyles, displayView } = this.state;
+
+    return (
+      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-hidden={!drawerOpen} aria-live="polite" tabIndex="0" onKeyDown={this.drawerHandleKeys}>
+        <TitleSection
+          back        = {back}
+          text        = {text}
+          iconClose   = {drawerHandler}
+          backHandler = {this.titleSectionBackHandler} />
+        <ContentSection back={back} displayView={displayView} contentSectionHandler={this.contentSectionHandler}>
+          {children}
+        </ContentSection>
+      </div>
+    )
   }
 
-  switch(code) {
-    case 27:
-      this.close();
-      break;
-
-    case 13:
-    case 32:
-      if (active === trap) {
-        ev.preventDefault();
-        this.close();
-        break;
-      };
-
-    case 9:
-      if (this.focusables.length === 1) {
-        ev.preventDefault();
-        break;
-      }
-
-      return (ev.shiftKey) ? backwards() : forwards();
-      break;
-
-    default:
-      break;
-  }
 }
 
 
-function handleClick(e, target, Drawer) {
+export default Drawer;
+
+
+Drawer.defaultProps = {
+  position   : "right",
+  drawerOpen : false,
+  drawerTop  : "61px",
+  text       : {
+                 headerTitle       : "Basic Title",
+                 closeButtonSRText : "Close",
+                 backButtonText    : "Back"
+               }
+};
+
+Drawer.childContextTypes = {
+  basicViewClickHandler : PropTypes.func,
+  basicViewKeyHandler   : PropTypes.func
+};
+
+Drawer.propTypes = {
+  text          : PropTypes.object.isRequired,
+  position      : PropTypes.string.isRequired,
+  drawerOpen    : PropTypes.bool.isRequired,
+  drawerHandler : PropTypes.func.isRequired,
+  drawerTop     : PropTypes.string
+};
+
+
+function _drawerHandleKeys(e) {
+
   e.preventDefault();
-  var drawerName = target.getAttribute('data-target') ||
-                   target.getAttribute('href'),
-      drawerElements = document.querySelectorAll(drawerName);
 
-  for (var i=0, l=drawerElements.length; i<l; i++) {
-    var t = drawerElements[i],
-        drawer = Drawer.cache.get(t);
-
-    if (!drawer && t.getAttribute('data-o-component') === 'o-collapse') {
-      drawer = new Drawer(t);
-    }
-
-    if (drawer) {
-      var action = openCloseToggle(target);
-      drawer[action]();
+  const allow = [27,9];
+  if(allow.some(a => a === e.which)) {
+    switch(e.which) {
+      case 27: this.drawerHandler(); break; // ---> ESC KEY
+      case 9 : this.tabHandler(e);   break; // ---> TAB KEY
+      default: console.log("_drawerHandleKeys default");
     }
   }
+
 }
 
-function getFocusables(_drawer) {
-  for (var i=0, l=_drawer.target.children.length; i<l; i++) {
-    if (_drawer.target.children[i].className === _drawer.trap.className) {
-      _drawer.target.removeChild(_drawer.target.children[i]);
-    }
+function _drawerStyles(position, drawerOpen, currentStyles) {
+
+  switch(position) {
+    case "left" : currentStyles = drawerOpen ? "drawerMain left slideInLeft"   : "drawerMain left slideOutLeft";   break;
+    case "right": currentStyles = drawerOpen ? "drawerMain right slideInRight" : "drawerMain right slideOutRight"; break;
+    default: console.log("_drawerStyles default case check position on Drawer");
   }
 
-  _drawer.focusables = Array.prototype.slice.call(_drawer.target.querySelectorAll(
-      '[tabindex="0"], a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'));
+  this.setState({currentStyles});
 
-  for (var i=0, l=_drawer.focusables.length; i<l; i++) {
-    var f = _drawer.focusables[i];
-    if (f.hasAttribute('data-close')) {
-      _drawer.closeButton = f;
-      break;
-    }
-  }
-
-  if (_drawer.focusables.length) {
-    _drawer.firstFocusable = _drawer.closeButton || _drawer.focusables[0];
-    _drawer.target.appendChild(_drawer.trap);
-  }
 }
 
-function closeOtherDrawers(_drawer) {
-  document.addEventListener('o.Drawer.RightDrawer', function() {
-    if (_drawer.target.classList.contains('o-drawer-right') && !_drawer.currentTarget) {
-      _drawer.close();
-    }
-    _drawer.currentTarget = false;
-  });
+function _contentSectionHandler(e) {
 
-  document.addEventListener('o.Drawer.LeftDrawer', function() {
-    if (_drawer.target.classList.contains('o-drawer-left') && !_drawer.currentTarget) {
-      _drawer.close();
-    }
-    _drawer.currentTarget = false;
-  });
-}
-
-function openCloseToggle(el) {
-  if (el && el.dataset) {
-    return Object.keys(el.dataset).filter(function(key) {
-      if (el.dataset[key] === 'o-drawer') {
-        return key;
-      }
-    });
+  if(e.currentTarget.attributes['maptodetail']) {
+    this.setState({back:true, currentTab:0, displayView:e.currentTarget.attributes['maptodetail'].value},
+      () => this.findAndFocus(this.props.drawerOpen, this.state.initiatingElement, this.state.back)
+    );
   }
+
 }
 
-module.exports = Drawer;
+function _findAndFocus(drawerOpen, initiatingElement, back) {
+
+  const closeButton    = document.querySelector('.iconWrapper .pe-icon--btn');
+  const backButton     = document.querySelector('.titleSectionHeaderBackspan button');
+  const focusClose     = drawerOpen ? closeButton : initiatingElement;
+  const focusBack      = drawerOpen ? backButton  : initiatingElement;
+  const focusedElement = back ? focusBack : focusClose;
+
+  if(focusedElement) {
+    focusedElement.focus();
+  }
+
+}
+
+function _titleSectionBackHandler(e) {
+
+  e.preventDefault();
+
+  this.setState({back:false});
+  document.querySelector('.iconWrapper .pe-icon--btn').focus();
+
+}
+
+function _tabHandler(e) {
+
+  e.preventDefault();
+
+  const drawerElement    = document.getElementsByClassName('drawerMain')[0];
+  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
+  const numOfTabs        = tabsInsideDrawer.length - 1;
+  let currentTab         = this.state.currentTab;
+
+  if(currentTab <= numOfTabs){
+    currentTab = e.shiftKey ? --currentTab : ++currentTab;
+    currentTab = (currentTab >= 0) ? currentTab : 0;
+  }
+
+  if(currentTab > numOfTabs){
+    currentTab = 0;
+  }
+
+  tabsInsideDrawer[currentTab].focus();
+
+  this.setState({currentTab});
+
+}
+
+function _basicViewKeyHandler(e) {
+
+  e.preventDefault();
+
+  const allow = [32,13];
+  if(allow.some(a => a === e.which)) {
+    switch(e.which) {
+      case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY
+      case 13: this.contentSectionHandler(e); break;  // ---> ENTER KEY
+      default: console.log("_basicViewKeyHandler default");
+    }
+  }
+
+}

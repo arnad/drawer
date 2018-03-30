@@ -1,0 +1,431 @@
+////
+/// Custom SCSS for component-specific styling goes here
+////
+
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/color/_variables';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_variables';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/_functions';
+@import '../../node_modules/@pearson-components/elements-sdk/src/styles/elements/responsive-utilities/responsive-utilities';
+
+
+.drawerMain {
+  background-color : $pe-color-white;
+  position         : fixed;
+  height           : 100%;
+  width            : 260px;
+  padding          : 25px 30px 30px 30px;
+  box-shadow       : 0px 5px 5px 5px rgba(199,199,199,0.70);
+  outline          : none;
+  overflow         : hidden;
+}
+
+.left {
+  left : 0;
+}
+
+.initial {
+  display : none;
+}
+
+.right {
+  right : 0;
+}
+
+.contentSection {
+  list-style   : none;
+  padding-left : 0px;
+}
+
+.iconWrapper {
+  display         : flex;
+  flex-direction  : row;
+  align-items     : center;
+  justify-content : center;
+  right           : -14px;
+  position        : absolute;
+  margin-right    : 30px;
+  height          : 44px;
+  width           : 44px;
+}
+
+.titleSectionHeader {
+  box-sizing     : content-box;
+  display        : flex;
+  align-items    : center;
+  flex-direction : row;
+  border-bottom  : 1px solid #D9D9D9;
+  margin-bottom  : 25px;
+  align-items    : center;
+  padding-bottom : 20px;
+}
+
+.titleSectionHeaderTitleBack {
+  font-size     : medium;
+  margin-left   : 10px;
+  margin-top    : 0px;
+  margin-bottom : 0px;
+}
+
+.titleSectionHeaderBackspan {
+  display        : flex;
+  align-items    : center;
+  flex-direction : row;
+  height         : 26px;
+  padding        : 9px 0px 9px;
+  margin         : -9px 0px -9px;
+}
+
+.titleSectionHeaderTitle {
+  align-self    : center;
+  font-size     : 20px;
+  line-height   : 26px;
+  margin-bottom : 0px;
+}
+
+span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn svg {
+  margin-right : 10px;
+  line-height : 18px;
+  font-weight : bold;
+}
+
+span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn {
+  line-height : 18px;
+  font-weight : bold;
+}
+
+
+// Drawer Animations ===========================================================
+.slideInLeft {
+  -webkit-animation-name      : slideInLeft;
+  animation-name              : slideInLeft;
+  -webkit-animation-duration  : 0.5s;
+  animation-duration          : 0.5s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+@-moz-keyframes slideInLeft {
+  0% {
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@-o-keyframes slideInLeft {
+  0% {
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@-webkit-keyframes slideInLeft {
+  0% {
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    -webkit-transform : translateX(-100%);
+    transform         : translateX(-100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+
+.slideOutLeft {
+  -webkit-animation-name      : slideOutLeft;
+  animation-name              : slideOutLeft;
+  -webkit-animation-duration  : 0.5s;
+  animation-duration          : 0.5s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+@-moz-keyframes slideOutLeft {
+  0% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+  100% {
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
+  }
+}
+@-o-keyframes slideOutLeft {
+  0% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+  100% {
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
+  }
+}
+@-webkit-keyframes slideOutLeft {
+  0% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+  100% {
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
+  }
+}
+@keyframes slideOutLeft {
+  0% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+  100% {
+    -webkit-transform : translateX(-103%);
+    transform         : translateX(-103%);
+  }
+}
+
+.slideOutRight {
+  -webkit-animation-name      : slideOutRight;
+  animation-name              : slideOutRight;
+  -webkit-animation-duration  : 0.5s;
+  animation-duration          : 0.5s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+
+@-moz-keyframes slideOutRight {
+    0% {
+      -webkit-transform : translateX(0);
+      transform         : translateX(0);
+    }
+    100% {
+      -webkit-transform : translateX(100%);
+      transform         : translateX(100%);
+    }
+}
+@-o-keyframes slideOutRight {
+    0% {
+      -webkit-transform : translateX(0);
+      transform         : translateX(0);
+    }
+    100% {
+      -webkit-transform : translateX(100%);
+      transform         : translateX(100%);
+    }
+}
+@-webkit-keyframes slideOutRight {
+    0% {
+      -webkit-transform : translateX(0);
+      transform         : translateX(0);
+    }
+    100% {
+      -webkit-transform : translateX(100%);
+      transform         : translateX(100%);
+    }
+}
+@keyframes slideOutRight {
+  0% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+  100% {
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name      : slideInRight;
+  animation-name              : slideInRight;
+  -webkit-animation-duration  : 0.5s;
+  animation-duration          : 0.5s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+
+@-moz-keyframes slideInRight {
+  0% {
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@-o-keyframes slideInRight {
+  0% {
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@-webkit-keyframes slideInRight {
+  0% {
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    -webkit-transform : translateX(100%);
+    transform         : translateX(100%);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+
+
+
+
+// Content Animations ==========================================================
+.slideInRightContent {
+  -webkit-animation-name      : slideInRightContent;
+  animation-name              : slideInRightContent;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+
+@-moz-keyframes slideInRightContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(40px);
+    transform         : translateX(40px);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
+  }
+}
+@-o-keyframes slideInRightContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(40px);
+    transform         : translateX(40px);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
+  }
+}
+@-webkit-keyframes slideInRightContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(40px);
+    transform         : translateX(40px);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
+  }
+}
+@keyframes slideInRightContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(40px);
+    transform         : translateX(40px);
+  }
+  100% {
+    -webkit-transform : translateX(0px);
+    transform         : translateX(0px);
+  }
+}
+
+.slideOutLeftContent {
+  -webkit-animation-name      : slideOutLeftContent;
+  animation-name              : slideOutLeftContent;
+  -webkit-animation-duration  : 0.3s;
+  animation-duration          : 0.3s;
+  -webkit-animation-fill-mode : both;
+  animation-fill-mode         : both;
+  animation-timing-function   : ease-in-out;
+}
+@-moz-keyframes slideOutLeftContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-40px);
+    transform         : translateX(-40px);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@-o-keyframes slideOutLeftContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-40px);
+    transform         : translateX(-40px);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@-webkit-keyframes slideOutLeftContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-40px);
+    transform         : translateX(-40px);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+@keyframes slideOutLeftContent {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-40px);
+    transform         : translateX(-40px);
+  }
+  100% {
+    -webkit-transform : translateX(0);
+    transform         : translateX(0);
+  }
+}
+
+// XSmall Screen========xs__320px-480px=========================================================
+@each $breakpoint in map-keys($pe-responsive-breakpoints) {
+  @if $breakpoint == 'xs' {
+    @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
+      .drawerMain {
+        -webkit-box-sizing : border-box;
+        box-sizing         : border-box;
+        position           : fixed;
+        height             : 100%;
+        width              : 100%;
+        top                : 0;
+        left               : 0;
+        outline            : none;
+        overflow           : hidden;
+        padding            : 25px 30px 30px 30px;
+      }
+    }
+  }
+}
