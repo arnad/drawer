@@ -49,6 +49,7 @@
 }
 
 .titleSectionHeader {
+  box-sizing     : content-box;
   display        : flex;
   align-items    : center;
   flex-direction : row;
