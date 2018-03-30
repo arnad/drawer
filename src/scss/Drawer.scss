@@ -415,15 +415,16 @@ span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn {
   @if $breakpoint == 'xs' {
     @media(min-width:pe-responsive-get-breakpoint-value($breakpoint, min)) and (max-width:pe-responsive-get-breakpoint-value($breakpoint, max)){
       .drawerMain {
-        position   : fixed;
-        box-sizing : border-box;
-        height     : 100%;
-        width      : 100%;
-        top        : 0;
-        left       : 0;
-        outline    : none;
-        overflow   : hidden;
-        padding    : 25px 30px 30px 30px;
+        -webkit-box-sizing : border-box;
+        box-sizing         : border-box;
+        position           : fixed;
+        height             : 100%;
+        width              : 100%;
+        top                : 0;
+        left               : 0;
+        outline            : none;
+        overflow           : hidden;
+        padding            : 25px 30px 30px 30px;
       }
     }
   }
