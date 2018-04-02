@@ -107,8 +107,6 @@ Drawer.propTypes = {
 
 function _drawerHandleKeys(e) {
 
-  e.preventDefault();
-
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
     switch(e.which) {
