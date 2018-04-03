@@ -1,5 +1,33 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.4...v2.0.1) (2018-04-03)
+
+
+### Bug Fixes
+
+* add border box and content box to deal with responsive issues ([05a0058](https://github.com/Pearson-Higher-Ed/drawer/commit/05a0058))
+* add webkit prefix for box sizing ([c5e8b01](https://github.com/Pearson-Higher-Ed/drawer/commit/c5e8b01))
+* animation ([45cd9a5](https://github.com/Pearson-Higher-Ed/drawer/commit/45cd9a5))
+* click handler ([5e5c412](https://github.com/Pearson-Higher-Ed/drawer/commit/5e5c412))
+* close focus from detailView ([811b2ff](https://github.com/Pearson-Higher-Ed/drawer/commit/811b2ff))
+* ff spacebar action ([55bc736](https://github.com/Pearson-Higher-Ed/drawer/commit/55bc736))
+* focus trap ([4d33958](https://github.com/Pearson-Higher-Ed/drawer/commit/4d33958))
+* focus trap ([872d161](https://github.com/Pearson-Higher-Ed/drawer/commit/872d161))
+* initial class from display none to left -326px to hide drawer when first rendered ([fdc7c29](https://github.com/Pearson-Higher-Ed/drawer/commit/fdc7c29))
+* rollback to display none ([bd72bb9](https://github.com/Pearson-Higher-Ed/drawer/commit/bd72bb9))
+* sematic upgrade ([53065ff](https://github.com/Pearson-Higher-Ed/drawer/commit/53065ff))
+* width at xsm breakpoint, 10px margin right chevron, backtext bold, line height 18 ([ff40297](https://github.com/Pearson-Higher-Ed/drawer/commit/ff40297))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.3...v1.0.4) (2018-02-14)
+
+
+### Bug Fixes
+
+* back/title exclusivity ([282446f](https://github.com/Pearson-Higher-Ed/drawer/commit/282446f))
+* change c.name to props ([1ce954f](https://github.com/Pearson-Higher-Ed/drawer/commit/1ce954f))
+* find detail view ([f08586e](https://github.com/Pearson-Higher-Ed/drawer/commit/f08586e))
 
 
 ### Features
