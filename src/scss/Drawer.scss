@@ -66,13 +66,17 @@
   margin-bottom : 0px;
 }
 
-.titleSectionHeaderBackspan {
-  display        : flex;
-  align-items    : center;
-  flex-direction : row;
-  height         : 26px;
-  padding        : 9px 0px 9px;
-  margin         : -9px 0px -9px;
+.titleSectionHeaderBackButton {
+  display          : flex;
+  align-items      : center;
+  flex-direction   : row;
+  height           : 26px;
+  padding          : 9px 0px 9px;
+  margin           : -9px 0px -9px;
+  line-height      : 18px;
+  font-weight      : bold;
+  background-color : transparent;
+  border           : 0;
 }
 
 .titleSectionHeaderTitle {
@@ -82,16 +86,12 @@
   margin-bottom : 0px;
 }
 
-span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn svg {
+button.titleSectionHeaderBackButton.slideInRightContent button.pe-icon--btn svg {
   margin-right : 10px;
   line-height : 18px;
   font-weight : bold;
 }
 
-span.titleSectionHeaderBackspan.slideInRightContent button.pe-icon--btn {
-  line-height : 18px;
-  font-weight : bold;
-}
 
 
 // Drawer Animations ===========================================================

@@ -4,7 +4,7 @@ import { Icon, Button } from '@pearson-components/elements-sdk/build/dist.elemen
 
 export const TitleSection = ({ back, iconClose, backHandler, text }) => {
 
-  const backSpanStyles  = back ? "titleSectionHeaderBackspan slideInRightContent" : "titleSectionHeaderBackspan slideOutLeftContent";
+  const backButtonStyles  = back ? "titleSectionHeaderBackButton slideInRightContent" : "titleSectionHeaderBackButton slideOutLeftContent";
   const titleSpanStyles = back ? "titleSectionHeaderTitleSpan slideInRightContent" : "titleSectionHeaderTitleSpan slideOutLeftContent";
 
   return (
@@ -12,12 +12,10 @@ export const TitleSection = ({ back, iconClose, backHandler, text }) => {
           {!back && <span className={titleSpanStyles}>
                       <h1 className="titleSectionHeaderTitle">{text.headerTitle}</h1>
                     </span>}
-          { back && <span className={backSpanStyles} onClick={backHandler}>
-                      <Button btnIcon>
-                        <Icon name="chevron-back-18"/>
-                        {text.backButtonText}
-                      </Button>
-                    </span>}
+          { back && <button className={backButtonStyles} onClick={backHandler}>
+                      <Icon name="chevron-back-18"/>
+                      {text.backButtonText}
+                    </button>}
           <span className="iconWrapper" onClick={iconClose}>
             <Button btnIcon aria-label={text.closeButtonSRText}>
               <Icon name="remove-sm-24"/>

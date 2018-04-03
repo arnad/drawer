@@ -37,7 +37,7 @@ class Drawer extends Component {
 
   componentWillReceiveProps(nextProps) {
 
-    const { position, drawerOpen }    = nextProps;
+    const { drawerOpen } = nextProps;
     const { initiatingElement, back } = this.state;
 
     this.drawerStyles(this.props.position, drawerOpen)
@@ -61,7 +61,7 @@ class Drawer extends Component {
     const { back, currentStyles, displayView } = this.state;
 
     return (
-      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-hidden={!drawerOpen} aria-live="polite" tabIndex="0" onKeyDown={this.drawerHandleKeys}>
+      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-labelledby={text.headerTitle} aria-modal={true} onKeyUp={this.drawerHandleKeys}>
         <TitleSection
           back        = {back}
           text        = {text}
@@ -106,7 +106,6 @@ Drawer.propTypes = {
 
 
 function _drawerHandleKeys(e) {
-
   const allow = [27,9];
   if(allow.some(a => a === e.which)) {
     switch(e.which) {
@@ -143,7 +142,7 @@ function _contentSectionHandler(e) {
 function _findAndFocus(drawerOpen, initiatingElement, back) {
 
   const closeButton    = document.querySelector('.iconWrapper .pe-icon--btn');
-  const backButton     = document.querySelector('.titleSectionHeaderBackspan button');
+  const backButton     = document.querySelector('.titleSectionHeaderBackButton');
   const focusClose     = drawerOpen ? closeButton : initiatingElement;
   const focusBack      = drawerOpen ? backButton  : initiatingElement;
   const focusedElement = back ? focusBack : focusClose;
@@ -157,10 +156,10 @@ function _findAndFocus(drawerOpen, initiatingElement, back) {
 function _titleSectionBackHandler(e) {
 
   e.preventDefault();
+  e.stopPropagation();
 
   this.setState({back:false});
   document.querySelector('.iconWrapper .pe-icon--btn').focus();
-
 }
 
 function _tabHandler(e) {
@@ -168,7 +167,7 @@ function _tabHandler(e) {
   e.preventDefault();
 
   const drawerElement    = document.getElementsByClassName('drawerMain')[0];
-  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackspan .pe-icon--btn,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
+  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackButton,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
 
@@ -190,6 +189,7 @@ function _tabHandler(e) {
 function _basicViewKeyHandler(e) {
 
   e.preventDefault();
+  e.stopPropagation();
 
   const allow = [32,13];
   if(allow.some(a => a === e.which)) {

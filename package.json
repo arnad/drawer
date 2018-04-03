@@ -24,7 +24,8 @@
     "postpublish": "npm access public && echo 'Package scope set to public!'"
   },
   "dependencies": {
-    "@pearson-components/elements-sdk": "^1.9.4"
+    "@pearson-components/elements-sdk": "^1.9.4",
+    "react-native-listener": "^1.0.2"
   },
   "devDependencies": {
     "@pearson-components/npm-scripts": "^0.5.8",
