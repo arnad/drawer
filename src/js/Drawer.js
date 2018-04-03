@@ -61,7 +61,7 @@ class Drawer extends Component {
     const { back, currentStyles, displayView } = this.state;
 
     return (
-      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-labelledby={text.headerTitle} aria-modal={true} onKeyUp={this.drawerHandleKeys}>
+      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-labelledby={text.headerTitle} aria-modal={true} onKeyUp={this.drawerHandleKeys} onKeyDown={this.drawerHandleKeys}>
         <TitleSection
           back        = {back}
           text        = {text}
