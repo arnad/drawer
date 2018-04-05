@@ -7,7 +7,7 @@ export const ContentSection = ({ contentSectionHandler, children, back, displayV
   const findBasicViews   = stepKids.filter(c => c.props.myKind.toLowerCase() === "basicview");
   const findDetailViews  = stepKids.filter(c => c.props.myKind.toLowerCase() === "detailview");
   const findDetailView   = findDetailViews.filter(c => c.props.id === displayView);
-console.log(skipTo)
+
   return (
         <ul className={sectionAnimation}>
           {!back && (skipTo ? skipTo : findBasicViews)}
