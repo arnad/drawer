@@ -57,7 +57,7 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop } = this.props;
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
@@ -67,7 +67,7 @@ class Drawer extends Component {
           text        = {text}
           iconClose   = {drawerHandler}
           backHandler = {this.titleSectionBackHandler} />
-        <ContentSection back={back} displayView={displayView} contentSectionHandler={this.contentSectionHandler}>
+        <ContentSection back={back} displayView={displayView} skipTo={skipTo} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
       </div>

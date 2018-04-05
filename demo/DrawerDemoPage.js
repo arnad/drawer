@@ -10,6 +10,7 @@ class DrawerDemoPage extends Component {
   constructor(props){
     super(props);
     this.state = {
+      skipTo       : "",
       drawerIsOpen : false,
       position     : "left",
       text         : {
@@ -27,7 +28,7 @@ class DrawerDemoPage extends Component {
 
   render(){
 
-    const { drawerIsOpen, position, text } = this.state;
+    const { drawerIsOpen, position, text, skipTo } = this.state;
 
     return(
       <div role="main">
@@ -41,6 +42,8 @@ class DrawerDemoPage extends Component {
 
         <div className="buttonBlock">
           <Button btnType="cta" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true})}}>Open Drawer</Button>
+          <Button  id="insideButton" btnType="primary" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true,skipTo:"detailView4"})}}>Open Drawer To DetailView 4</Button>
+          <Button  id="insideButton" btnType="primary" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true,skipTo:""})}}>Open Drawer To home</Button>
           <Button  id="insideButton" btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"right"})}}>Drawer Position Right</Button>
           <Button btnType="primary" btnSize="xlarge" onClick={() => {this.setState({position:"left"})}}>Drawer Position Left</Button>
         </div>
@@ -52,6 +55,7 @@ class DrawerDemoPage extends Component {
           drawerOpen    = {drawerIsOpen}
           position      = {position}
           text          = {text}
+          skipTo        = {skipTo}
           drawerHandler = {this.drawerHandler}>
           <div>
             <BasicView mapToDetail='detailView1' myKind="BasicView">
@@ -68,6 +72,9 @@ class DrawerDemoPage extends Component {
             <BasicView mapToDetail='detailView3' myKind="BasicView">
               <h2>BasicView3</h2>
             </BasicView>
+            <BasicView mapToDetail='detailView4' myKind="BasicView">
+              <h2>BasicView4</h2>
+            </BasicView>
             <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
             </DetailView>
@@ -77,6 +84,14 @@ class DrawerDemoPage extends Component {
                 <summary>Copyright 1999-2014.</summary>
                 <p> - by Refsnes Data. All Rights Reserved.</p>
                 <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+              </details>
+            </DetailView>
+            <DetailView id='detailView4' myKind="DetailView">
+              <h3>DetailView4</h3>
+              <details>
+                <summary>Hi there</summary>
+                <p> hi </p>
+                <p>there</p>
               </details>
             </DetailView>
           </div>
@@ -93,7 +108,7 @@ export default DrawerDemoPage;
 
 
 function _drawerHandler() {
-  this.setState({drawerIsOpen:!this.state.drawerIsOpen});
+  this.setState({drawerIsOpen:!this.state.drawerIsOpen,skipTo:this.state.skipTo});
 }
 
 function _documentationMarkup() {
