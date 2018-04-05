@@ -116,6 +116,7 @@ function _documentationMarkup() {
   const drawerPropsInfo = `
   position      : String   - one of:"left","right" default "right"
   drawerTop     : String   - adjust drawer top property default "61px"
+  skipTo        : String   - go directly to a view default ""
   drawerOpen    : Boolean  - (required) default false default false
   drawerHandler : Function - (required) sets state of drawerOpen to true or false
   text          : Object   - (required) text to be passed in.
@@ -153,6 +154,7 @@ function _documentationMarkup() {
             <h2>{"Initial State:"}</h2>
             <pre className="code">
               {`this.state = {
+                  skipTo       : "",
                   drawerTop    : "61px",
                   drawerIsOpen : false,
                   position     : "right",
@@ -171,6 +173,7 @@ function _documentationMarkup() {
                 text          = {text}
                 drawerTop     = {this.state.drawerTop}
                 drawerOpen    = {drawerIsOpen}
+                skipTo        = {this.state.skipTo}
                 position      = {this.state.position}
                 drawerHandler = {this.drawerHandler}>
                 <div>
