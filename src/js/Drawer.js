@@ -37,13 +37,13 @@ class Drawer extends Component {
 
   componentWillReceiveProps(nextProps) {
 
-    const { drawerOpen } = nextProps;
+    const { drawerOpen, skipTo } = nextProps;
     const { initiatingElement, back } = this.state;
 
     this.drawerStyles(this.props.position, drawerOpen)
 
     if(drawerOpen) {
-      this.setState({initiatingElement:document.activeElement},
+      this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
         () => this.findAndFocus(drawerOpen, initiatingElement, back)
       );
     }
