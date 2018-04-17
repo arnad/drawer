@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ContentSection = ({ contentSectionHandler, children, back, displayView, skipTo }) => {
+export const ContentSection = ({ children, back, displayView, skipTo }) => {
 
   const sectionAnimation = back ? "contentSection slideInRightContent" : "contentSection slideOutLeftContent";
   const stepKids         = React.Children.map(children.props.children, child => child);
