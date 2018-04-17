@@ -37,13 +37,13 @@ class Drawer extends Component {
 
   componentWillReceiveProps(nextProps) {
 
-    const { drawerOpen } = nextProps;
+    const { drawerOpen, skipTo } = nextProps;
     const { initiatingElement, back } = this.state;
 
     this.drawerStyles(this.props.position, drawerOpen)
 
     if(drawerOpen) {
-      this.setState({initiatingElement:document.activeElement},
+      this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
         () => this.findAndFocus(drawerOpen, initiatingElement, back)
       );
     }
@@ -57,7 +57,7 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop } = this.props;
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
@@ -67,7 +67,7 @@ class Drawer extends Component {
           text        = {text}
           iconClose   = {drawerHandler}
           backHandler = {this.titleSectionBackHandler} />
-        <ContentSection back={back} displayView={displayView} contentSectionHandler={this.contentSectionHandler}>
+        <ContentSection back={back} displayView={displayView} skipTo={skipTo} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
       </div>
