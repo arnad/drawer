@@ -51,6 +51,7 @@ class DrawerDemoPage extends Component {
         {this.documentationMarkup()}
 
         <Drawer
+          id            = "myDrawer"
           drawerTop     = "61px"
           drawerOpen    = {drawerIsOpen}
           position      = {position}
@@ -71,9 +72,60 @@ class DrawerDemoPage extends Component {
             </BasicView>
             <BasicView mapToDetail='detailView3' myKind="BasicView">
               <h2>BasicView3</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
             </BasicView>
             <BasicView mapToDetail='detailView4' myKind="BasicView">
               <h2>BasicView4</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
+            </BasicView>
+            <BasicView mapToDetail='detailView1' myKind="BasicView">
+              <h2>BasicView5</h2>
+              <ul>
+                <li>hi</li>
+                <li>there</li>
+              </ul>
+            </BasicView>
+            <BasicView myKind="BasicView">
+              <h2>BasicView6</h2>
+              <button>hithere</button>
+            </BasicView>
+            <BasicView mapToDetail='detailView3' myKind="BasicView">
+              <h2>BasicView7</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
+            </BasicView>
+            <BasicView mapToDetail='detailView4' myKind="BasicView">
+              <h2>BasicView8</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
+            </BasicView>
+            <BasicView myKind="BasicView">
+              <h2>BasicView9</h2>
+              <button>hithere</button>
+            </BasicView>
+            <BasicView mapToDetail='detailView3' myKind="BasicView">
+              <h2>BasicView10</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
+            </BasicView>
+            <BasicView mapToDetail='detailView4' myKind="BasicView">
+              <h2>BasicView11</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
             </BasicView>
             <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
@@ -114,6 +166,7 @@ function _drawerHandler() {
 function _documentationMarkup() {
 
   const drawerPropsInfo = `
+  id            : String   - a unqiue internationalized id for the drawer. Also, defines the aria-labeledby field
   position      : String   - one of:"left","right" default "right"
   drawerTop     : String   - adjust drawer top property default "61px"
   skipTo        : String   - go directly to a view default ""
@@ -170,6 +223,7 @@ function _documentationMarkup() {
             <h2>{"Drawer Code:"}</h2>
             <pre className="code">
               {`             <Drawer
+                id            = "myDrawer"
                 text          = {text}
                 drawerTop     = {this.state.drawerTop}
                 drawerOpen    = {drawerIsOpen}

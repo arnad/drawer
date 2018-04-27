@@ -11,12 +11,10 @@
 .drawerMain {
   background-color : $pe-color-white;
   position         : fixed;
-  height           : 100%;
   width            : 260px;
   padding          : 25px 30px 30px 30px;
   box-shadow       : 0px 5px 5px 5px rgba(199,199,199,0.70);
   outline          : none;
-  overflow         : hidden;
 }
 
 .left {
@@ -84,6 +82,10 @@
   font-size     : 20px;
   line-height   : 26px;
   margin-bottom : 0px;
+}
+
+.contentSection {
+  overflow: scroll;
 }
 
 button.titleSectionHeaderBackButton.slideInRightContent button.pe-icon--btn svg {

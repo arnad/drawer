@@ -37,7 +37,7 @@ class Drawer extends Component {
 
   componentWillReceiveProps(nextProps) {
 
-    const { drawerOpen, skipTo } = nextProps;
+    const { drawerOpen, skipTo, id, drawerTop } = nextProps;
     const { initiatingElement, back } = this.state;
 
     this.drawerStyles(this.props.position, drawerOpen)
@@ -46,6 +46,13 @@ class Drawer extends Component {
       this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
         () => this.findAndFocus(drawerOpen, initiatingElement, back)
       );
+
+      const drawerHeight = window.innerHeight - parseInt(drawerTop);
+      document.body.style = 'overflow:hidden';
+      document.getElementById(id).setAttribute(`style`,`height:${drawerHeight}px;top:${drawerTop}`)
+      console.log(window.innerHeight)
+      console.log(parseInt(drawerTop))
+      console.log(drawerHeight)
     }
 
     if(!drawerOpen) {
@@ -57,11 +64,11 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo } = this.props;
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo, id } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
-      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-labelledby={text.headerTitle} aria-modal={true} onKeyDown={this.drawerHandleKeys}>
+      <div id={id} role="dialog" className={currentStyles} aria-labelledby={id} onKeyDown={this.drawerHandleKeys}>
         <TitleSection
           back        = {back}
           text        = {text}
