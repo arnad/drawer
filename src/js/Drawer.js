@@ -49,15 +49,13 @@ class Drawer extends Component {
 
       const drawerHeight = window.innerHeight - parseInt(drawerTop);
       document.body.style = 'overflow:hidden';
-      document.getElementById(id).setAttribute(`style`,`height:${drawerHeight}px;top:${drawerTop}`)
-      console.log(window.innerHeight)
-      console.log(parseInt(drawerTop))
-      console.log(drawerHeight)
+      document.getElementById(id).setAttribute(`style`,`height:${drawerHeight}px;top:${drawerTop}`);
     }
 
     if(!drawerOpen) {
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
+      document.getElementById(id).setAttribute('display','none');
     }
 
   }

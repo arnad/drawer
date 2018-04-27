@@ -127,6 +127,20 @@ class DrawerDemoPage extends Component {
                   <li>there</li>
                 </ul>
             </BasicView>
+            <BasicView mapToDetail='detailView3' myKind="BasicView">
+              <h2>BasicView12</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
+            </BasicView>
+            <BasicView mapToDetail='detailView4' myKind="BasicView">
+              <h2>BasicView13</h2>
+                <ul>
+                  <li>hi</li>
+                  <li>there</li>
+                </ul>
+            </BasicView>
             <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
             </DetailView>
