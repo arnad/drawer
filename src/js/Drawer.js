@@ -48,14 +48,16 @@ class Drawer extends Component {
       );
 
       const drawerHeight = window.innerHeight - parseInt(drawerTop);
+      console.log(window.innerHeight - 61)
       document.body.style = 'overflow:hidden';
-      document.getElementById(id).setAttribute(`style`,`height:${drawerHeight}px;top:${drawerTop}`);
+      document.getElementById(id).setAttribute('style',`height:calc(100vh);top:${drawerTop}`);
     }
 
     if(!drawerOpen) {
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
-      document.getElementById(id).setAttribute('display','none');
+      document.body.style = "";
+      // document.getElementById(id).setAttribute('style','display:none;');
     }
 
   }
@@ -192,9 +194,6 @@ function _tabHandler(e) {
 }
 
 function _basicViewKeyHandler(e) {
-
-  e.preventDefault();
-  e.stopPropagation();
 
   const allow = [32,13];
   if(allow.some(a => a === e.which)) {
