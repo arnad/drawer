@@ -30,7 +30,8 @@ class Drawer extends Component {
   }
 
   getChildContext() {
-    return { basicViewClickHandler: e => this.contentSectionHandler(e),
+    return {
+             basicViewClickHandler: e => this.contentSectionHandler(e),
              basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
            };
   }
@@ -47,16 +48,16 @@ class Drawer extends Component {
         () => this.findAndFocus(drawerOpen, initiatingElement, back)
       );
 
-      const drawerHeight = window.innerHeight - parseInt(drawerTop);
-      console.log(window.innerHeight - 61)
       document.body.style = 'overflow:hidden';
-      document.getElementById(id).setAttribute('style',`height:calc(100vh);top:${drawerTop}`);
+      document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
     }
 
     if(!drawerOpen) {
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
-      document.body.style = "";
+      document.body.removeAttribute('style');
+
+      // console.log(document.getElementById(id).)
       // document.getElementById(id).setAttribute('style','display:none;');
     }
 
@@ -113,8 +114,9 @@ Drawer.propTypes = {
 
 
 function _drawerHandleKeys(e) {
+
   const allow = [27,9];
-  if(allow.some(a => a === e.which)) {
+  if(allow.some(num => num === e.which)) {
     switch(e.which) {
       case 27: this.drawerHandler(); break; // ---> ESC KEY
       case 9 : this.tabHandler(e);   break; // ---> TAB KEY
@@ -178,12 +180,12 @@ function _tabHandler(e) {
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
 
-  if(currentTab <= numOfTabs){
+  if(currentTab <= numOfTabs) {
     currentTab = e.shiftKey ? --currentTab : ++currentTab;
     currentTab = (currentTab >= 0) ? currentTab : 0;
   }
 
-  if(currentTab > numOfTabs){
+  if(currentTab > numOfTabs) {
     currentTab = 0;
   }
 
@@ -196,7 +198,7 @@ function _tabHandler(e) {
 function _basicViewKeyHandler(e) {
 
   const allow = [32,13];
-  if(allow.some(a => a === e.which)) {
+  if(allow.some(num => num === e.which)) {
     switch(e.which) {
       case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY
       case 13: this.contentSectionHandler(e); break;  // ---> ENTER KEY

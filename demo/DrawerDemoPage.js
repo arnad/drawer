@@ -7,8 +7,8 @@ import './DrawerDemoPage.scss';
 
 class DrawerDemoPage extends Component {
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       skipTo       : "",
       drawerIsOpen : false,
@@ -25,7 +25,6 @@ class DrawerDemoPage extends Component {
 
   }
 
-
   render(){
 
     const { drawerIsOpen, position, text, skipTo } = this.state;
@@ -38,7 +37,6 @@ class DrawerDemoPage extends Component {
             <h1><a className="demoLink" href="http://uxframework.pearson.com/c/drawer/">Drawer:</a></h1>
           </div>
         </div>
-
 
         <div className="buttonBlock">
           <Button btnType="cta" btnSize="xlarge" onClick={() => {this.setState({drawerIsOpen:true})}}>Open Drawer</Button>
@@ -57,7 +55,7 @@ class DrawerDemoPage extends Component {
           position      = {position}
           text          = {text}
           skipTo        = {skipTo}
-          drawerHandler = {this.drawerHandler}>
+          drawerHandler = {this.drawerHandler} >
           <div>
             <BasicView mapToDetail='detailView1' myKind="BasicView">
               <h2>BasicView1</h2>
@@ -112,34 +110,6 @@ class DrawerDemoPage extends Component {
             <BasicView myKind="BasicView">
               <h2>BasicView9</h2>
               <button>hithere</button>
-            </BasicView>
-            <BasicView mapToDetail='detailView3' myKind="BasicView">
-              <h2>BasicView10</h2>
-                <ul>
-                  <li>hi</li>
-                  <li>there</li>
-                </ul>
-            </BasicView>
-            <BasicView mapToDetail='detailView4' myKind="BasicView">
-              <h2>BasicView11</h2>
-                <ul>
-                  <li>hi</li>
-                  <li>there</li>
-                </ul>
-            </BasicView>
-            <BasicView mapToDetail='detailView3' myKind="BasicView">
-              <h2>BasicView12</h2>
-                <ul>
-                  <li>hi</li>
-                  <li>there</li>
-                </ul>
-            </BasicView>
-            <BasicView mapToDetail='detailView4' myKind="BasicView">
-              <h2>BasicView13</h2>
-                <ul>
-                  <li>hi</li>
-                  <li>there</li>
-                </ul>
             </BasicView>
             <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
