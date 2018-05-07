@@ -30,14 +30,15 @@ class Drawer extends Component {
   }
 
   getChildContext() {
-    return { basicViewClickHandler: e => this.contentSectionHandler(e),
+    return {
+             basicViewClickHandler: e => this.contentSectionHandler(e),
              basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
            };
   }
 
   componentWillReceiveProps(nextProps) {
 
-    const { drawerOpen, skipTo } = nextProps;
+    const { drawerOpen, skipTo, id, drawerTop } = nextProps;
     const { initiatingElement, back } = this.state;
 
     this.drawerStyles(this.props.position, drawerOpen)
@@ -46,22 +47,27 @@ class Drawer extends Component {
       this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
         () => this.findAndFocus(drawerOpen, initiatingElement, back)
       );
+
+      document.body.style = 'overflow:hidden';
+      document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
     }
 
     if(!drawerOpen) {
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
+      document.body.removeAttribute('style');
+      setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),500)
     }
 
   }
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo } = this.props;
+    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo, id } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
-      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-labelledby={text.headerTitle} aria-modal={true} onKeyDown={this.drawerHandleKeys}>
+      <div id={id} role="dialog" className={currentStyles} aria-labelledby={id} onKeyDown={this.drawerHandleKeys}>
         <TitleSection
           back        = {back}
           text        = {text}
@@ -106,8 +112,9 @@ Drawer.propTypes = {
 
 
 function _drawerHandleKeys(e) {
+
   const allow = [27,9];
-  if(allow.some(a => a === e.which)) {
+  if(allow.some(num => num === e.which)) {
     switch(e.which) {
       case 27: this.drawerHandler(); break; // ---> ESC KEY
       case 9 : this.tabHandler(e);   break; // ---> TAB KEY
@@ -171,12 +178,12 @@ function _tabHandler(e) {
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
 
-  if(currentTab <= numOfTabs){
+  if(currentTab <= numOfTabs) {
     currentTab = e.shiftKey ? --currentTab : ++currentTab;
     currentTab = (currentTab >= 0) ? currentTab : 0;
   }
 
-  if(currentTab > numOfTabs){
+  if(currentTab > numOfTabs) {
     currentTab = 0;
   }
 
@@ -188,11 +195,8 @@ function _tabHandler(e) {
 
 function _basicViewKeyHandler(e) {
 
-  e.preventDefault();
-  e.stopPropagation();
-
   const allow = [32,13];
-  if(allow.some(a => a === e.which)) {
+  if(allow.some(num => num === e.which)) {
     switch(e.which) {
       case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY
       case 13: this.contentSectionHandler(e); break;  // ---> ENTER KEY

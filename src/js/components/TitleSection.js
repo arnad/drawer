@@ -4,8 +4,8 @@ import { Icon, Button } from '@pearson-components/elements-sdk/build/dist.elemen
 
 export const TitleSection = ({ back, iconClose, backHandler, text }) => {
 
-  const backButtonStyles  = back ? "titleSectionHeaderBackButton slideInRightContent" : "titleSectionHeaderBackButton slideOutLeftContent";
-  const titleSpanStyles = back ? "titleSectionHeaderTitleSpan slideInRightContent" : "titleSectionHeaderTitleSpan slideOutLeftContent";
+  const backButtonStyles = back ? "titleSectionHeaderBackButton slideInRightContent" : "titleSectionHeaderBackButton slideOutLeftContent";
+  const titleSpanStyles  = back ? "titleSectionHeaderTitleSpan slideInRightContent"  : "titleSectionHeaderTitleSpan slideOutLeftContent";
 
   return (
         <div className="titleSectionHeader">
