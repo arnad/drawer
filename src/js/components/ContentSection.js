@@ -9,7 +9,7 @@ export const ContentSection = ({ children, back, displayView, skipTo }) => {
   const findDetailView   = findDetailViews.filter(c => c.props.id === (skipTo ? skipTo : displayView));
 
   return (
-        <ul className="contentSection" className={sectionAnimation}>
+        <ul className={sectionAnimation}>
           {!back && (skipTo ? findDetailView : findBasicViews)}
           { back && (skipTo ? null : findDetailView)}
         </ul>
