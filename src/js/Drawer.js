@@ -56,9 +56,7 @@ class Drawer extends Component {
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
       document.body.removeAttribute('style');
-
-      // console.log(document.getElementById(id).)
-      // document.getElementById(id).setAttribute('style','display:none;');
+      setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),500)
     }
 
   }
