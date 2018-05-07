@@ -1,3 +1,18 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.2...v2.0.3) (2018-05-07)
+
+
+### Bug Fixes
+
+* height, id, li to presentation link, update docs ([07f420d](https://github.com/Pearson-Higher-Ed/drawer/commit/07f420d))
+* height, scrolling ([59ae8ea](https://github.com/Pearson-Higher-Ed/drawer/commit/59ae8ea))
+* height, scrolling ([7553579](https://github.com/Pearson-Higher-Ed/drawer/commit/7553579))
+* height, scrolling ([1020d0b](https://github.com/Pearson-Higher-Ed/drawer/commit/1020d0b))
+* height, scrolling ([f87148d](https://github.com/Pearson-Higher-Ed/drawer/commit/f87148d))
+* remove duplicate attr in content section ([3698261](https://github.com/Pearson-Higher-Ed/drawer/commit/3698261))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.1...v2.0.2) (2018-04-17)
 
