@@ -111,24 +111,6 @@ class DrawerDemoPage extends Component {
               <h2>BasicView9</h2>
               <button>hithere</button>
             </BasicView>
-            <BasicView mapToDetail='detailView3' myKind="BasicView">
-              <h2>BasicView7</h2>
-                <ul>
-                  <li>hi</li>
-                  <li>there</li>
-                </ul>
-            </BasicView>
-            <BasicView mapToDetail='detailView4' myKind="BasicView">
-              <h2>BasicView8</h2>
-                <ul>
-                  <li>hi</li>
-                  <li>there</li>
-                </ul>
-            </BasicView>
-            <BasicView myKind="BasicView">
-              <h2>BasicView9</h2>
-              <button>hithere</button>
-            </BasicView>
             <DetailView id='detailView1' myKind="DetailView">
               <h3>DetailView1</h3>
             </DetailView>
