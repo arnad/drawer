@@ -25,6 +25,8 @@ class Drawer extends Component {
     this.tabHandler              = _tabHandler.bind(this);
     this.findAndFocus            = _findAndFocus.bind(this);
     this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
+    this.applyWrapper            = _applyWrapper.bind(this);
+    this.removeWrapper           = _removeWrapper.bind(this);
     this.drawerHandler           = props.drawerHandler.bind(this);
 
   }
@@ -50,20 +52,22 @@ class Drawer extends Component {
 
       document.body.style = 'overflow:hidden';
       document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
+      this.applyWrapper();
     }
 
     if(!drawerOpen) {
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
       document.body.removeAttribute('style');
-      setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),500)
+      setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),500);
+      this.removeWrapper();
     }
 
   }
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo, id } = this.props;
+    const { children, drawerHandler, text, skipTo, id } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
@@ -205,3 +209,36 @@ function _basicViewKeyHandler(e) {
   }
 
 }
+
+function _applyWrapper() {
+  if (!document.getElementById('wrapper')) {
+    const wrapper = document.createElement('div');
+    wrapper.id    = 'wrapper';
+    wrapper.setAttribute('aria-hidden', true);
+
+    const excludedElement = document.getElementById(this.props.id);
+
+    while (document.body.firstChild) {
+      wrapper.appendChild(document.body.firstChild);
+    }
+
+    document.body.appendChild(wrapper);
+    document.body.appendChild(excludedElement);
+  }
+};
+
+function _removeWrapper() {
+  const wrapper = document.getElementById('wrapper');
+  if (!wrapper) { return; }
+
+  wrapper.setAttribute('aria-hidden', false);
+
+  const excludedElement = document.getElementById(this.props.id);
+
+  while (wrapper.firstChild) {
+    document.body.appendChild(wrapper.firstChild);
+  }
+
+  document.body.removeChild(wrapper);
+  document.body.appendChild(excludedElement);
+};
