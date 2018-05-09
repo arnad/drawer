@@ -1,3 +1,14 @@
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.3...v2.0.4) (2018-05-09)
+
+
+### Bug Fixes
+
+* hide main content ([9789407](https://github.com/Pearson-Higher-Ed/drawer/commit/9789407))
+* remove unused vars ([405d8e5](https://github.com/Pearson-Higher-Ed/drawer/commit/405d8e5))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.2...v2.0.3) (2018-05-07)
 
