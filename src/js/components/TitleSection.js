@@ -16,6 +16,7 @@ export const TitleSection = ({ back, iconClose, backHandler, text }) => {
                       <Icon name="chevron-back-18"/>
                       {text.backButtonText}
                     </button>}
+          <h1 id="headerTitleSR" className="sr-only">{text.headerTitleSR}</h1>
           <span className="iconWrapper" onClick={iconClose}>
             <Button btnIcon aria-label={text.closeButtonSRText}>
               <Icon name="remove-sm-24"/>

@@ -56,11 +56,11 @@ class Drawer extends Component {
     }
 
     if(!drawerOpen) {
+      this.removeWrapper();
       this.findAndFocus(drawerOpen, initiatingElement, back);
       this.setState({currentTab:0});
       document.body.removeAttribute('style');
       setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),500);
-      this.removeWrapper();
     }
 
   }
@@ -71,7 +71,7 @@ class Drawer extends Component {
     const { back, currentStyles, displayView } = this.state;
 
     return (
-      <div id={id} role="dialog" className={currentStyles} aria-describedby={text.headerTitle} aria-labelledby={id} onKeyDown={this.drawerHandleKeys}>
+      <div id={id} role="dialog" className={currentStyles} aria-describedby="headerTitleSR" aria-labelledby={id} onKeyDown={this.drawerHandleKeys}>
         <TitleSection
           back        = {back}
           text        = {text}
