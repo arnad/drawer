@@ -67,7 +67,7 @@ class Drawer extends Component {
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo, id } = this.props;
+    const { children, drawerHandler, text, skipTo, id } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
