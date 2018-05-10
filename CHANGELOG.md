@@ -1,3 +1,15 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.4...v2.0.5) (2018-05-10)
+
+
+### Bug Fixes
+
+* add aria-describedby with headerTitle as text to be spoken ([a40901e](https://github.com/Pearson-Higher-Ed/drawer/commit/a40901e))
+* add text for aria-describedby ([854f23d](https://github.com/Pearson-Higher-Ed/drawer/commit/854f23d))
+* animation, add aria-describedby ([ef0f051](https://github.com/Pearson-Higher-Ed/drawer/commit/ef0f051))
+
+
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.3...v2.0.4) (2018-05-09)
 
