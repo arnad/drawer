@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ContentSection = ({ children, back, displayView, skipTo }) => {
+export const ContentSection = ({ children, back, displayView, skipTo, drawerOpen }) => {
 
   const sectionAnimation = back ? "contentSection slideInRightContent" : "contentSection slideOutLeftContent";
   const stepKids         = React.Children.map(children.props.children, child => child);
@@ -9,7 +9,7 @@ export const ContentSection = ({ children, back, displayView, skipTo }) => {
   const findDetailView   = findDetailViews.filter(c => c.props.id === (skipTo ? skipTo : displayView));
 
   return (
-        <ul className={sectionAnimation}>
+        <ul className={drawerOpen ? sectionAnimation : "contentSection"}>
           {!back && (skipTo ? findDetailView : findBasicViews)}
           { back && (skipTo ? null : findDetailView)}
         </ul>

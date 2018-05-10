@@ -15,7 +15,8 @@ class Drawer extends Component {
       back          : false,
       currentTab    : 0,
       currentStyles : 'drawerMain initial',
-      displayView   : 'BasicView'
+      displayView   : 'BasicView',
+      timer         : ''
     };
 
     this.drawerHandleKeys        = _drawerHandleKeys.bind(this);
@@ -27,6 +28,7 @@ class Drawer extends Component {
     this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
     this.applyWrapper            = _applyWrapper.bind(this);
     this.removeWrapper           = _removeWrapper.bind(this);
+    this.drawerOpenClose         = _drawerOpenClose.bind(this);
     this.drawerHandler           = props.drawerHandler.bind(this);
 
   }
@@ -41,43 +43,27 @@ class Drawer extends Component {
   componentWillReceiveProps(nextProps) {
 
     const { drawerOpen, skipTo, id, drawerTop } = nextProps;
-    const { initiatingElement, back } = this.state;
+    const { initiatingElement, back, timer } = this.state;
 
-    this.drawerStyles(this.props.position, drawerOpen)
-
-    if(drawerOpen) {
-      this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
-        () => this.findAndFocus(drawerOpen, initiatingElement, back)
-      );
-
-      document.body.style = 'overflow:hidden';
-      document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
-      this.applyWrapper();
-    }
-
-    if(!drawerOpen) {
-      this.removeWrapper();
-      this.findAndFocus(drawerOpen, initiatingElement, back);
-      this.setState({currentTab:0});
-      document.body.removeAttribute('style');
-      setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),500);
-    }
+    this.drawerStyles(this.props.position, drawerOpen);
+    this.drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, back, timer);
 
   }
 
   render() {
 
-    const { children, drawerHandler, text, skipTo, id } = this.props;
+    const { children, drawerHandler, text, skipTo, id, drawerOpen } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
       <div id={id} role="dialog" className={currentStyles} aria-describedby="headerTitleSR" aria-labelledby={id} onKeyDown={this.drawerHandleKeys}>
         <TitleSection
+          drawerOpen  = {drawerOpen}
           back        = {back}
           text        = {text}
           iconClose   = {drawerHandler}
           backHandler = {this.titleSectionBackHandler} />
-        <ContentSection back={back} displayView={displayView} skipTo={skipTo} contentSectionHandler={this.contentSectionHandler}>
+        <ContentSection drawerOpen={drawerOpen} back={back} displayView={displayView} skipTo={skipTo} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
       </div>
@@ -225,7 +211,7 @@ function _applyWrapper() {
     document.body.appendChild(wrapper);
     document.body.appendChild(excludedElement);
   }
-};
+}
 
 function _removeWrapper() {
   const wrapper = document.getElementById('wrapper');
@@ -241,4 +227,26 @@ function _removeWrapper() {
 
   document.body.removeChild(wrapper);
   document.body.appendChild(excludedElement);
-};
+}
+
+function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, back, timer) {
+
+  if(!drawerOpen) {
+    this.removeWrapper();
+    this.findAndFocus(drawerOpen, initiatingElement, back);
+    document.body.removeAttribute('style');
+    const timer = setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),1500);
+    this.setState({currentTab:0,timer});
+  }
+
+  if(drawerOpen) {
+    window.clearTimeout(timer);
+    this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
+      () => this.findAndFocus(drawerOpen, initiatingElement, back)
+    );
+    document.body.style = 'overflow:hidden';
+    document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
+    this.applyWrapper();
+  }
+
+}
