@@ -15,6 +15,7 @@ class DrawerDemoPage extends Component {
       position     : "left",
       text         : {
                       headerTitle       : "Basic Title",
+                      headerTitleSR     : "I'm a drawer",
                       closeButtonSRText : "Close",
                       backButtonText    : "Back"
                      }
@@ -160,6 +161,7 @@ function _documentationMarkup() {
                              default text:
                              const text =   {
                                                headerTitle       : "Basic Title",
+                                               headerTitleSR     : "I'm a drawer",
                                                closeButtonSRText : "Close",
                                                backButtonText    : "Back"
                                              }
@@ -197,6 +199,7 @@ function _documentationMarkup() {
                   position     : "right",
                   text         : {
                                     headerTitle       : "Basic Title",
+                                    headerTitleSR     : "I'm a drawer",
                                     closeButtonSRText : "Close",
                                     backButtonText    : "Back"
                                  }
