@@ -31,12 +31,16 @@ class Drawer extends Component {
     this.drawerOpenClose         = _drawerOpenClose.bind(this);
     this.drawerHandler           = props.drawerHandler.bind(this);
 
+    if(props.basicViewClick){
+      this.basicViewClick = props.basicViewClick.bind(this);
+    }
+
   }
 
   getChildContext() {
     return {
-             basicViewClickHandler: e => this.contentSectionHandler(e),
-             basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
+             basicViewClickHandler: e  => this.contentSectionHandler(e),
+             basicViewKeyHandler  : e  => this.basicViewKeyHandler(e)
            };
   }
 
@@ -97,7 +101,8 @@ Drawer.propTypes = {
   position      : PropTypes.string.isRequired,
   drawerOpen    : PropTypes.bool.isRequired,
   drawerHandler : PropTypes.func.isRequired,
-  drawerTop     : PropTypes.string
+  drawerTop     : PropTypes.string,
+  tagManager    : PropTypes.func
 };
 
 
@@ -127,6 +132,10 @@ function _drawerStyles(position, drawerOpen, currentStyles) {
 }
 
 function _contentSectionHandler(e) {
+
+  if(this.basicViewClick){
+    this.basicViewClick(e);
+  }
 
   if(e.currentTarget.attributes['maptodetail']) {
     this.setState({back:true, currentTab:0, displayView:e.currentTarget.attributes['maptodetail'].value},
