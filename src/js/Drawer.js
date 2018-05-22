@@ -39,8 +39,8 @@ class Drawer extends Component {
 
   getChildContext() {
     return {
-             basicViewClickHandler: e  => this.contentSectionHandler(e),
-             basicViewKeyHandler  : e  => this.basicViewKeyHandler(e)
+             basicViewClickHandler: e => this.contentSectionHandler(e),
+             basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
            };
   }
 
@@ -97,12 +97,12 @@ Drawer.childContextTypes = {
 };
 
 Drawer.propTypes = {
-  text          : PropTypes.object.isRequired,
-  position      : PropTypes.string.isRequired,
-  drawerOpen    : PropTypes.bool.isRequired,
-  drawerHandler : PropTypes.func.isRequired,
-  drawerTop     : PropTypes.string,
-  tagManager    : PropTypes.func
+  text           : PropTypes.object.isRequired,
+  position       : PropTypes.string.isRequired,
+  drawerOpen     : PropTypes.bool.isRequired,
+  drawerHandler  : PropTypes.func.isRequired,
+  drawerTop      : PropTypes.string,
+  basicViewClick : PropTypes.func
 };
 
 
