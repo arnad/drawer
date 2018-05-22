@@ -244,8 +244,8 @@ function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, 
     this.removeWrapper();
     this.findAndFocus(drawerOpen, initiatingElement, back);
     document.body.removeAttribute('style');
-    const timer = setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),1500);
-    this.setState({currentTab:0,timer});
+    const timer = setTimeout(() => document.getElementById(id).setAttribute('style', 'display:none;'), 1500);
+    this.setState({currentTab:0, timer});
   }
 
   if(drawerOpen) {
@@ -254,7 +254,7 @@ function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, 
       () => this.findAndFocus(drawerOpen, initiatingElement, back)
     );
     document.body.style = 'overflow:hidden';
-    document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
+    document.getElementById(id).setAttribute('style', `height:calc(100vh - ${drawerTop});top:${drawerTop}`);
     this.applyWrapper();
   }
 
