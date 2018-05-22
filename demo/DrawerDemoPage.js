@@ -56,7 +56,7 @@ class DrawerDemoPage extends Component {
           position       = {position}
           text           = {text}
           skipTo         = {skipTo}
-          basicViewClick = {(e) => console.log("tags..." + e.target)}
+          basicViewClick = {(e) => console.log("tags..." + e.currentTarget.innerHTML)}
           drawerHandler  = {this.drawerHandler} >
           <div>
             <BasicView mapToDetail='detailView1' myKind="BasicView">
