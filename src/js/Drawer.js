@@ -15,7 +15,8 @@ class Drawer extends Component {
       back          : false,
       currentTab    : 0,
       currentStyles : 'drawerMain initial',
-      displayView   : 'BasicView'
+      displayView   : 'BasicView',
+      timer         : ''
     };
 
     this.drawerHandleKeys        = _drawerHandleKeys.bind(this);
@@ -25,49 +26,48 @@ class Drawer extends Component {
     this.tabHandler              = _tabHandler.bind(this);
     this.findAndFocus            = _findAndFocus.bind(this);
     this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
+    this.applyWrapper            = _applyWrapper.bind(this);
+    this.removeWrapper           = _removeWrapper.bind(this);
+    this.drawerOpenClose         = _drawerOpenClose.bind(this);
     this.drawerHandler           = props.drawerHandler.bind(this);
+
+    if(props.basicViewClick){
+      this.basicViewClick = props.basicViewClick.bind(this);
+    }
 
   }
 
   getChildContext() {
-    return { basicViewClickHandler: e => this.contentSectionHandler(e),
-             basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
+    return {
+             basicViewClickHandler: e  => this.contentSectionHandler(e),
+             basicViewKeyHandler  : e  => this.basicViewKeyHandler(e)
            };
   }
 
   componentWillReceiveProps(nextProps) {
 
-    const { drawerOpen } = nextProps;
-    const { initiatingElement, back } = this.state;
+    const { drawerOpen, skipTo, id, drawerTop } = nextProps;
+    const { initiatingElement, back, timer } = this.state;
 
-    this.drawerStyles(this.props.position, drawerOpen)
-
-    if(drawerOpen) {
-      this.setState({initiatingElement:document.activeElement},
-        () => this.findAndFocus(drawerOpen, initiatingElement, back)
-      );
-    }
-
-    if(!drawerOpen) {
-      this.findAndFocus(drawerOpen, initiatingElement, back);
-      this.setState({currentTab:0});
-    }
+    this.drawerStyles(this.props.position, drawerOpen);
+    this.drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, back, timer);
 
   }
 
   render() {
 
-    const { position, children, drawerOpen, drawerHandler, text, drawerTop, skipTo } = this.props;
+    const { children, drawerHandler, text, skipTo, id, drawerOpen } = this.props;
     const { back, currentStyles, displayView } = this.state;
 
     return (
-      <div role="dialog" className={currentStyles} style={{top:drawerTop}} aria-labelledby={text.headerTitle} aria-modal={true} onKeyDown={this.drawerHandleKeys}>
+      <div id={id} role="dialog" className={currentStyles} aria-describedby="headerTitleSR" aria-labelledby={id} onKeyDown={this.drawerHandleKeys}>
         <TitleSection
+          drawerOpen  = {drawerOpen}
           back        = {back}
           text        = {text}
           iconClose   = {drawerHandler}
           backHandler = {this.titleSectionBackHandler} />
-        <ContentSection back={back} displayView={displayView} skipTo={skipTo} contentSectionHandler={this.contentSectionHandler}>
+        <ContentSection drawerOpen={drawerOpen} back={back} displayView={displayView} skipTo={skipTo} contentSectionHandler={this.contentSectionHandler}>
           {children}
         </ContentSection>
       </div>
@@ -101,13 +101,15 @@ Drawer.propTypes = {
   position      : PropTypes.string.isRequired,
   drawerOpen    : PropTypes.bool.isRequired,
   drawerHandler : PropTypes.func.isRequired,
-  drawerTop     : PropTypes.string
+  drawerTop     : PropTypes.string,
+  tagManager    : PropTypes.func
 };
 
 
 function _drawerHandleKeys(e) {
+
   const allow = [27,9];
-  if(allow.some(a => a === e.which)) {
+  if(allow.some(num => num === e.which)) {
     switch(e.which) {
       case 27: this.drawerHandler(); break; // ---> ESC KEY
       case 9 : this.tabHandler(e);   break; // ---> TAB KEY
@@ -130,6 +132,10 @@ function _drawerStyles(position, drawerOpen, currentStyles) {
 }
 
 function _contentSectionHandler(e) {
+
+  if(this.basicViewClick){
+    this.basicViewClick(e);
+  }
 
   if(e.currentTarget.attributes['maptodetail']) {
     this.setState({back:true, currentTab:0, displayView:e.currentTarget.attributes['maptodetail'].value},
@@ -171,12 +177,12 @@ function _tabHandler(e) {
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
 
-  if(currentTab <= numOfTabs){
+  if(currentTab <= numOfTabs) {
     currentTab = e.shiftKey ? --currentTab : ++currentTab;
     currentTab = (currentTab >= 0) ? currentTab : 0;
   }
 
-  if(currentTab > numOfTabs){
+  if(currentTab > numOfTabs) {
     currentTab = 0;
   }
 
@@ -188,16 +194,68 @@ function _tabHandler(e) {
 
 function _basicViewKeyHandler(e) {
 
-  e.preventDefault();
-  e.stopPropagation();
-
   const allow = [32,13];
-  if(allow.some(a => a === e.which)) {
+  if(allow.some(num => num === e.which)) {
     switch(e.which) {
       case 32: this.contentSectionHandler(e); break;  // ---> SPACE KEY
       case 13: this.contentSectionHandler(e); break;  // ---> ENTER KEY
       default: console.log("_basicViewKeyHandler default");
     }
+  }
+
+}
+
+function _applyWrapper() {
+  if (!document.getElementById('wrapper')) {
+    const wrapper = document.createElement('div');
+    wrapper.id    = 'wrapper';
+    wrapper.setAttribute('aria-hidden', true);
+
+    const excludedElement = document.getElementById(this.props.id);
+
+    while (document.body.firstChild) {
+      wrapper.appendChild(document.body.firstChild);
+    }
+
+    document.body.appendChild(wrapper);
+    document.body.appendChild(excludedElement);
+  }
+}
+
+function _removeWrapper() {
+  const wrapper = document.getElementById('wrapper');
+  if (!wrapper) { return; }
+
+  wrapper.setAttribute('aria-hidden', false);
+
+  const excludedElement = document.getElementById(this.props.id);
+
+  while (wrapper.firstChild) {
+    document.body.appendChild(wrapper.firstChild);
+  }
+
+  document.body.removeChild(wrapper);
+  document.body.appendChild(excludedElement);
+}
+
+function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, back, timer) {
+
+  if(!drawerOpen) {
+    this.removeWrapper();
+    this.findAndFocus(drawerOpen, initiatingElement, back);
+    document.body.removeAttribute('style');
+    const timer = setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),1500);
+    this.setState({currentTab:0,timer});
+  }
+
+  if(drawerOpen) {
+    window.clearTimeout(timer);
+    this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
+      () => this.findAndFocus(drawerOpen, initiatingElement, back)
+    );
+    document.body.style = 'overflow:hidden';
+    document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
+    this.applyWrapper();
   }
 
 }

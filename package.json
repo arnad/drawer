@@ -1,6 +1,6 @@
 {
   "name": "@pearson-components/drawer",
-  "version": "2.0.1",
+  "version": "2.0.5",
   "description": "drawer",
   "author": "Pearson Design Accelerator (PDA) <pearson-design-accelerator@pearson.com>",
   "license": "MIT",
@@ -24,8 +24,7 @@
     "postpublish": "npm access public && echo 'Package scope set to public!'"
   },
   "dependencies": {
-    "@pearson-components/elements-sdk": "^1.9.4",
-    "react-native-listener": "^1.0.2"
+    "@pearson-components/elements-sdk": "^1.9.4"
   },
   "devDependencies": {
     "@pearson-components/npm-scripts": "^0.5.8",

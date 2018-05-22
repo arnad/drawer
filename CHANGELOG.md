@@ -1,3 +1,54 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.4...v2.0.5) (2018-05-10)
+
+
+### Bug Fixes
+
+* add aria-describedby with headerTitle as text to be spoken ([a40901e](https://github.com/Pearson-Higher-Ed/drawer/commit/a40901e))
+* add text for aria-describedby ([854f23d](https://github.com/Pearson-Higher-Ed/drawer/commit/854f23d))
+* animation, add aria-describedby ([ef0f051](https://github.com/Pearson-Higher-Ed/drawer/commit/ef0f051))
+
+
+
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.3...v2.0.4) (2018-05-09)
+
+
+### Bug Fixes
+
+* hide main content ([9789407](https://github.com/Pearson-Higher-Ed/drawer/commit/9789407))
+* remove unused vars ([405d8e5](https://github.com/Pearson-Higher-Ed/drawer/commit/405d8e5))
+
+
+
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.2...v2.0.3) (2018-05-07)
+
+
+### Bug Fixes
+
+* height, id, li to presentation link, update docs ([07f420d](https://github.com/Pearson-Higher-Ed/drawer/commit/07f420d))
+* height, scrolling ([59ae8ea](https://github.com/Pearson-Higher-Ed/drawer/commit/59ae8ea))
+* height, scrolling ([7553579](https://github.com/Pearson-Higher-Ed/drawer/commit/7553579))
+* height, scrolling ([1020d0b](https://github.com/Pearson-Higher-Ed/drawer/commit/1020d0b))
+* height, scrolling ([f87148d](https://github.com/Pearson-Higher-Ed/drawer/commit/f87148d))
+* remove duplicate attr in content section ([3698261](https://github.com/Pearson-Higher-Ed/drawer/commit/3698261))
+
+
+
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.1...v2.0.2) (2018-04-17)
+
+
+### Bug Fixes
+
+* add direct to functionality ([c3d69e5](https://github.com/Pearson-Higher-Ed/drawer/commit/c3d69e5))
+* remove console.log ([1159538](https://github.com/Pearson-Higher-Ed/drawer/commit/1159538))
+* skipTo and back display none ([fc91b66](https://github.com/Pearson-Higher-Ed/drawer/commit/fc91b66))
+* take out unused variable ([bd0f018](https://github.com/Pearson-Higher-Ed/drawer/commit/bd0f018))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/Pearson-Higher-Ed/drawer/compare/v1.0.4...v2.0.1) (2018-04-03)
 

@@ -6145,6 +6145,10 @@ react-modal@^3.0.0:
     prop-types "^15.5.10"
     warning "^3.0.0"
 
+react-native-listener@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-listener/-/react-native-listener-1.0.2.tgz#3e9f8f0492b63280d50674d0be8a93d669705e92"
+
 react-reconciler@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.7.0.tgz#9614894103e5f138deeeb5eabaf3ee80eb1d026d"
