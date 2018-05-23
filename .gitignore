@@ -3,6 +3,9 @@
 *.iml
 *.swo
 *.swp
+*.error
+
+yarn.lock
 npm-debug.log
 /node_modules
 /coverage
