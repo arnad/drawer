@@ -31,6 +31,10 @@ class Drawer extends Component {
     this.drawerOpenClose         = _drawerOpenClose.bind(this);
     this.drawerHandler           = props.drawerHandler.bind(this);
 
+    if(props.basicViewClick){
+      this.basicViewClick = props.basicViewClick.bind(this);
+    }
+
   }
 
   getChildContext() {
@@ -93,11 +97,12 @@ Drawer.childContextTypes = {
 };
 
 Drawer.propTypes = {
-  text          : PropTypes.object.isRequired,
-  position      : PropTypes.string.isRequired,
-  drawerOpen    : PropTypes.bool.isRequired,
-  drawerHandler : PropTypes.func.isRequired,
-  drawerTop     : PropTypes.string
+  text           : PropTypes.object.isRequired,
+  position       : PropTypes.string.isRequired,
+  drawerOpen     : PropTypes.bool.isRequired,
+  drawerHandler  : PropTypes.func.isRequired,
+  drawerTop      : PropTypes.string,
+  basicViewClick : PropTypes.func
 };
 
 
@@ -127,6 +132,10 @@ function _drawerStyles(position, drawerOpen, currentStyles) {
 }
 
 function _contentSectionHandler(e) {
+
+  if(this.basicViewClick){
+    this.basicViewClick(e);
+  }
 
   if(e.currentTarget.attributes['maptodetail']) {
     this.setState({back:true, currentTab:0, displayView:e.currentTarget.attributes['maptodetail'].value},
@@ -235,8 +244,8 @@ function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, 
     this.removeWrapper();
     this.findAndFocus(drawerOpen, initiatingElement, back);
     document.body.removeAttribute('style');
-    const timer = setTimeout(() => document.getElementById(id).setAttribute('style','display:none;'),1500);
-    this.setState({currentTab:0,timer});
+    const timer = setTimeout(() => document.getElementById(id).setAttribute('style', 'display:none;'), 1500);
+    this.setState({currentTab:0, timer});
   }
 
   if(drawerOpen) {
@@ -245,7 +254,7 @@ function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, 
       () => this.findAndFocus(drawerOpen, initiatingElement, back)
     );
     document.body.style = 'overflow:hidden';
-    document.getElementById(id).setAttribute('style',`height:calc(100vh - ${drawerTop});top:${drawerTop}`);
+    document.getElementById(id).setAttribute('style', `height:calc(100vh - ${drawerTop});top:${drawerTop}`);
     this.applyWrapper();
   }
 

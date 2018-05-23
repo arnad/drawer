@@ -50,13 +50,14 @@ class DrawerDemoPage extends Component {
         {this.documentationMarkup()}
 
         <Drawer
-          id            = "myDrawer"
-          drawerTop     = "61px"
-          drawerOpen    = {drawerIsOpen}
-          position      = {position}
-          text          = {text}
-          skipTo        = {skipTo}
-          drawerHandler = {this.drawerHandler} >
+          id             = "myDrawer"
+          drawerTop      = "61px"
+          drawerOpen     = {drawerIsOpen}
+          position       = {position}
+          text           = {text}
+          skipTo         = {skipTo}
+          basicViewClick = {(e) => console.log("tags..." + e.currentTarget.innerHTML)}
+          drawerHandler  = {this.drawerHandler} >
           <div>
             <BasicView mapToDetail='detailView1' myKind="BasicView">
               <h2>BasicView1</h2>
@@ -151,13 +152,14 @@ function _drawerHandler() {
 function _documentationMarkup() {
 
   const drawerPropsInfo = `
-  id            : String   - a unqiue internationalized id for the drawer. Also, defines the aria-labeledby field
-  position      : String   - one of:"left","right" default "right"
-  drawerTop     : String   - adjust drawer top property default "61px"
-  skipTo        : String   - go directly to a view default ""
-  drawerOpen    : Boolean  - (required) default false default false
-  drawerHandler : Function - (required) sets state of drawerOpen to true or false
-  text          : Object   - (required) text to be passed in.
+  id             : String   - a unqiue internationalized id for the drawer. Also, defines the aria-labeledby field
+  position       : String   - one of:"left","right" default "right"
+  drawerTop      : String   - adjust drawer top property default "61px"
+  skipTo         : String   - go directly to a view default ""
+  basicViewClick : Function - optional hook that fires when BasicView is clicked
+  drawerOpen     : Boolean  - (required) default false default false
+  drawerHandler  : Function - (required) sets state of drawerOpen to true or false
+  text           : Object   - (required) text to be passed in.
                              default text:
                              const text =   {
                                                headerTitle       : "Basic Title",
@@ -216,6 +218,7 @@ function _documentationMarkup() {
                 drawerOpen    = {drawerIsOpen}
                 skipTo        = {this.state.skipTo}
                 position      = {this.state.position}
+                tagManager    = {() => console.log("tags...")}
                 drawerHandler = {this.drawerHandler}>
                 <div>
                   <BasicView mapToDetail='detailView1' myKind="BasicView">
