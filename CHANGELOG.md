@@ -1,3 +1,14 @@
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.5...v2.0.6) (2018-05-23)
+
+
+### Bug Fixes
+
+* add hook to basicview click for gtm ([0b581d3](https://github.com/Pearson-Higher-Ed/drawer/commit/0b581d3))
+* proptypes ([4caa658](https://github.com/Pearson-Higher-Ed/drawer/commit/4caa658))
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.4...v2.0.5) (2018-05-10)
 
