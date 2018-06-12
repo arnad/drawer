@@ -173,7 +173,7 @@ function _tabHandler(e) {
   e.preventDefault();
 
   const drawerElement    = document.getElementsByClassName('drawerMain')[0];
-  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackButton,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input');
+  const tabsInsideDrawer = drawerElement.querySelectorAll('.titleSectionHeaderBackButton,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input, a');
   const numOfTabs        = tabsInsideDrawer.length - 1;
   let currentTab         = this.state.currentTab;
 
