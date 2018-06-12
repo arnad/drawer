@@ -1,3 +1,8 @@
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.6...v2.0.7) (2018-06-12)
+
+
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.5...v2.0.6) (2018-05-23)
 
