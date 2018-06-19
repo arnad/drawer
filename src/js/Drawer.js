@@ -39,9 +39,9 @@ class Drawer extends Component {
 
   getChildContext() {
     return {
-             basicViewClickHandler: e => this.contentSectionHandler(e),
-             basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
-           };
+      basicViewClickHandler: e => this.contentSectionHandler(e),
+      basicViewKeyHandler  : e => this.basicViewKeyHandler(e)
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -210,6 +210,7 @@ function _applyWrapper() {
     const wrapper = document.createElement('div');
     wrapper.id    = 'wrapper';
     wrapper.setAttribute('aria-hidden', true);
+    wrapper.onclick = () => this.props.drawerHandler();
 
     const excludedElement = document.getElementById(this.props.id);
 
