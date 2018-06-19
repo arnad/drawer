@@ -254,7 +254,6 @@ function _drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, 
     this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},
       () => this.findAndFocus(drawerOpen, initiatingElement, back)
     );
-    document.body.style = 'overflow:hidden';
     document.getElementById(id).setAttribute('style', `height:calc(100vh - ${drawerTop});top:${drawerTop}`);
     this.applyWrapper();
   }
