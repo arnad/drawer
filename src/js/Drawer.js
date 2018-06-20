@@ -210,6 +210,7 @@ function _applyWrapper() {
     const wrapper = document.createElement('div');
     wrapper.id    = 'wrapper';
     wrapper.setAttribute('aria-hidden', true);
+    wrapper.classList.add('outsideDrawerWrapper');
     wrapper.onclick = () => this.props.drawerHandler();
 
     const excludedElement = document.getElementById(this.props.id);
