@@ -8,7 +8,7 @@ const text = {
                 headerTitle       : "Basic Title",
                 closeButtonSRText : "Close",
                 backButtonText    : "Back",
-             };``
+             };
 
 
 describe('Drawer Suite',() => {
