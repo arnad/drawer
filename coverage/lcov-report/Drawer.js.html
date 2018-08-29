@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Drawer.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> Drawer.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.35% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>18/93</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">2.22% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/45</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">10.53% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.18% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>18/85</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import PropTypes            from 'prop-types';
+import DrawerPortal         from './DrawerPortal';
+import { TitleSection }     from './components/TitleSection';
+import { ContentSection }   from './components/ContentSection';
+&nbsp;
+import '../scss/Drawer.scss';
+&nbsp;
+&nbsp;
+class Drawer extends Component {
+&nbsp;
+  constructor(props) {
+    super(props);
+&nbsp;
+    this.state = {
+      back          : false,
+      currentTab    : 0,
+      currentStyles : 'drawerMain initial',
+      displayView   : 'BasicView',
+      timer         : ''
+    };
+&nbsp;
+    this.drawerHandleKeys        = _drawerHandleKeys.bind(this);
+    this.drawerStyles            = _drawerStyles.bind(this);
+    this.contentSectionHandler   = _contentSectionHandler.bind(this);
+    this.titleSectionBackHandler = _titleSectionBackHandler.bind(this);
+    this.tabHandler              = _tabHandler.bind(this);
+    this.findAndFocus            = _findAndFocus.bind(this);
+    this.basicViewKeyHandler     = _basicViewKeyHandler.bind(this);
+    this.drawerOpenClose         = _drawerOpenClose.bind(this);
+    this.drawerHandler           = props.drawerHandler.bind(this);
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(props.basicViewClick) {
+<span class="cstat-no" title="statement not covered" >      this.basicViewClick = props.basicViewClick.bind(this);</span>
+    }
+&nbsp;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ge</span>tChildContext() {
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      basicViewClickHandler: <span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >this.contentSectionHandler(e),</span>
+      basicViewKeyHandler  : <span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >this.basicViewKeyHandler(e)</span>
+    };
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps(nextProps) {
+&nbsp;
+    const { position, appRootId } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    const { drawerOpen, skipTo, id, drawerTop } = <span class="cstat-no" title="statement not covered" >nextProps;</span>
+    const { initiatingElement, back, timer } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.drawerStyles(position, drawerOpen);</span>
+<span class="cstat-no" title="statement not covered" >    this.drawerOpenClose(drawerOpen, skipTo, id, drawerTop, initiatingElement, back, timer, appRootId);</span>
+&nbsp;
+  }
+&nbsp;
+  render() {
+&nbsp;
+    const { children, drawerHandler, text, skipTo, id, drawerOpen, renderTo } = this.props;
+    const { back, currentStyles, displayView } = this.state;
+&nbsp;
+    return (
+      &lt;DrawerPortal renderTo={renderTo}&gt;
+        &lt;div 
+          id={id}
+          role="dialog"
+          className={currentStyles}
+          aria-describedby="headerTitleSR"
+          aria-labelledby={id}
+          onKeyDown={this.drawerHandleKeys}
+        &gt;
+          &lt;TitleSection
+            drawerOpen  = {drawerOpen}
+            back        = {back}
+            text        = {text}
+            iconClose   = {drawerHandler}
+            backHandler = {this.titleSectionBackHandler} /&gt;
+          &lt;ContentSection 
+            drawerOpen={drawerOpen}
+            back={back}
+            displayView={displayView}
+            skipTo={skipTo}
+            contentSectionHandler={this.contentSectionHandler}
+          &gt;
+            {children}
+          &lt;/ContentSection&gt;
+        &lt;/div&gt;
+      &lt;/DrawerPortal&gt;
+    )
+  }
+&nbsp;
+}
+&nbsp;
+&nbsp;
+export default Drawer;
+&nbsp;
+&nbsp;
+Drawer.defaultProps = {
+  position   : "right",
+  drawerOpen : false,
+  drawerTop  : "61px",
+  text       : {
+                 headerTitle       : "Basic Title",
+                 closeButtonSRText : "Close",
+                 backButtonText    : "Back"
+               }
+};
+&nbsp;
+Drawer.childContextTypes = {
+  basicViewClickHandler : PropTypes.func,
+  basicViewKeyHandler   : PropTypes.func
+};
+&nbsp;
+Drawer.propTypes = {
+  text           : PropTypes.object.isRequired,
+  position       : PropTypes.string.isRequired,
+  drawerOpen     : PropTypes.bool.isRequired,
+  drawerHandler  : PropTypes.func.isRequired,
+  drawerTop      : PropTypes.string,
+  basicViewClick : PropTypes.func,
+  renderTo       : PropTypes.string,
+  appRootId      : PropTypes.string.isRequired
+};
+&nbsp;
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_drawerHandleKeys(</span>e) {
+&nbsp;
+  const allow = <span class="cstat-no" title="statement not covered" >[27,9];</span>
+<span class="cstat-no" title="statement not covered" >  if(allow.some(<span class="fstat-no" title="function not covered" >nu</span>m =&gt; <span class="cstat-no" title="statement not covered" >num === e.which)</span>) {</span>
+<span class="cstat-no" title="statement not covered" >    switch(e.which) {</span>
+      case 27: <span class="cstat-no" title="statement not covered" >this.drawerHandler(); <span class="cstat-no" title="statement not covered" ></span>break; </span>// ---&gt; ESC KEY
+      case 9 : <span class="cstat-no" title="statement not covered" >this.tabHandler(e); </span>  <span class="cstat-no" title="statement not covered" >break; </span>// ---&gt; TAB KEY
+      default: <span class="cstat-no" title="statement not covered" >console.log('_drawerHandleKeys default');</span>
+    }
+  }
+&nbsp;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_drawerStyles(</span>position, drawerOpen, currentStyles) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  switch(position) {</span>
+    case 'left' : <span class="cstat-no" title="statement not covered" >currentStyles = drawerOpen ? 'drawerMain left slideInLeft'   : 'drawerMain left slideOutLeft'; </span>  <span class="cstat-no" title="statement not covered" >break;</span>
+    case 'right': <span class="cstat-no" title="statement not covered" >currentStyles = drawerOpen ? 'drawerMain right slideInRight' : 'drawerMain right slideOutRight'; <span class="cstat-no" title="statement not covered" ></span>break;</span>
+    default: <span class="cstat-no" title="statement not covered" >console.log('_drawerStyles default case check position on Drawer');</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.setState({currentStyles});</span>
+&nbsp;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_contentSectionHandler(</span>e) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(this.basicViewClick) {</span>
+<span class="cstat-no" title="statement not covered" >    this.basicViewClick(e);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(e.currentTarget.attributes['maptodetail']) {</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({back:true, currentTab:0, displayView:e.currentTarget.attributes['maptodetail'].value},</span>
+<span class="fstat-no" title="function not covered" >      ()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.findAndFocus(this.props.drawerOpen, this.state.initiatingElement, this.state.back)</span>
+    );
+  }
+&nbsp;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_findAndFocus(</span>drawerOpen, initiatingElement, back) {
+&nbsp;
+  const closeButton    = <span class="cstat-no" title="statement not covered" >document.querySelector('.iconWrapper .pe-icon--btn');</span>
+  const backButton     = <span class="cstat-no" title="statement not covered" >document.querySelector('.titleSectionHeaderBackButton');</span>
+  const focusClose     = <span class="cstat-no" title="statement not covered" >drawerOpen ? closeButton : initiatingElement;</span>
+  const focusBack      = <span class="cstat-no" title="statement not covered" >drawerOpen ? backButton  : initiatingElement;</span>
+  const focusedElement = <span class="cstat-no" title="statement not covered" >back ? focusBack : focusClose;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(focusedElement) {</span>
+<span class="cstat-no" title="statement not covered" >    focusedElement.focus();</span>
+  }
+&nbsp;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_titleSectionBackHandler(</span>e) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >  e.stopPropagation();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.setState({back:false});</span>
+<span class="cstat-no" title="statement not covered" >  document.querySelector('.iconWrapper .pe-icon--btn').focus();</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_tabHandler(</span>e) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  e.preventDefault();</span>
+&nbsp;
+  const drawerElement    = <span class="cstat-no" title="statement not covered" >document.getElementsByClassName('drawerMain')[0];</span>
+  const tabsInsideDrawer = <span class="cstat-no" title="statement not covered" >drawerElement.querySelectorAll('.titleSectionHeaderBackButton,.iconWrapper .pe-icon--btn, [tabindex="-1"], [tabindex="0"], detail, summary, button, input, a');</span>
+  const numOfTabs        = <span class="cstat-no" title="statement not covered" >tabsInsideDrawer.length - 1;</span>
+  let currentTab         = <span class="cstat-no" title="statement not covered" >this.state.currentTab;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(currentTab &lt;= numOfTabs) {</span>
+<span class="cstat-no" title="statement not covered" >    currentTab = e.shiftKey ? --currentTab : ++currentTab;</span>
+<span class="cstat-no" title="statement not covered" >    currentTab = (currentTab &gt;= 0) ? currentTab : 0;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(currentTab &gt; numOfTabs) {</span>
+<span class="cstat-no" title="statement not covered" >    currentTab = 0;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  tabsInsideDrawer[currentTab].focus();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.setState({currentTab});</span>
+&nbsp;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_basicViewKeyHandler(</span>e) {
+&nbsp;
+  const allow = <span class="cstat-no" title="statement not covered" >[32,13];</span>
+<span class="cstat-no" title="statement not covered" >  if(allow.some(<span class="fstat-no" title="function not covered" >nu</span>m =&gt; <span class="cstat-no" title="statement not covered" >num === e.which)</span>) {</span>
+<span class="cstat-no" title="statement not covered" >    switch(e.which) {</span>
+      case 32: <span class="cstat-no" title="statement not covered" >this.contentSectionHandler(e); <span class="cstat-no" title="statement not covered" ></span>break; </span> // ---&gt; SPACE KEY
+      case 13: <span class="cstat-no" title="statement not covered" >this.contentSectionHandler(e); <span class="cstat-no" title="statement not covered" ></span>break; </span> // ---&gt; ENTER KEY
+      default: <span class="cstat-no" title="statement not covered" >console.log('_basicViewKeyHandler default');</span>
+    }
+  }
+&nbsp;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >_drawerOpenClose(</span>drawerOpen, skipTo, id, drawerTop, initiatingElement, back, timer, appRootId) {
+<span class="cstat-no" title="statement not covered" >  if(!drawerOpen) {</span>
+<span class="cstat-no" title="statement not covered" >    this.findAndFocus(drawerOpen, initiatingElement, back);</span>
+<span class="cstat-no" title="statement not covered" >    document.body.removeAttribute('style');</span>
+<span class="cstat-no" title="statement not covered" >    document.getElementById(appRootId).setAttribute('aria-hidden', false);</span>
+    const timer = <span class="cstat-no" title="statement not covered" >setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      document.getElementById(id).setAttribute('style', 'display:none;');</span>
+    }, 1500);
+<span class="cstat-no" title="statement not covered" >    this.setState({currentTab:0, timer});</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(drawerOpen) {</span>
+<span class="cstat-no" title="statement not covered" >    window.clearTimeout(timer);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({initiatingElement:document.activeElement, back: skipTo ? false : back},</span>
+<span class="fstat-no" title="function not covered" >      ()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.findAndFocus(drawerOpen, initiatingElement, back)</span>
+    );
+<span class="cstat-no" title="statement not covered" >    document.getElementById(id).setAttribute('style', `height:calc(100vh - ${drawerTop});top:${drawerTop}`);</span>
+<span class="cstat-no" title="statement not covered" >    document.getElementById(appRootId).setAttribute('aria-hidden', true);</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 29 2018 12:58:48 GMT-0600 (MDT)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
