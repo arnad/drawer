@@ -1,3 +1,16 @@
+<a name="2.0.12"></a>
+## [2.0.12](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.11...v2.0.12) (2018-08-29)
+
+
+### Bug Fixes
+
+* broken test ([39ecb6f](https://github.com/Pearson-Higher-Ed/drawer/commit/39ecb6f))
+* change from wrapper to reactPortal ([93516f9](https://github.com/Pearson-Higher-Ed/drawer/commit/93516f9))
+* cleanup type-o ([ec247ef](https://github.com/Pearson-Higher-Ed/drawer/commit/ec247ef))
+* new jest.config entry required by upgrade ([90b3426](https://github.com/Pearson-Higher-Ed/drawer/commit/90b3426))
+
+
+
 <a name="2.0.11"></a>
 ## [2.0.11](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.10...v2.0.11) (2018-06-21)
 
