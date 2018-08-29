@@ -2,6 +2,7 @@ import React              from 'react';
 import { shallow, mount } from 'enzyme';
 
 import { Drawer, BasicView, DetailView } from '../index';
+import DrawerPortal from '../src/js/DrawerPortal';
 
 const text = {
                 headerTitle       : "Basic Title",
@@ -13,8 +14,10 @@ const text = {
 describe('Drawer Suite',() => {
 
   it('shallowly renders the component', () => {
-    const wrapper = shallow(<Drawer drawerHandler={() => {}}><BasicView><p>hi</p></BasicView><DetailView><p>there</p></DetailView></Drawer>);
-    expect(wrapper.getElement(0).type).toEqual('div');
+    const wrapper = shallow(<Drawer drawerHandler={() => {}} appRootId="dummy"><BasicView><p>hi</p></BasicView><DetailView><p>there</p></DetailView></Drawer>);
+    expect(wrapper.find(DrawerPortal).exists()).toEqual(true);
+    expect(wrapper.find(BasicView).exists()).toEqual(true);
+    expect(wrapper.find(DetailView).exists()).toEqual(true);
   });
 
   // it('shallowly renders the component', () => {
