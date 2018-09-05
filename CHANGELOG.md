@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.0...v2.1.1) (2018-09-05)
+
+
+### Bug Fixes
+
+* missing ReactDOM import ([df1f595](https://github.com/Pearson-Higher-Ed/drawer/commit/df1f595))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.12...v2.1.0) (2018-08-29)
 
