@@ -1,3 +1,8 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.1...v2.1.2) (2018-09-18)
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.0...v2.1.1) (2018-09-05)
 
