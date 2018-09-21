@@ -23,7 +23,7 @@
     "verify": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/verify.js",
     "postpublish": "npm access public && echo 'Package scope set to public!'"
   },
-  "devDependencies": {
+  "devDependencies":  {
     "@pearson-components/elements-sdk": "~1.10.4",
     "@pearson-components/npm-scripts": "^0.5.8",
     "autoprefixer": "^7.2.4",
