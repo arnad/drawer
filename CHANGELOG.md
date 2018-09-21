@@ -1,3 +1,13 @@
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.2...v2.1.3) (2018-09-21)
+
+
+### Bug Fixes
+
+* correct elements-sdk reference ([eb9c299](https://github.com/Pearson-Higher-Ed/drawer/commit/eb9c299))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.1...v2.1.2) (2018-09-18)
 
