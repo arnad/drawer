@@ -204,7 +204,7 @@ React components with internationalisation use React-Intl which relies on the EC
 CustomEvent support in IE is also polyfilled. Because many teams are supporting both IE 11 and Safari 9, we've combined the polyfills into a single script. The example below polyfills for CustomEvent and localisation for English and French:
 
 <script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent,Intl.~locale.en,Intl.~locale.fr"></script>
-Be sure to include the above script (a version of it that makes sense for your project and supported browsers) on your HTML page running CompoundsSDK, if you need it.
+Be sure to include the above script (a version of it that makes sense for your project and supported browsers) on your HTML page running CompoundsSDK, if you need it. 
 
 ## CodeCoverage site
 After running npm test && npm start, you may view the code coverage site at: http://localhost:8081/coverage/lcov-report
