@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PF34DLP');</script>
+  <script>
+    const dataLayer = [{
+      'hi':'there'
+    }]
+  </script>
+  <!-- End Google Tag Manager -->
+    <title>Demo Drawer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/@pearson-components/elements-sdk@1.9.0/build/css/elements.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PF34DLP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div id="drawer"></div>
+
+    <!-- Icons -->
+    <script>
+      if (document.body.children[0].nodeName !== 'svg') {
+        var pe_ajax = new XMLHttpRequest();
+        pe_ajax.open("GET", "https://unpkg.com/@pearson-components/elements-sdk/build/icons/p-icons-sprite-1.1.svg", true);
+        pe_ajax.responseType = "document";
+        pe_ajax.onload = function(e) {
+          document.body.insertBefore(
+            pe_ajax.responseXML.documentElement,
+            document.body.childNodes[0]
+          );
+        }
+        pe_ajax.send();
+      }
+    </script>
+
+    <!-- Provide React and ReactDOM as a depedency external to the component -->
+    <script crossorigin src="https://unpkg.com/react@latest/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@latest/prop-types.js"></script>
+    <!-- CustomEvent, Array.from, Object.assign and Promise polyfills are for IE, Intl.js polyfill is for Safari -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent,Array.from,Object.assign,Promise,Intl.~locale.en,Intl.~locale.fr"></script>
+    <!-- Demo build of component Injected on build -->
+    <!-- Build Component to View Demo: npm run build && npm start -->
+    <!-- View at: http://localhost:8081/drawer/ -->
+<script type="text/javascript" src="/drawer/demo.drawer.js"></script><script type="text/javascript" src="/drawer/eventInterface.drawer.js"></script><script type="text/javascript" src="/drawer/dist.drawer.js"></script><script type="text/javascript" src="/drawer/fonts.drawer.js"></script><script type="text/javascript" src="/drawer/dev.drawer.js"></script></body>
+</html>
