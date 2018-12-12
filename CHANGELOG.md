@@ -1,3 +1,46 @@
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.2...v2.1.3) (2018-09-21)
+
+
+### Bug Fixes
+
+* correct elements-sdk reference ([eb9c299](https://github.com/Pearson-Higher-Ed/drawer/commit/eb9c299))
+
+
+
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.1...v2.1.2) (2018-09-18)
+
+
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.1.0...v2.1.1) (2018-09-05)
+
+
+### Bug Fixes
+
+* missing ReactDOM import ([df1f595](https://github.com/Pearson-Higher-Ed/drawer/commit/df1f595))
+
+
+
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.12...v2.1.0) (2018-08-29)
+
+
+
+<a name="2.0.12"></a>
+## [2.0.12](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.11...v2.0.12) (2018-08-29)
+
+
+### Bug Fixes
+
+* broken test ([39ecb6f](https://github.com/Pearson-Higher-Ed/drawer/commit/39ecb6f))
+* change from wrapper to reactPortal ([93516f9](https://github.com/Pearson-Higher-Ed/drawer/commit/93516f9))
+* cleanup type-o ([ec247ef](https://github.com/Pearson-Higher-Ed/drawer/commit/ec247ef))
+* new jest.config entry required by upgrade ([90b3426](https://github.com/Pearson-Higher-Ed/drawer/commit/90b3426))
+
+
+
 <a name="2.0.11"></a>
 ## [2.0.11](https://github.com/Pearson-Higher-Ed/drawer/compare/v2.0.10...v2.0.11) (2018-06-21)
 
